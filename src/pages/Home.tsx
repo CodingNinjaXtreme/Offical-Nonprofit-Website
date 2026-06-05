@@ -80,7 +80,7 @@ const teamHighlights = [
   {
     role: 'Mission',
     title: 'Student-run, mission-first',
-    text: 'We are a 501(c)(3) nonprofit. The whole leadership team is in high school — and that is the point.',
+    text: 'We are a  nonprofit. The whole leadership team is in high school — and that is the point.',
   },
 ];
 
@@ -149,7 +149,7 @@ export default function Home() {
                 <div className="absolute -top-5 -right-5 bg-white text-slate-900 rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
                   <Trophy className="w-5 h-5 text-blue-600" />
                   <div>
-                    <div className="font-bold text-sm">3 competitions</div>
+                    <div className="font-bold text-sm">2 competitions</div>
                     <div className="text-xs text-slate-500">Noetic · MOEMS · Elementary</div>
                   </div>
                 </div>
@@ -170,8 +170,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { v: '4', l: 'National competitions' },
-              { v: '2–8', l: 'Grades served' },
+              { v: '2', l: 'National competitions' },
+              { v: '1-5', l: 'Grades served' },
               { v: 'Year-round', l: 'Cohorts' },
               { v: '100%', l: 'High-school-led teaching' },
             ].map((s) => (

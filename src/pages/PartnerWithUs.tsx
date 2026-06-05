@@ -174,7 +174,7 @@ export default function PartnerWithUs() {
             {[
               { v: 'Run by', l: 'high school students', icon: GraduationCap },
               { v: '501(c)(3)', l: 'registered nonprofit', icon: Heart },
-              { v: '4', l: 'national competitions', icon: Star },
+              { v: '2', l: 'national competitions', icon: Star },
               { v: 'Free', l: '& subsidized seats', icon: Users },
             ].map(({ v, l, icon: Icon }) => (
               <div key={l} className="text-center">
@@ -243,7 +243,7 @@ export default function PartnerWithUs() {
           </span>
           <h2 className="section-title">Built around access, not fundraising</h2>
           <p className="text-slate-500 leading-relaxed">
-            We&rsquo;re a registered 501(c)(3) focused on getting more students into competition
+            We&rsquo;re a nonprofit focused on getting more students into competition
             math — not on running a fundraising operation. If you have specific questions about
             how the program is structured, just email us.
           </p>

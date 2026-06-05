@@ -85,7 +85,7 @@ export default function Mission() {
             A nonprofit, <span className="block text-gradient">run by high schoolers</span>
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            We&rsquo;re a 501(c)(3) built and operated by high school students. We coach the next
+            We&rsquo;re a nonprofit built and operated by high school students. We coach the next
             generation of mathematicians — grades 1–5 — for free, because someone did it
             for us first.
           </p>
@@ -107,7 +107,7 @@ export default function Mission() {
               </span>
               <h2 className="section-title">Mathematicians teaching mathematicians.</h2>
               <p className="text-slate-500 leading-relaxed mb-5">
-                InfinityMath4All is a 501(c)(3) nonprofit dedicated to making world-class
+                InfinityMath4All is a  nonprofit dedicated to making world-class
                 mathematics education accessible to every elementary and middle school student.
               </p>
               <p className="text-slate-500 leading-relaxed mb-5">
@@ -125,7 +125,7 @@ export default function Mission() {
               {[
                 { v: '100%', l: 'High-school-led teaching', icon: GraduationCap },
                 { v: 'Year-round', l: 'Cohorts', icon: ShieldCheck },
-                { v: '4', l: 'National competitions', icon: Target },
+                { v: '2', l: 'National competitions', icon: Target },
                 { v: 'Free', l: 'And subsidized seats', icon: Heart },
               ].map(({ v, l, icon: Icon }) => (
                 <div key={l} className="stat-tile">
