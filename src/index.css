@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply text-slate-800 antialiased;
+    background-color: #ffffff;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: rgba(59, 130, 246, 0.25);
+    color: #0f172a;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: #2563eb;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0 0 0.75rem 0;
+    z-index: 100;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl
+           hover:bg-blue-700 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-blue-500/20;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl
+           border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 active:scale-95 transition-all duration-200;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center gap-2 bg-amber-500 text-white font-semibold px-6 py-3 rounded-xl
+           hover:bg-amber-600 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-amber-500/30;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold px-6 py-3 rounded-xl
+           hover:bg-white/20 hover:border-white/30 active:scale-95 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 overflow-hidden;
+  }
+
+  .card-glass {
+    @apply rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-md transition-all duration-300;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-1.5 bg-blue-100 text-blue-700 text-sm font-semibold px-3 py-1 rounded-full mb-4;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-slate-500 leading-relaxed max-w-2xl;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 bg-white text-slate-800 placeholder-slate-400;
+  }
+
+  .nav-link {
+    @apply text-slate-600 hover:text-blue-600 font-medium transition-colors duration-200 relative;
+  }
+
+  .nav-link.active {
+    @apply text-blue-600;
+  }
+
+  .stat-tile {
+    @apply rounded-2xl bg-white border border-slate-100 p-6 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 bg-clip-text text-transparent;
+  }
+
+  .bg-hero {
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(56, 189, 248, 0.18), transparent 60%),
+      radial-gradient(ellipse at 90% 100%, rgba(34, 211, 238, 0.18), transparent 55%),
+      linear-gradient(135deg, #0b1220 0%, #0f1f3a 45%, #082f49 100%);
+  }
+
+  .bg-hero-warm {
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(251, 191, 36, 0.15), transparent 55%),
+      radial-gradient(ellipse at 0% 100%, rgba(99, 102, 241, 0.18), transparent 55%),
+      linear-gradient(135deg, #0b1220 0%, #1e1b4b 50%, #0c4a6e 100%);
+  }
+
+  .bg-section-alt {
+    @apply bg-slate-50;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .bg-dotgrid {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .ring-soft {
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.04), 0 12px 32px -8px rgba(15, 23, 42, 0.12);
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: floatY 7s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: floatY 11s ease-in-out infinite;
+  }
+
+  .animate-rise {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .animate-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0.18) 55%, transparent 100%);
+    transform: translateX(-100%);
+    animation: shine 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    60%, 100% { transform: translateX(100%); }
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  .stagger-children > * {
+    @apply opacity-0 animate-fade-up;
+  }
+
+  .divider-wave {
+    aspect-ratio: 1440 / 60;
+    width: 100%;
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
