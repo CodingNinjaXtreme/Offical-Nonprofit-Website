@@ -5,6 +5,7 @@ import Logo from './Logo';
 const footerLinks = {
   Explore: [
     { label: 'Home', path: '/' },
+    { label: 'About Us', path: '/about' },
     { label: 'Our Mission', path: '/mission' },
     { label: 'Competitions', path: '/competitions' },
     { label: 'Partner With Us', path: '/partner' },
