@@ -62,7 +62,7 @@ const competitions = [
     ],
     bestFor: 'Students who love wrestling with one hard problem at a time.',
     image:
-      'https://images.pexels.com/photos/8471753/pexels-photo-8471753.jpeg?auto=compress&cs=tinysrgb&w=700',
+      'moems.jpeg',
   },
   {
     id: 'elementary',
