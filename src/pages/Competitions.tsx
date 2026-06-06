@@ -42,7 +42,7 @@ const competitions = [
       'NoeticLearningMathContest.png',
   },
   {
-    id: 'olympiad',
+    id: 'Olympiad',
     name: 'Math Olympiad (MOEMS)',
     shortName: 'MOEMS',
     grades: 'Grades 1–5',
@@ -62,7 +62,7 @@ const competitions = [
     ],
     bestFor: 'Students who love wrestling with one hard problem at a time.',
     image:
-      'moems.jpeg',
+      'ba6056f4f04119e4a6bd377e30ccc63b.jpeg',
   },
   {
     id: 'elementary',
