@@ -6,9 +6,9 @@ import {
   Users,
   ArrowRight,
   Star,
-  Globe,
+
   BookOpen,
-  Target,
+
   Medal,
   ChevronRight,
   CheckCircle2,

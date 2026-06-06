@@ -104,7 +104,7 @@ export default function Home() {
             <div className="animate-rise">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-8">
                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                <span className="text-white/80 text-sm font-medium">501(c)(3) Nonprofit · Run by high schoolers</span>
+                <span className="text-white/80 text-sm font-medium"> A Registered Nonprofit · Run by upcoming high schoolers</span>
               </div>
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6">
                 Unlocking Every
