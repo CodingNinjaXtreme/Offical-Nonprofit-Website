@@ -39,7 +39,7 @@ const competitions = [
     ],
     bestFor: 'Students new to competition math who want a friendly first contest.',
     image:
-      'https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=700',
+      'NoeticLearningMathContest.png',
   },
   {
     id: 'olympiad',
