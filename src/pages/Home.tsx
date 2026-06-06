@@ -249,16 +249,21 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {howItWorks.map(({ icon: Icon, title, text }, i) => (
-              <div key={title} className="card p-7 relative group hover:-translate-y-1">
-                <div className="absolute -top-3 left-7 px-2.5 py-1 rounded-full bg-blue-600 text-white text-[10px] font-bold tracking-widest">
-                  STEP {String(i + 1).padStart(2, '0')}
+                <div key={title} className="card p-7 relative group hover:-translate-y-1">
+                  {/* The Icon Container */}
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-lg shadow-blue-200">
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  {/* Shifted more to the right with left-[88px] */}
+                  <div className="absolute top-[38px] left-[88px] px-2.5 py-1 rounded-full bg-blue-600 text-white text-[10px] font-bold tracking-widest uppercase whitespace-nowrap">
+                    STEP {String(i + 1).padStart(2, '0')}
+                  </div>
+
+                  <h3 className="font-bold text-slate-900 text-lg mb-2">{title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{text}</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-lg shadow-blue-200">
-                  <Icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-lg mb-2">{title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{text}</p>
-              </div>
+
             ))}
           </div>
         </div>
