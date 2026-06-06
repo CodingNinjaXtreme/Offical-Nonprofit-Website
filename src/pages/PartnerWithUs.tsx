@@ -85,7 +85,7 @@ const partnerTypes = [
 const faqs = [
   {
     q: 'Is InfinityMath4All an accredited nonprofit?',
-    a: 'Yes. InfinityMath4All is a registered 501(c)(3) nonprofit organization. Our EIN and annual financial statements are publicly available upon request.',
+    a: 'Yes. InfinityMath4All is a registered nonprofit organization. Our EIN and annual financial statements are publicly available upon request.',
   },
   {
     q: 'Who actually runs the program?',
