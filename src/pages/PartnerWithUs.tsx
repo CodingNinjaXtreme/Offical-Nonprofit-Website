@@ -173,7 +173,7 @@ export default function PartnerWithUs() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { v: 'Run by', l: 'high school students', icon: GraduationCap },
-              { v: 'High school led', l: 'nonprofit', icon: Heart },
+              { v: 'Math', l: 'nonprofit', icon: Heart },
               { v: '2', l: 'national competitions', icon: Star },
               { v: 'Free', l: '& subsidized seats', icon: Users },
             ].map(({ v, l, icon: Icon }) => (
