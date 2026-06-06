@@ -175,7 +175,7 @@ export default function PartnerWithUs() {
               { v: 'Run by', l: 'high school students', icon: GraduationCap },
               { v: 'Math', l: 'nonprofit', icon: Heart },
               { v: '2', l: 'national competitions', icon: Star },
-              { v: 'Free', l: '& subsidized seats', icon: Users },
+              { v: 'Free', l: 'seats', icon: Users },
             ].map(({ v, l, icon: Icon }) => (
               <div key={l} className="text-center">
                 <Icon className="w-6 h-6 text-blue-600 mx-auto mb-2" />
