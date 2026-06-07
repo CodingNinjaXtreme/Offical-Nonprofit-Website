@@ -96,7 +96,8 @@ export default function About() {
             <p className="text-slate-600 leading-relaxed">
               We believe investing in elementary students now means stronger communities later. When
               younger learners build confidence and discipline early, they carry those habits into
-              middle school, high school, and life.
+              middle school, high school, and life. Because we navigated these exact competitions from an early age, we know firsthand what it feels like to struggle with intricate problems. We translate our personal triumphs into patient, relatable mentorship, using our background to build the confidence,
+              resilience, and critical thinking skills your child needs to succeed.
             </p>
           </div>
         </div>
