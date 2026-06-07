@@ -86,7 +86,7 @@ export default function About() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="card p-10 lg:p-14 bg-gradient-to-br from-blue-50 via-white to-cyan-50 border-blue-100">
-            <h2 className="section-title mb-5">Our promise to families</h2>
+            <h2 className="section-title mb-5">Our Team Achievements</h2>
             <p className="text-slate-600 leading-relaxed mb-4">
               Our team members are elite math competitors who have achieved top-tier milestones,
               including placing in the Top 2% and Top 10% globally in MOEMS, qualifying for MATHCOUNTS chapter championships,
