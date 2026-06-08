@@ -36,7 +36,7 @@ export default function About() {
             Upcoming high-school freshmen <span className="block text-gradient">teaching the next generation</span>
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            We are a student-led nonprofit run by upcoming high-school freshmen who want to make
+            We are a student-led company run by upcoming high-school freshmen who want to make
             grade-level and competitive math accessible, encouraging, and exciting for elementary students.
           </p>
         </div>
