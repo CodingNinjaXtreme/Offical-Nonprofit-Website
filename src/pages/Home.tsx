@@ -80,7 +80,7 @@ const teamHighlights = [
   {
     role: 'Mission',
     title: 'Student-run, mission-first',
-    text: 'We are a  nonprofit. The whole leadership team is in high school — and that is the point.',
+    text: 'The whole leadership team is in high school — and that is the point.',
   },
 ];
 
@@ -104,7 +104,7 @@ export default function Home() {
             <div className="animate-rise">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-8">
                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                <span className="text-white/80 text-sm font-medium"> A Registered Nonprofit · Run by upcoming high schoolers</span>
+                <span className="text-white/80 text-sm font-medium"> A student-led campaign · Run by upcoming high schoolers</span>
               </div>
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6">
                 Unlocking Every
@@ -124,8 +124,8 @@ export default function Home() {
                 </Link>
               </div>
               <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-white/60 text-sm">
-                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> 100% nonprofit</span>
-                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Free & subsidized seats</span>
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Competitive Math </span>
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Free seats</span>
                 <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Grades 1–5</span>
               </div>
             </div>
