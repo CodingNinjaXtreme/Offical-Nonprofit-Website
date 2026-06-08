@@ -277,7 +277,7 @@ export default function Home() {
               <span className="section-tag bg-amber-100 text-amber-700">
                 <Users className="w-4 h-4" /> Who Runs This
               </span>
-              <h2 className="section-title">A Math Nonprofit, Run by High Schoolers</h2>
+              <h2 className="section-title">A Math Initiative, Run by High Schoolers</h2>
               <p className="text-slate-500 leading-relaxed mb-6">
                 InfinityMath4All is built and operated by high school students. Our mentors
                 competed in MOEMS and Noetic just a few years ago — they know exactly what
