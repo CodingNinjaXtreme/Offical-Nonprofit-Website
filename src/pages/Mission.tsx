@@ -85,7 +85,7 @@ export default function Mission() {
             A organization, <span className="block text-gradient">run by high schoolers</span>
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            We&rsquo;re a self-started organization built and operated by high school students. We coach the next
+            Our mission is to empower the youth through the beauty of mathematics. We coach the next
             generation of mathematicians — grades 1–5 — for free, because someone did it
             for us first.
           </p>
