@@ -82,10 +82,10 @@ export default function Mission() {
             <Target className="w-3.5 h-3.5" /> Our Mission
           </span>
           <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            A nonprofit, <span className="block text-gradient">run by high schoolers</span>
+            A company, <span className="block text-gradient">run by high schoolers</span>
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            We&rsquo;re a nonprofit built and operated by high school students. We coach the next
+            We&rsquo;re a company built and operated by high school students. We coach the next
             generation of mathematicians — grades 1–5 — for free, because someone did it
             for us first.
           </p>
@@ -107,7 +107,7 @@ export default function Mission() {
               </span>
               <h2 className="section-title">Mathematicians teaching mathematicians.</h2>
               <p className="text-slate-500 leading-relaxed mb-5">
-                InfinityMath4All is a  nonprofit dedicated to making world-class
+                InfinityMath4All is a program dedicated to making world-class
                 mathematics education accessible to every elementary and middle school student.
               </p>
               <p className="text-slate-500 leading-relaxed mb-5">
@@ -196,7 +196,7 @@ export default function Mission() {
             <span className="section-tag">
               <Calendar className="w-4 h-4" /> Where We Are
             </span>
-            <h2 className="section-title">A young nonprofit, growing on purpose.</h2>
+            <h2 className="section-title">A young company, growing on purpose.</h2>
           </div>
           <ol className="relative border-l-2 border-slate-200 ml-3 space-y-10">
             {milestones.map((m) => (

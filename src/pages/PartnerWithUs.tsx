@@ -84,8 +84,9 @@ const partnerTypes = [
 
 const faqs = [
   {
-    q: 'Is InfinityMath4All an accredited nonprofit?',
-    a: 'Yes. InfinityMath4All is a registered nonprofit organization. Our EIN and annual financial statements are publicly available upon request.',
+    q: 'Is InfinityMath4All an accredited initiative?',
+    a: 'Yes. InfinityMath4All is a student-led organization. Our expertise in competitive math is vast, with many of our team members winning' +
+        'national level awards in mathematics',
   },
   {
     q: 'Who actually runs the program?',
@@ -173,7 +174,7 @@ export default function PartnerWithUs() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { v: 'Run by', l: 'high school students', icon: GraduationCap },
-              { v: 'Math', l: 'nonprofit', icon: Heart },
+              { v: 'Math', l: 'Expertise', icon: Heart },
               { v: '2', l: 'national competitions', icon: Star },
               { v: 'Free', l: 'seats', icon: Users },
             ].map(({ v, l, icon: Icon }) => (
@@ -243,7 +244,7 @@ export default function PartnerWithUs() {
           </span>
           <h2 className="section-title">Built around access, not fundraising</h2>
           <p className="text-slate-500 leading-relaxed">
-            We&rsquo;re a nonprofit focused on getting more students into competition
+            We&rsquo;re a math initiative focused on getting more students into competition
             math — not on running a fundraising operation. If you have specific questions about
             how the program is structured, just email us.
           </p>
