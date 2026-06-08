@@ -204,7 +204,7 @@ export default function Competitions() {
             <span className="section-tag">
               <Star className="w-4 h-4" /> At a Glance
             </span>
-            <h2 className="section-title">Four competitions, one path forward</h2>
+            <h2 className="section-title">2 competitions, one path forward</h2>
             <p className="section-subtitle mx-auto text-center">
               Not sure which to start with? This is the cheat sheet.
             </p>
