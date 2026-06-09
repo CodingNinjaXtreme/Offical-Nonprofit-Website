@@ -107,13 +107,13 @@ export default function Home() {
                 <span className="text-white/80 text-sm font-medium"> A student-led campaign · Run by upcoming high schoolers</span>
               </div>
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6">
-                Unlocking Every
-                <span className="block text-gradient-gold">Child's Math</span>
-                <span className="block">Potential</span>
+                Competitive Math
+                <span className="block text-gradient-gold">For</span>
+                <span className="block">Elementary Students</span>
               </h1>
               <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-lg">
-                We prepare elementary students for world-class math competitions
-                — building confidence, critical thinking, and a lasting love of learning.
+                We prepare elementary students for math competitions like MOEMS and Noetic,
+                helping them build confidence through small-group training.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/competitions" className="btn-accent text-base px-8 py-4 animate-shine">
