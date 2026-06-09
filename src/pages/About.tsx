@@ -10,117 +10,136 @@ const focusAreas = [
   {
     icon: Target,
     title: 'Competition Readiness',
-    text: 'We prepare students for Noetic and MOEMS with concept-first lessons, strategy practice, and positive coaching.',
+    text: 'We prepare students for Noetic and MOEMS with concept-first lessons, strategy practice, and structured coaching.',
   },
   {
     icon: Users,
-    title: 'Future-Focused Mentorship',
-    text: 'As high-school freshmen, we are close enough to understand where students struggle and how to encourage them.',
+    title: 'Peer-Led Mentorship',
+    text: 'As high school freshmen, we understand recent learning challenges and teach in a way that feels relatable and supportive.',
   },
 ];
 
 export default function About() {
   return (
       <div className="pt-20">
-        <section className="relative bg-hero-warm py-28 overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute inset-0 bg-grid opacity-40" />
+
+        {/* HERO */}
+        <section className="relative py-32 bg-hero-warm overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none opacity-70">
+            <div className="absolute top-[-120px] right-[-80px] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-[-120px] left-[-80px] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-3xl" />
+            <div className="absolute inset-0 bg-grid opacity-30" />
           </div>
 
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-1.5 bg-amber-400/15 border border-amber-300/30 text-amber-200 text-sm font-semibold px-3 py-1 rounded-full mb-6">
-            <Sparkles className="w-3.5 h-3.5" /> About Us
-          </span>
+          <div className="relative max-w-4xl mx-auto px-6 text-center">
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-               high-school freshmen <span className="block text-gradient">teaching elementary math and competitive skills</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white/80 text-sm mb-8">
+              <Sparkles className="w-4 h-4" />
+              About Us
+            </div>
+
+            <h1 className="text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-tight">
+              High school freshmen
+              <span className="block text-white/70 mt-2">
+              teaching elementary math with purpose
+            </span>
             </h1>
 
-            <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-              We are a student-led initiative run by incoming high school freshmen who teach elementary students through structured math competition preparation.
-              Our focus is building strong problem-solving skills in a supportive learning environment.
+            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
+              A student-led initiative focused on structured math competition preparation,
+              building confidence through clear thinking, not pressure.
             </p>
           </div>
-
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 60" fill="none" className="divider-wave">
-              <path d="M0 60L1440 60L1440 0C1200 50 720 60 0 0V60Z" fill="white" />
-            </svg>
-          </div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-12 items-start">
+        {/* WHY SECTION */}
+        <section className="py-24 bg-white">
+          <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-start">
 
-              {/* LEFT SIDE */}
-              <div className="lg:col-span-5">
-              <span className="section-tag">
-                <Heart className="w-4 h-4" /> Why We Started
-              </span>
-
-                <h2 className="section-title">We want younger students to feel supported early.</h2>
-
-                <p className="text-slate-500 leading-relaxed">
-                  As we step into high school, we want to give back by helping elementary students master foundational math and approach national contests with absolute confidence. Having recently walked this path ourselves, we use our firsthand experience to make advanced problem-solving accessible, engaging, and stress-free.
-                </p>
+            <div className="lg:col-span-5">
+              <div className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 mb-5">
+                <Heart className="w-4 h-4" />
+                Why We Started
               </div>
 
-              {/* RIGHT SIDE */}
-              <div className="lg:col-span-7 grid md:grid-cols-3 gap-5">
-                {focusAreas.map(({ icon: Icon, title, text }) => (
-                    <div key={title} className="card p-7 hover:-translate-y-1">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg mb-5">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="font-bold text-slate-900 text-lg mb-2">{title}</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed">{text}</p>
-                    </div>
-                ))}
-              </div>
+              <h2 className="text-3xl font-semibold text-slate-900 leading-tight">
+                We build early confidence in math before gaps form.
+              </h2>
 
+              <p className="mt-5 text-slate-600 leading-relaxed">
+                As students entering high school, we recently experienced the same transition
+                younger learners face. That perspective shapes how we teach: structured,
+                calm, and focused on understanding rather than speed.
+              </p>
             </div>
+
+            <div className="lg:col-span-7 grid md:grid-cols-3 gap-6">
+              {focusAreas.map(({ icon: Icon, title, text }) => (
+                  <div
+                      key={title}
+                      className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-sm">
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+
+                    <h3 className="font-semibold text-slate-900 text-base mb-2">
+                      {title}
+                    </h3>
+
+                    <p className="text-sm text-slate-500 leading-relaxed">
+                      {text}
+                    </p>
+                  </div>
+              ))}
+            </div>
+
           </div>
         </section>
 
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="card p-10 lg:p-14 bg-gradient-to-br from-blue-50 via-white to-cyan-50 border-blue-100">
-              <h2 className="section-title mb-5">Our Team Achievements</h2>
+        {/* ACHIEVEMENTS */}
+        <section className="py-24 bg-slate-50">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="rounded-3xl border border-slate-100 bg-white p-10 shadow-sm">
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                Our Experience
+              </h2>
 
-              <p className="text-slate-600 text-lg leading-relaxed">
-                Our mentors have advanced experience in premier competitive math programs,
-                including MOEMS, Noetic, and MATHCOUNTS, earning top recognition in school and
-                regional contests. We translate this background into patient, structured guidance
-                that helps younger students build the discipline and critical thinking skills
-                needed to excel in higher grades.
+              <p className="text-slate-600 leading-relaxed">
+                Our mentors have participated in competitive math programs including MOEMS,
+                Noetic, and MATHCOUNTS. We focus on turning that experience into structured,
+                patient instruction that helps students build long-term problem-solving skill.
               </p>
             </div>
           </div>
         </section>
 
-
-        <section className="py-20 bg-gradient-to-r from-blue-700 to-cyan-600 relative overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+        {/* CTA */}
+        <section className="py-24 bg-gradient-to-r from-blue-700 to-cyan-600 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-[-100px] right-[-100px] w-[400px] h-[400px] bg-white rounded-full blur-3xl" />
+            <div className="absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] bg-white rounded-full blur-3xl" />
           </div>
 
-          <div className="relative max-w-3xl mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold text-white mb-4">Join us in supporting future generations</h2>
+          <div className="relative max-w-3xl mx-auto px-6 text-center">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-white">
+              Help expand access to strong math foundations
+            </h2>
 
-            <p className="text-white/80 text-lg mb-8">
-              If you want to help us expand math opportunities for elementary students, we’d love to
-              partner with you.
+            <p className="mt-4 text-white/80">
+              Partner with us to support elementary students in building confidence early.
             </p>
 
-            <Link to="/partner" className="btn-accent text-base px-8 py-4">
-              Partner With Us <ArrowRight className="w-5 h-5" />
+            <Link
+                to="/partner"
+                className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-blue-700 font-medium hover:bg-white/90 transition"
+            >
+              Partner With Us
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </section>
+
       </div>
   );
 }
