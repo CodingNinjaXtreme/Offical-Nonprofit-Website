@@ -43,11 +43,11 @@ const howItWorks = [
   {
     icon: Compass,
     title: 'Find Your Track',
-    text: 'Tell us your grade and goals. We match you to the competition path that fits — Noetic, MOEMS, or Elementary Grade-Level Math.',
+    text: 'Tell us your child\'s grade and goals. We match them to the perfect competition or foundational math path that fits their needs.',
   },
   {
     icon: GraduationCap,
-    title: 'Learn With High School Mentors',
+    title: 'Learn With Rising High School Mentors',
     text: 'Small-group sessions led by trained high school students who recently competed themselves. Concept-first teaching, then competition-style practice.',
   },
   {
@@ -62,27 +62,11 @@ const howItWorks = [
 const whyUs = [
   'Small-group sessions with trained high school mentors',
   'Curriculum aligned to national competition standards',
-  'Free and subsidized spots for underserved students',
-  'Year-round programs for grades 1–5',
+  'Free for all students',
+  'Summer programs for grades 1–5',
 ];
 
-const teamHighlights = [
-  {
-    role: 'Mentors',
-    title: 'High school students who recently competed',
-    text: 'Our coaches have just been through MOEMS and Noetic themselves. They remember exactly where the tricky parts are.',
-  },
-  {
-    role: 'Curriculum',
-    title: 'Built around what younger students actually struggle with',
-    text: 'Lessons are reviewed with adult advisors and refined every season based on what works in the room.',
-  },
-  {
-    role: 'Mission',
-    title: 'Student-run, mission-first',
-    text: 'The whole leadership team is in high school — and that is the point.',
-  },
-];
+
 
 export default function Home() {
   return (
@@ -104,7 +88,7 @@ export default function Home() {
               <div className="animate-rise">
                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-8">
                   <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                  <span className="text-white/80 text-sm font-medium"> A student-led campaign · Run by upcoming high schoolers</span>
+                  <span className="text-white/80 text-sm font-medium"> A student-led campaign · Run by high schoolers</span>
                 </div>
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6">
                   Unlocking Elementary
@@ -124,9 +108,8 @@ export default function Home() {
                   </Link>
                 </div>
                 <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-white/60 text-sm">
-                  <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Competitive Math </span>
-                  <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Free seats</span>
-                  <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Grades 1–5</span>
+
+
                 </div>
               </div>
 
@@ -172,8 +155,8 @@ export default function Home() {
               {[
                 { v: '2', l: 'National competitions' },
                 { v: '1-5', l: 'Grades served' },
-                { v: 'Year-round', l: 'Cohorts' },
-                { v: '100%', l: 'High-school-led teaching' },
+                { v: 'Summer', l: 'Cohorts' },
+                { v: '100%', l: 'Competition Training' },
               ].map((s) => (
                   <div key={s.l} className="text-center">
                     <div className="text-3xl md:text-4xl font-bold text-slate-900">{s.v}</div>
@@ -196,8 +179,8 @@ export default function Home() {
                 <h2 className="section-title">More Than Test Prep — We Build Mathematicians</h2>
                 <p className="text-slate-500 leading-relaxed mb-6">
                   InfinityMath4All was founded on a simple belief: every child deserves access to
-                  high-quality math education, regardless of experience Our approach blends rigorous
-                  competition preparation with genuine curiosity-driven learning.
+                  high-quality math education, regardless of experience. Led by  high school freshmen who recently competed in these contests,
+                  our approach blends rigorous competition preparation with genuine curiosity-driven learning.
                 </p>
                 <ul className="space-y-3 mb-8">
                   {whyUs.map((item) => (
@@ -227,7 +210,7 @@ export default function Home() {
                   <HeartHandshake className="w-5 h-5 text-amber-500" />
                   <div>
                     <div className="font-bold text-sm text-slate-900">Free seats available</div>
-                    <div className="text-xs text-slate-500">for underserved students</div>
+                    <div className="text-xs text-slate-500">for all students</div>
                   </div>
                 </div>
               </div>
@@ -272,50 +255,32 @@ export default function Home() {
 
         {/* Run by high schoolers */}
         <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-10 items-start">
-              <div className="lg:col-span-5">
-              <span className="section-tag bg-amber-100 text-amber-700">
-                <Users className="w-4 h-4" /> Who Runs This
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span className="section-tag bg-amber-100 text-amber-700 mx-auto justify-center">
+              <Users className="w-4 h-4" /> Who Runs This
+            </span>
+            <h2 className="section-title mt-4">A Math Initiative, Run by High Schoolers</h2>
+            <p className="text-slate-500 text-lg leading-relaxed mb-6 max-w-2xl mx-auto">
+              InfinityMath4All is built and operated by high school students. Our mentors
+              competed in MOEMS and Noetic just a few years ago — they know exactly what
+              younger students get stuck on, because they got stuck on the same things.
+            </p>
+            <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+              We&rsquo;re backed by adult advisors for safety, curriculum review, and
+              accountability — but every lesson is taught, every problem set is written, and
+              every Saturday session is run by a high school student who genuinely wants the
+              next generation to love math.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">
+                <Star className="w-3.5 h-3.5" /> Trained mentors
               </span>
-                <h2 className="section-title">A Math Initiative, Run by High Schoolers</h2>
-                <p className="text-slate-500 leading-relaxed mb-6">
-                  InfinityMath4All is built and operated by high school students. Our mentors
-                  competed in MOEMS and Noetic just a few years ago — they know exactly what
-                  younger students get stuck on, because they got stuck on the same things.
-                </p>
-                <p className="text-slate-500 leading-relaxed mb-8">
-                  We&rsquo;re backed by adult advisors for safety, curriculum review, and
-                  accountability — but every lesson is taught, every problem set is written, and
-                  every Saturday session is run by a high school student who genuinely wants the
-                  next generation to love math.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">
-                  <Star className="w-3.5 h-3.5" /> Trained mentors
-                </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
-                  <Star className="w-3.5 h-3.5" /> Adult-advised
-                </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold">
-                  <Star className="w-3.5 h-3.5" /> Volunteer-powered
-                </span>
-                </div>
-              </div>
-              <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
-                {teamHighlights.map((h, i) => (
-                    <div
-                        key={h.title}
-                        className={`card p-6 ${i === 2 ? 'sm:col-span-2 bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-100' : ''}`}
-                    >
-                      <div className="text-[11px] uppercase tracking-widest font-bold text-blue-600 mb-2">
-                        {h.role}
-                      </div>
-                      <div className="font-bold text-slate-900 text-base mb-2">{h.title}</div>
-                      <p className="text-slate-500 text-sm leading-relaxed">{h.text}</p>
-                    </div>
-                ))}
-              </div>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+                <Star className="w-3.5 h-3.5" /> Adult-advised
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold">
+                <Star className="w-3.5 h-3.5" /> Volunteer-powered
+              </span>
             </div>
           </div>
         </section>

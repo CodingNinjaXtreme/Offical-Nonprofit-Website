@@ -15,7 +15,7 @@ const focusAreas = [
   {
     icon: Users,
     title: 'Future-Focused Mentorship',
-    text: 'As incoming high-school freshmen, we are close enough to understand where students struggle and how to encourage them.',
+    text: 'As high-school freshmen, we are close enough to understand where students struggle and how to encourage them.',
   },
 ];
 
@@ -35,7 +35,7 @@ export default function About() {
           </span>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Upcoming high-school freshmen <span className="block text-gradient">teaching elementary math and competitive skills</span>
+               high-school freshmen <span className="block text-gradient">teaching elementary math and competitive skills</span>
             </h1>
 
             <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
@@ -64,7 +64,7 @@ export default function About() {
                 <h2 className="section-title">We want younger students to feel supported early.</h2>
 
                 <p className="text-slate-500 leading-relaxed">
-                  As we move into high school, we want to give back by helping elementary students build strong grade-level math skills and prepare for competitions with confidence. We use our own competition experience to guide students and help them grow stronger problem-solving abilities that last beyond the classroom.
+                  As we step into high school, we want to give back by helping elementary students master foundational math and approach national contests with absolute confidence. Having recently walked this path ourselves, we use our firsthand experience to make advanced problem-solving accessible, engaging, and stress-free.
                 </p>
               </div>
 
@@ -90,20 +90,17 @@ export default function About() {
             <div className="card p-10 lg:p-14 bg-gradient-to-br from-blue-50 via-white to-cyan-50 border-blue-100">
               <h2 className="section-title mb-5">Our Team Achievements</h2>
 
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Our Team Achievements
-
-                Our mentors have experience in competitive math programs including MOEMS, Noetic, and MATHCOUNTS, and have earned recognition in school and regional competitions.
-
-                We use this experience to guide elementary students through structured problem-solving and competition preparation.
-              </p>
-
-              <p className="text-slate-600 leading-relaxed">
-                We believe early support helps students build confidence, discipline, and strong problem-solving skills that last into higher grades. Our mentors use their own competition experience to guide students through challenging math in a patient and structured way.
+              <p className="text-slate-600 text-lg leading-relaxed">
+                Our mentors have advanced experience in premier competitive math programs,
+                including MOEMS, Noetic, and MATHCOUNTS, earning top recognition in school and
+                regional contests. We translate this background into patient, structured guidance
+                that helps younger students build the discipline and critical thinking skills
+                needed to excel in higher grades.
               </p>
             </div>
           </div>
         </section>
+
 
         <section className="py-20 bg-gradient-to-r from-blue-700 to-cyan-600 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
