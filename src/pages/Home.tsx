@@ -107,8 +107,8 @@ export default function Home() {
                   <span className="text-white/80 text-sm font-medium"> A student-led campaign · Run by upcoming high schoolers</span>
                 </div>
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6">
-                  Unlocking Every
-                  <span className="block text-gradient-gold">Child's Math</span>
+                  Unlocking Elementary
+                  <span className="block text-gradient-gold"> Contest Math</span>
                   <span className="block">Potential</span>
                 </h1>
                 <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-lg">
@@ -183,6 +183,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+
 
         {/* About Snippet */}
         <section className="py-20 bg-white">
