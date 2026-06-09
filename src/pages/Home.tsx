@@ -195,7 +195,7 @@ export default function Home() {
                 <h2 className="section-title">More Than Test Prep — We Build Mathematicians</h2>
                 <p className="text-slate-500 leading-relaxed mb-6">
                   InfinityMath4All was founded on a simple belief: every child deserves access to
-                  high-quality math education, regardless of background. Our approach blends rigorous
+                  high-quality math education, regardless of experience Our approach blends rigorous
                   competition preparation with genuine curiosity-driven learning.
                 </p>
                 <ul className="space-y-3 mb-8">
