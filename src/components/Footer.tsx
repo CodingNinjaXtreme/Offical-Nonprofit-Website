@@ -46,7 +46,7 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="text-sm leading-relaxed text-slate-400 mb-6 max-w-xs">
-                Empowering elementary and middle school students through world-class math
+                Empowering elementary students through world-class math
                 competition preparation and a love of learning.
               </p>
               <div className="space-y-2.5 text-sm">
