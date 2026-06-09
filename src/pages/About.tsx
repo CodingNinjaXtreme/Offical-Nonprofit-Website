@@ -5,17 +5,17 @@ const focusAreas = [
   {
     icon: GraduationCap,
     title: 'Grade-Level Foundations',
-    text: 'We help elementary students master number sense, fluency, and problem solving so they feel confident in school math.',
+    text: 'We help elementary students master number sense, fluency, and problem solving so they build real confidence in math early.',
   },
   {
     icon: Target,
     title: 'Competition Readiness',
-    text: 'We prepare students for Noetic and MOEMS with concept-first lessons, strategy practice, and structured coaching.',
+    text: 'We prepare students for Noetic and MOEMS using concept-first teaching and structured problem-solving practice.',
   },
   {
     icon: Users,
     title: 'Peer-Led Mentorship',
-    text: 'As high school freshmen, we understand recent learning challenges and teach in a way that feels relatable and supportive.',
+    text: 'We’re high school freshmen who recently competed in these contests, teaching in a way that feels clear and relatable.',
   },
 ];
 
@@ -39,15 +39,15 @@ export default function About() {
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-tight">
-              High school freshmen
+              High school freshmen who recently competed in these contests
               <span className="block text-white/70 mt-2">
-              teaching elementary math with purpose
+              now teaching the way we wish we were taught
             </span>
             </h1>
 
             <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
               A student-led initiative focused on structured math competition preparation,
-              building confidence through clear thinking, not pressure.
+              building confidence through clear thinking instead of pressure or memorization.
             </p>
           </div>
         </section>
@@ -63,13 +63,12 @@ export default function About() {
               </div>
 
               <h2 className="text-3xl font-semibold text-slate-900 leading-tight">
-                We build early confidence in math before gaps form.
+                Most students are never shown what contest math actually feels like.
               </h2>
 
               <p className="mt-5 text-slate-600 leading-relaxed">
-                As students entering high school, we recently experienced the same transition
-                younger learners face. That perspective shapes how we teach: structured,
-                calm, and focused on understanding rather than speed.
+                We recently went through the same transition younger students are in right now.
+                That’s why we focus on calm, structured teaching that prioritizes understanding over speed.
               </p>
             </div>
 
@@ -101,33 +100,37 @@ export default function About() {
         <section className="py-24 bg-slate-50">
           <div className="max-w-4xl mx-auto px-6">
             <div className="rounded-3xl border border-slate-100 bg-white p-10 shadow-sm">
+
               <h2 className="text-2xl font-semibold text-slate-900 mb-4">
                 Our Experience
               </h2>
 
               <p className="text-slate-600 leading-relaxed">
-                Our mentors have participated in competitive math programs including MOEMS,
-                Noetic, and MATHCOUNTS. We focus on turning that experience into structured,
-                patient instruction that helps students build long-term problem-solving skill.
+                Our mentors have won awards and prizes for winning competitions such as Noetic and MOEMS. Our team
+                has significant experience in competitive math, with many of them starting as early as elementary school. Using
+                our skills we developed, we hope to teach younger students how to think logically about mathematics and to build confidence.
               </p>
+
             </div>
           </div>
         </section>
 
         {/* CTA */}
         <section className="py-24 bg-gradient-to-r from-blue-700 to-cyan-600 relative overflow-hidden">
+
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-[-100px] right-[-100px] w-[400px] h-[400px] bg-white rounded-full blur-3xl" />
             <div className="absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] bg-white rounded-full blur-3xl" />
           </div>
 
           <div className="relative max-w-3xl mx-auto px-6 text-center">
+
             <h2 className="text-3xl lg:text-4xl font-semibold text-white">
-              Help expand access to strong math foundations
+              Help expand early access to strong math foundations
             </h2>
 
             <p className="mt-4 text-white/80">
-              Partner with us to support elementary students in building confidence early.
+              Partner with us to help more students build confidence before gaps form.
             </p>
 
             <Link
@@ -137,6 +140,7 @@ export default function About() {
               Partner With Us
               <ArrowRight className="w-4 h-4" />
             </Link>
+
           </div>
         </section>
 
