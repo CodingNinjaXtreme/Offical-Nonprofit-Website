@@ -55,7 +55,7 @@ export default function Header() {
                         onDarkHero ? 'text-blue-200' : 'text-blue-500'
                     }`}
                 >
-                Math Education Nonprofit
+                Math Education Program
               </span>
               </div>
             </Link>
