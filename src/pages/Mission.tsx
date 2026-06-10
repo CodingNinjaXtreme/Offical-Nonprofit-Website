@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Target,
+  HeartHandshake,
   Compass,
   Heart,
   Sparkles,
@@ -17,7 +18,7 @@ const values = [
   {
     icon: Heart,
     title: 'Access First',
-    text: 'Every lesson, every problem set, every Saturday session is free or subsidized for students who need it. Talent is everywhere — opportunity should be too.',
+    text: 'Every lesson, every problem set, every session is free  for students who need it. Talent is everywhere — opportunity should be too.',
     color: 'from-rose-500 to-pink-500',
   },
   {
@@ -115,7 +116,7 @@ export default function Mission() {
                 </p>
 
                 <p className="text-slate-500 leading-relaxed">
-                  All programs are free or subsidized, and focus on building strong foundations in elementary math and competition preparation.
+                  All programs are free and focus on building strong foundations in elementary math and competition preparation.
                 </p>
               </div>
 
@@ -124,7 +125,7 @@ export default function Mission() {
                   { v: '100%', l: 'High-school-led teaching', icon: GraduationCap },
                   { v: 'Year-round', l: 'Cohorts', icon: ShieldCheck },
                   { v: '2', l: 'National competitions', icon: Target },
-                  { v: 'Free', l: 'And subsidized seats', icon: Heart },
+                  { v: 'Free', l: ' seats', icon: HeartHandshake },
                 ].map(({ v, l, icon: Icon }) => (
                     <div key={l} className="stat-tile">
                       <Icon className="w-6 h-6 text-blue-600 mx-auto mb-3" />

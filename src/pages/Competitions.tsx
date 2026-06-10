@@ -142,23 +142,18 @@ export default function Competitions() {
         {/* Quick Nav */}
         <section className="sticky top-16 lg:top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-1 overflow-x-auto py-3">
-              {competitions.map((c) => (
-                  <a
-                      key={c.id}
-                      href={`#${c.id}`}
-                      className="flex-shrink-0 px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
-                  >
-                    {c.shortName}
-                  </a>
-              ))}
-              <a href="#compare" className="flex-shrink-0 px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">
-                Compare
+            <div className="flex justify-center gap-6 py-5">
+              <a
+                  href="#compare"
+                  className="px-10 py-4 text-lg font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
+              >
+                Compare Programs
               </a>
-              <a href="#timeline" className="flex-shrink-0 px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">
-                Prep Timeline
-              </a>
-              <a href="#faq" className="flex-shrink-0 px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">
+
+              <a
+                  href="#faq"
+                  className="px-10 py-4 text-lg font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
+              >
                 FAQ
               </a>
             </div>
