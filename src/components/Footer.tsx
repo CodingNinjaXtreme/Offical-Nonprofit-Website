@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Heart } from 'lucide-react';
+import { Mail, Heart, ShieldCheck } from 'lucide-react';
 import Logo from './Logo';
 
 const footerLinks = {
@@ -42,7 +42,7 @@ export default function Footer() {
                   <div className="font-bold text-white text-base">
                     InfinityMath<span className="text-gradient">4All</span>
                   </div>
-                  <div className="text-[11px] uppercase tracking-wider text-blue-400">Math Education Nonprofit</div>
+                  <div className="text-[11px] uppercase tracking-wider text-blue-400">Math Education Program</div>
                 </div>
               </Link>
               <p className="text-sm leading-relaxed text-slate-400 mb-6 max-w-xs">
@@ -94,9 +94,25 @@ export default function Footer() {
             <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} InfinityMath4All. All rights reserved.
             </p>
-            <p className="text-xs text-slate-500 flex items-center gap-1">
-              Made with <Heart className="w-3 h-3 text-red-400 fill-red-400" /> for students everywhere
-            </p>
+
+            <div className="flex flex-col items-center sm:items-end gap-1.5 text-right">
+              <p className="text-xs text-slate-500 flex items-center gap-1">
+                Made with <Heart className="w-3 h-3 text-red-400 fill-red-400 animate-pulse" /> for students everywhere
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1 text-[11px] text-slate-400">
+                <span className="flex items-center gap-1 text-emerald-400 font-medium bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  <ShieldCheck className="w-3.5 h-3.5 flex-shrink-0" />
+                  COPPA Compliant
+                </span>
+                <span className="text-slate-600">|</span>
+                <span className="text-slate-500">No Student PII Collected</span>
+                <span className="text-slate-600">|</span>
+                <Link to="/privacy" className="hover:text-white underline underline-offset-2 transition-colors">
+                  Privacy Policy
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

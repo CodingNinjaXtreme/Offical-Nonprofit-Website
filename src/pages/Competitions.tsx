@@ -97,8 +97,12 @@ const faqs = [
     a: 'Yes — Noetic and our elementary programs are designed exactly for first-time competitors. Our mentors started where your child is now.',
   },
   {
-    q: 'How do I enroll?',
-    a: 'Email us at admin@InfinityMath4All.org or use the Partner With Us page. We will reply within a couple of days with the next available cohort.',
+    q: 'What standards does your elementary math track follow?',
+    a: 'Our content follows Common Core Standards. Moreover, we incorporate competition-style problems in elementary math to increase math fluency',
+  },
+  {
+    q: 'I have more questions, where can I ask them?',
+    a:  'Email us at admin@InfinityMath4All.org. We will be happy to respond to your emails within a few business days.',
   },
 ];
 

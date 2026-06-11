@@ -3,6 +3,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import PrivacyPage from "./pages/Policy.tsx";
 
 // Lazy-loaded pages
 const Home = lazy(() => import('./pages/Home'));
@@ -58,6 +59,9 @@ function App() {
 
                             {/* Notice the exact casing here: Signup */}
                             <Route path="/signup" element={<Signup />} />
+
+                            {/* Privacy Policy & COPPA Compliance Page Route */}
+                            <Route path="/privacy" element={<PrivacyPage />} />
 
                             <Route path="/programs" element={<Navigate to="/competitions" replace />} />
                             <Route path="*" element={<NotFound />} />
