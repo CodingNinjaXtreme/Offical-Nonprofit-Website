@@ -36,7 +36,7 @@ This platform is custom-built from scratch to ensure responsiveness, performance
 
 ### 📊 Application Layout & Navigation Tabs
 
-
+https://drive.google.com/open?id=1Ct1mOj3cJQWDiUWFbx_mG236EUsmDxVb&usp=drive_copy
 
 
 * * *
