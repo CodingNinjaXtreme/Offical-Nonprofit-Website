@@ -36,6 +36,8 @@ This platform is custom-built from scratch to ensure responsiveness, performance
 
 ### 📊 Application Layout & Navigation Tabs
 
+This is a video of the website being deployed in the full time. You may have to download the file to view the video.
+
 https://drive.google.com/open?id=1Ct1mOj3cJQWDiUWFbx_mG236EUsmDxVb&usp=drive_copy
 
 
