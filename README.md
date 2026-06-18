@@ -52,16 +52,7 @@ We operate InfinityMath4All as a completely flat organization. We are all equal 
 3.  **Commit Your Code Changes** cleanly (`git commit -m "Added MOEMS Venn Diagram problem set"`).
 4.  **Open a Pull Request (PR)** targeting the `main` branch. The collective team will review, check for mobile layout bugs/typesetting typos, and merge the code as a unit.
 
-* * *
 
-### 🔒 Safety, Privacy & Compliance (COPPA)
 
-InfinityMath4All treats minor safety as a strict baseline constraint. Our operations enforce:
-
-*   **Absolute Anonymity:** We never collect or store full legal last names of minor students.
-*   **Secured Zoom Rooms:** Roster-verified waiting rooms, disabled student-to-student private messaging, and locked screen sharing.
-*   **Media Redaction:** All screenshots taken of the digital classroom gallery are subjected to strict face-blurring, cropping, or stylization before public web dissemination.
-
-* * *
 
 *Built with 💚 by the InfinityMath4All Co-Founders. Dedicated to accessible mathematics.*
