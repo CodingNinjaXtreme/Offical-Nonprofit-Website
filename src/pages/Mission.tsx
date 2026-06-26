@@ -36,7 +36,7 @@ const values = [
   {
     icon: ShieldCheck,
     title: 'Adult-Advised, Student-Led',
-    text: 'A network of teacher and parent advisors review curriculum, run safety, and help us stay accountable to families.',
+    text: 'Every session, our team reviews the curriculum, runs safety protocols, and helps to stay accountable to families.',
     color: 'from-emerald-500 to-teal-500',
   },
 ];
