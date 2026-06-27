@@ -59,16 +59,16 @@ export default function About() {
             <div className="lg:col-span-5">
               <div className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 mb-5">
                 <Heart className="w-4 h-4" />
-                Why We Started
+                Our Goal
               </div>
 
               <h2 className="text-3xl font-semibold text-slate-900 leading-tight">
-                Most students are never shown what contest math actually feels like.
+                Our plan is to host weekly zoom classes for elementary kids from Warmsprings and Weibel.
               </h2>
 
               <p className="mt-5 text-slate-600 leading-relaxed">
-                We recently went through the same transition younger students are in right now.
-                That’s why we focus on calm, structured teaching that prioritizes understanding over speed.
+                The zoom classes will be complemented by lessons as well as old test problems from these contests.
+                We are also making an LaTeX online PDF math-book for students to reinforce lesson taught during the lessons.
               </p>
             </div>
 

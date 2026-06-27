@@ -5,80 +5,65 @@ import {
   HandshakeIcon,
   Users,
   ChevronRight,
-
   CheckCircle2,
   Star,
-  Briefcase,
+
   X,
   School,
-  Gift,
+
   GraduationCap,
+
+  BookOpen
 } from 'lucide-react';
 
 const partnerTypes = [
   {
-    icon: Briefcase,
-    title: 'Volunteer Coaches',
-    color: 'bg-amber-600',
-    lightColor: 'bg-amber-50',
-    textColor: 'text-amber-700',
-    perks: [
-      'Train and mentor grades 1–5 students',
-      'Flexible time commitment options',
-      'Meaningful volunteer experience',
-      'Community of like-minded educators',
-      'Direct student mentorship impact',
-    ],
-    description:
-        'Share your love of math. We welcome volunteers from all backgrounds — from college students to retired professionals — to coach our students.',
-  },
-  {
     icon: GraduationCap,
-    title: 'High School Mentors',
+    title: 'Academic Team',
     color: 'bg-blue-600',
     lightColor: 'bg-blue-50',
     textColor: 'text-blue-700',
     perks: [
-      'Teach students 2–6 years younger than you',
-      'Build leadership and communication skills',
-      'Use your competition experience to help others',
-      'Get trained on curriculum and classroom basics',
-      'Earn verified service hours',
+      'Teach students 2–3 years younger than you',
+      'Build core leadership & classroom management skills',
+      'Leverage AMC 8, MOEMS, & Noetic testing insights',
+      'Access standardized curriculum playbooks',
+      'Earn verified community service hours',
     ],
     description:
-        'If you’re a high schooler who has competed in MOEMS or Noetic — we want you on the team. This program is built and run by students like you.',
+        'Built and run by high schoolers, supported by adult advisors. If you are an advanced student or educator looking to lead local math batches, join our instructional network.',
   },
   {
     icon: School,
-    title: 'Schools & PTAs',
+    title: 'Community Partners',
     color: 'bg-emerald-600',
     lightColor: 'bg-emerald-50',
     textColor: 'text-emerald-700',
     perks: [
-      'Bring competition prep to your students',
-      'After-school or weekend program options',
-      'Free or low-cost partnerships',
-      'Curriculum aligned to national standards',
-      'Coordination with your math faculty',
+      'Bring free competition preparation to your campus',
+      'Flexible after-school or weekend cohorts',
+      'Capped student batches for elite quality control',
+      'Marketing options for local boba and food shops',
+      'Seamless coordination with local PTAs and schools',
     ],
     description:
-        'We partner with elementary and middle schools to host on-site or virtual cohorts. Great fit for PTAs, gifted-and-talented programs, and Title I schools.',
+        'We collaborate with local schools, parent associations, and storefronts to expand STEM outreach. Perfect for hosts looking to spin up cohorts or sponsor regional flyers.',
   },
   {
-    icon: Gift,
-    title: 'Supporters',
+    icon: BookOpen,
+    title: 'Resource Advocates',
     color: 'bg-rose-600',
     lightColor: 'bg-rose-50',
     textColor: 'text-rose-700',
     perks: [
-      'Help us keep seats open for new students',
-      'Connect us with schools and families',
-      'Share the program with your network',
-      'Volunteer your professional expertise',
-      'Stay in the loop with occasional updates',
+      'Donate used AoPS & competition guides',
+      'Clear shelf space for an incredible cause',
+      'Directly resource incoming student batches',
+      'Free contactless porch pickup across Fremont',
+      'Contribute small neighborhood micro-donations',
     ],
     description:
-        'Want to back the program in other ways? Mentorship from professionals, intros to schools, or simply spreading the word — every bit helps us reach more students.',
+        'Have old Art of Problem Solving or Beast Academy books gathering dust? Donate physical guides or neighborhood resources to keep our seats free and accessible.',
   },
 ];
 
@@ -107,6 +92,15 @@ export default function PartnerWithUs() {
   const [emailSubject, setEmailSubject] = useState('Partnership Inquiry – InfinityMath4All');
   const [emailBody, setEmailBody] = useState('');
 
+  // Generic clean placeholders for your local store logos (to add later)
+  const carouselLogos = [
+    { label: 'Partner Hub' },
+    { label: 'Partner Hub' },
+    { label: 'Partner Hub' },
+    { label: 'Partner Hub' },
+  ];
+  const duplicatedLogos = [...carouselLogos, ...carouselLogos];
+
   const handleOpenEmail = (type?: string) => {
     if (type) {
       setEmailSubject(`${type} Inquiry – InfinityMath4All`);
@@ -132,59 +126,52 @@ export default function PartnerWithUs() {
 
   return (
       <div className="pt-20">
-        {/* Hero */}
-        <section className="relative bg-hero py-24 overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative bg-slate-900 py-24 overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute inset-0 bg-grid opacity-40" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
           </div>
 
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-1.5 bg-white/10 border border-white/15 text-white/80 text-sm font-semibold px-3 py-1 rounded-full mb-6">
-            <HandshakeIcon className="w-3.5 h-3.5 text-emerald-400" /> Partner With Us
-          </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 border border-white/15 text-white/80 text-sm font-semibold px-3 py-1 rounded-full mb-6">
+              <HandshakeIcon className="w-3.5 h-3.5 text-emerald-400" /> Partner With Us
+            </span>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Let’s build something
-              <span className="block text-gradient">meaningful together</span>
+              <span className="block text-emerald-400 mt-2">meaningful together</span>
             </h1>
 
             <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Volunteer coach, high school mentor, school partner, or donor — there are many ways
-              to invest in the next generation of mathematical thinkers.
+              Volunteer coach, high school mentor, corporate sponsor, school partner, or book drive donor — there are many ways to invest in the next generation of mathematical thinkers.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <button onClick={() => handleOpenEmail()} className="btn-accent text-base px-8 py-4">
+              <button onClick={() => handleOpenEmail()} className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-base px-8 py-4 rounded-xl transition-all">
                 <Mail className="w-5 h-5" /> Email Us Now
               </button>
-              <a href="#partnership-types" className="btn-ghost-light text-base px-8 py-4">
+              <a href="#partnership-types" className="inline-flex items-center justify-center gap-2 border border-white/20 hover:bg-white/5 text-white font-semibold text-base px-8 py-4 rounded-xl transition-all">
                 Explore Ways to Help <ChevronRight className="w-5 h-5" />
               </a>
             </div>
           </div>
-
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 60" fill="none" className="divider-wave">
-              <path d="M0 60L1440 60L1440 0C1200 50 720 60 0 0V60Z" fill="white" />
-            </svg>
-          </div>
         </section>
 
+        {/* Impact strip */}
         {/* Impact strip */}
         <section className="py-12 bg-white border-b border-slate-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { v: 'Run by', l: 'high school students', icon: GraduationCap },
-                { v: 'Math', l: 'Expertise', icon: Heart },
-                { v: '2', l: 'national competitions', icon: Star },
-                { v: 'Free', l: 'seats', icon: Users },
+                { v: 'Student-Led', l: 'High School Executives', icon: GraduationCap },
+                { v: 'Previous Experience', l: 'Tested Program Methods', icon: Heart },
+                { v: 'Contest Focus', l: 'MOEMS / Noetic / Elementary Grade Level Math', icon: Star },
+                { v: 'Capped Batches', l: 'Elite Quality Assurance', icon: Users },
               ].map(({ v, l, icon: Icon }) => (
                   <div key={l} className="text-center">
-                    <Icon className="w-6 h-6 text-blue-600 mx-auto mb-2" />
-                    <div className="text-2xl md:text-3xl font-bold text-slate-900">{v}</div>
+                    <Icon className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
+                    <div className="text-xl md:text-2xl font-bold text-slate-900">{v}</div>
                     <div className="text-xs text-slate-500 mt-1">{l}</div>
                   </div>
               ))}
@@ -192,21 +179,35 @@ export default function PartnerWithUs() {
           </div>
         </section>
 
-        {/* Partnership Types */}
+        {/* Endless Loop Sponsor Marquee Carousel */}
+        {/* Endless Loop Sponsor Marquee Carousel */}
+        <div className="w-full bg-slate-50 py-6 overflow-hidden border-b border-slate-100">
+          <div className="relative w-full flex overflow-x-hidden">
+            <div className="animate-marquee flex whitespace-nowrap min-w-full items-center gap-16">
+              {duplicatedLogos.map((_, index) => (
+                  <div key={index} className="flex-shrink-0 bg-slate-200/50 rounded-xl w-32 h-12 flex items-center justify-center border border-slate-200/40 select-none">
+                    <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Partner Hub</span>
+                  </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Partnership Types Grid Section */}
         <section id="partnership-types" className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
-            <span className="section-tag">
-              <Star className="w-4 h-4" /> Partnership Options
-            </span>
-              <h2 className="section-title">Find your role in our mission</h2>
+              <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full">Engagement Pathways</span>
+              <h2 className="text-3xl font-bold text-slate-900 mt-3">Find your role in our mission</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
               {partnerTypes.map(({ icon: Icon, title, color, lightColor, textColor, perks, description }) => (
-                  <div key={title} className="card group hover:-translate-y-1 transition-all duration-300">
+                  <div key={title} className="bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group">
                     <div className="p-8">
-                      <div className={`w-14 h-14 ${color} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
+                      <div className={`w-14 h-14 ${color} rounded-2xl flex items-center justify-center mb-6 shadow-md`}>
                         <Icon className="w-7 h-7 text-white" />
                       </div>
 
@@ -223,10 +224,11 @@ export default function PartnerWithUs() {
                           ))}
                         </ul>
                       </div>
-
+                    </div>
+                    <div className="px-8 pb-8">
                       <button
                           onClick={() => handleOpenEmail(title)}
-                          className="btn-primary w-full justify-center"
+                          className="w-full py-3 px-4 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
                       >
                         <Mail className="w-4 h-4" /> Get In Touch
                       </button>
@@ -237,33 +239,33 @@ export default function PartnerWithUs() {
           </div>
         </section>
 
-        {/* Transparency */}
+        {/* Transparency Context Segment */}
         <section className="py-16 bg-white">
           <div className="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 className="section-title">Some Common Questions You May Have</h2>
-            <p className="text-slate-500 leading-relaxed">
-             We compiled the most questions parents and students may have about our services.
+            <h2 className="text-3xl font-bold text-slate-900">Some Common Questions You May Have</h2>
+            <p className="text-slate-500 leading-relaxed mt-2">
+              We compiled the most common questions parents and partners have about our operations.
             </p>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section id="faq" className="py-20 bg-slate-50">
+        {/* FAQ Deployment Container */}
+        <section id="faq" className="py-12 bg-slate-50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-3">
               {faqs.map(({ q, a }, i) => (
-                  <div key={i} className="bg-white rounded-2xl border border-slate-100">
+                  <div key={i} className="bg-white rounded-2xl border border-slate-100 overflow-hidden">
                     <button
                         onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                        className="w-full flex justify-between px-6 py-5 text-left"
+                        className="w-full flex justify-between items-center px-6 py-5 text-left"
                     >
                       <span className="font-semibold text-slate-900 text-sm pr-4">{q}</span>
                       <ChevronRight className={`w-5 h-5 transition-transform ${openFaq === i ? 'rotate-90' : ''}`} />
                     </button>
 
                     {openFaq === i && (
-                        <div className="px-6 pb-5">
-                          <p className="text-slate-500 text-sm">{a}</p>
+                        <div className="px-6 pb-5 border-t border-slate-50 pt-4">
+                          <p className="text-slate-500 text-sm leading-relaxed">{a}</p>
                         </div>
                     )}
                   </div>
@@ -272,41 +274,48 @@ export default function PartnerWithUs() {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* Final Conversion CTA */}
         <section className="py-20 bg-gradient-to-r from-blue-700 to-cyan-600 text-center text-white">
           <h2 className="text-4xl font-bold mb-4">Ready to start the conversation?</h2>
           <p className="text-white/80 mb-8">We usually respond within a couple of days.</p>
-          <button onClick={() => handleOpenEmail()} className="btn-accent px-8 py-4">
+          <button onClick={() => handleOpenEmail()} className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 font-semibold px-8 py-4 rounded-xl hover:bg-slate-50 transition-all">
             <Mail className="w-5 h-5" /> Open Email Composer
           </button>
         </section>
 
-        {/* Email Modal */}
+        {/* Functional Email Modal Component */}
         {emailModalOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-              <div className="bg-white rounded-2xl w-full max-w-lg p-6">
-                <div className="flex justify-between mb-4">
-                  <h3 className="font-bold">Compose Email</h3>
-                  <button onClick={() => setEmailModalOpen(false)}>
-                    <X />
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+              <div className="bg-white rounded-2xl w-full max-w-lg p-6 shadow-2xl relative">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-bold text-lg text-slate-900">Compose Email</h3>
+                  <button onClick={() => setEmailModalOpen(false)} className="text-slate-400 hover:text-slate-600">
+                    <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                <input
-                    className="w-full border p-2 mb-3"
-                    value={emailSubject}
-                    onChange={(e) => setEmailSubject(e.target.value)}
-                />
+                <div className="space-y-3 mb-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-400 uppercase mb-1">Subject</label>
+                    <input
+                        className="w-full border border-slate-200 rounded-lg p-2.5 text-sm font-medium focus:outline-none focus:border-emerald-400"
+                        value={emailSubject}
+                        onChange={(e) => setEmailSubject(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-400 uppercase mb-1">Message</label>
+                    <textarea
+                        className="w-full border border-slate-200 rounded-lg p-2.5 text-sm font-medium focus:outline-none focus:border-emerald-400 resize-none"
+                        rows={6}
+                        value={emailBody}
+                        onChange={(e) => setEmailBody(e.target.value)}
+                    />
+                  </div>
+                </div>
 
-                <textarea
-                    className="w-full border p-2 mb-3"
-                    rows={8}
-                    value={emailBody}
-                    onChange={(e) => setEmailBody(e.target.value)}
-                />
-
-                <button onClick={handleSendEmail} className="btn-primary w-full">
-                  Send
+                <button onClick={handleSendEmail} className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl text-sm transition-colors">
+                  Send Inquiry
                 </button>
               </div>
             </div>
