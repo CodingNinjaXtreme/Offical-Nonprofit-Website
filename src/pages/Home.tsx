@@ -127,7 +127,7 @@ export default function Home() {
               { v: '2', l: 'Competitions covered' },
               { v: '1–5', l: 'Grades taught' },
               { v: 'Live', l: 'Small group learning' },
-              { v: 'Focus', l: 'Contest problem solving' },
+              { v: 'Locations Served', l: 'Fremont' },
             ].map((s) => (
                 <div key={s.l}>
                   <div className="text-3xl font-bold">{s.v}</div>
