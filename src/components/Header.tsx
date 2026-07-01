@@ -8,7 +8,7 @@ const navLinks = [
   { label: 'About Us', path: '/about' },
   { label: 'Mission', path: '/mission' },
   { label: 'Competitions', path: '/competitions' },
-  { label: 'Partner With Us', path: '/partner' },
+  { label: 'Volunteer', path: '/partner' }, // Change to /volunteer if you rename the route
 ];
 
 export default function Header() {
@@ -18,8 +18,10 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -40,16 +42,25 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            <Link to="/" className="flex items-center gap-2.5 group" aria-label="InfinityMath4All home">
+            {/* Logo */}
+
+            <Link
+                to="/"
+                className="flex items-center gap-2.5 group"
+                aria-label="InfinityMath4All home"
+            >
               <Logo size={36} />
+
               <div className="flex flex-col leading-tight">
               <span
                   className={`font-bold text-base tracking-tight transition-colors duration-300 ${
                       onDarkHero ? 'text-white' : 'text-slate-900'
                   }`}
               >
-                InfinityMath<span className="text-gradient">4All</span>
+                InfinityMath
+                <span className="text-gradient">4All</span>
               </span>
+
                 <span
                     className={`text-[11px] font-medium uppercase tracking-wider transition-colors duration-300 ${
                         onDarkHero ? 'text-blue-200' : 'text-blue-500'
@@ -60,9 +71,15 @@ export default function Header() {
               </div>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
+            {/* Desktop Navigation */}
+
+            <nav
+                className="hidden lg:flex items-center gap-1"
+                aria-label="Primary"
+            >
               {navLinks.map((link) => {
                 const active = location.pathname === link.path;
+
                 return (
                     <Link
                         key={link.path}
@@ -78,6 +95,7 @@ export default function Header() {
                         }`}
                     >
                       {link.label}
+
                       <span
                           className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full transition-all duration-300 ${
                               active
@@ -92,31 +110,28 @@ export default function Header() {
               })}
             </nav>
 
-            {/* Desktop Call to Actions */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Link
-                  to="/signup"
-                  className={onDarkHero ? "btn-ghost-light text-sm py-2.5 px-5" : "btn-primary text-sm py-2.5 px-5 shadow-blue-500/10"}
-              >
-                Join Classes
-              </Link>
-              <Link to="/partner" className="btn-accent text-sm py-2.5 px-5 shadow-amber-500/20">
-                Get Involved
-              </Link>
-            </div>
+            {/* Mobile Menu Button */}
 
             <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${
-                    onDarkHero ? 'text-white hover:bg-white/10' : 'text-slate-700 hover:bg-slate-100'
+                    onDarkHero
+                        ? 'text-white hover:bg-white/10'
+                        : 'text-slate-700 hover:bg-slate-100'
                 }`}
                 aria-label="Toggle menu"
                 aria-expanded={menuOpen}
             >
-              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {menuOpen ? (
+                  <X className="w-5 h-5" />
+              ) : (
+                  <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
+
+        {/* Mobile Navigation */}
 
         {menuOpen && (
             <div className="lg:hidden bg-white border-t border-slate-100 shadow-lg animate-fade-in">
@@ -134,16 +149,6 @@ export default function Header() {
                       {link.label}
                     </Link>
                 ))}
-
-                {/* Mobile Actions Container */}
-                <div className="pt-4 flex flex-col gap-2 border-t border-slate-50 mt-2">
-                  <Link to="/signup" className="btn-primary w-full justify-center text-sm">
-                    Join Classes
-                  </Link>
-                  <Link to="/partner" className="btn-accent w-full justify-center text-sm">
-                    Get Involved
-                  </Link>
-                </div>
               </div>
             </div>
         )}
