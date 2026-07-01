@@ -42,9 +42,9 @@ const values = [
 ];
 
 const milestones = [
-  { year: 'Year 1', title: 'Founded by high schoolers', text: 'A small group of competition alumni decided younger students deserved the same coaching they wished they had.' },
-  { year: 'Now', title: 'Three competitions, year-round', text: 'Noetic, MOEMS, and Elementary Grade-Level Math — with free seats every cohort.' },
-  { year: 'Next', title: 'Expanding mentor cohorts', text: 'Recruiting more high school mentors so no waitlisted student gets turned away.' },
+  { year: 'Year 1', title: 'Founded by high schoolers', text: 'We currently offer free competition math instruction to elementary  students in Fremont through small, student-led cohorts focused on building confidence and problem-solving skills.' },
+  { year: 'Now', title: 'Three competitions, year-round', text: 'We\'re planning to recruit more high school mentors with competition math experience so we can serve more students, reduce waitlists, and offer additional class sections throughout the year.' },
+  { year: 'Next', title: 'Expanding mentor cohorts', text: 'Our long-term goal is to bring free, high-quality competition math education to students throughout California and eventually across the United States. We plan to achieve this by creating regional and state chapters, making advanced math opportunities accessible to more children.' },
 ];
 
 const team = [
