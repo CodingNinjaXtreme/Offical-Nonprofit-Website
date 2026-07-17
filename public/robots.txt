@@ -1,0 +1,6 @@
+# Allow all search engines to crawl our website
+User-agent: *
+Allow: /
+
+# Link directly to our website page roadmap
+Sitemap: https://infinitymath4all.org
