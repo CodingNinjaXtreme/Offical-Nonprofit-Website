@@ -126,7 +126,7 @@ const whyUs = [
 const serviceAreas = [
   {
     name: 'Fremont',
-    detail: 'Core community base for in-person outreach and enrollment.',
+    detail: 'Core community base for local outreach and enrollment.',
     position: 'left-[24%] top-[58%]',
   },
   {
