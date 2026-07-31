@@ -10,8 +10,66 @@ import {
 
   Compass,
   GraduationCap,
+  MapPin,
 
 } from 'lucide-react';
+import { GOOGLE_FORM_URL } from '../constants/signup';
+import { useLanguage } from '../context/LanguageContext';
+
+const homeCopy = {
+  en: {
+    heroBadge: 'Built by students who recently competed in these contests',
+    heroTitleLine1: 'Training Students for',
+    heroTitleLine2: 'Contest Math Thinking',
+    heroLead:
+      'We teach elementary students how to recognize patterns, solve unfamiliar problems, and think like contest mathematicians—not just follow steps.',
+    heroLocation: 'Based in the Fremont and Warm Springs area and expanding to reach more families.',
+    exploreCompetitions: 'Explore Competitions',
+    signUp: 'Sign Up',
+    impactBasedIn: 'Based in',
+    serviceTitle: 'Based in Fremont and Warm Springs',
+    serviceBody:
+      'We started in the Fremont and Warm Springs area and are expanding to serve more families as the program grows.',
+    serviceNow: 'Serving Fremont and Warm Springs now, with more locations planned as we expand.',
+    whyTag: 'Why This Exists',
+    whyTitle: 'Most Students Are Never Taught Contest Thinking',
+    whyP1:
+      'InfinityMath4All exists because most students are never shown what contest math actually feels like.',
+    whyP2:
+      'We’re high school students who recently competed in these contests ourselves. We teach the patterns, shortcuts, and thinking styles we wish we learned earlier.',
+    whyP3: 'Based in the Fremont and Warm Springs area, and expanding as more students join.',
+    ctaTitle: 'Ready to Start Thinking Differently?',
+    ctaBody: 'Join students learning contest math the way it should be taught—from people who just did it.',
+    getStarted: 'Get Started',
+    locationSummary: 'Fremont + Warm Springs',
+  },
+  es: {
+    heroBadge: 'Hecho por estudiantes que compitieron recientemente en estos concursos',
+    heroTitleLine1: 'Formando a los estudiantes en',
+    heroTitleLine2: 'pensamiento matemático de concurso',
+    heroLead:
+      'Enseñamos a los estudiantes de primaria a reconocer patrones, resolver problemas nuevos y pensar como matemáticos de concursos, no solo seguir pasos.',
+    heroLocation: 'Con base en el área de Fremont y Warm Springs, y expandiéndonos para llegar a más familias.',
+    exploreCompetitions: 'Ver competencias',
+    signUp: 'Inscribirse',
+    impactBasedIn: 'Con base en',
+    serviceTitle: 'Con base en Fremont y Warm Springs',
+    serviceBody:
+      'Comenzamos en el área de Fremont y Warm Springs y nos estamos expandiendo para servir a más familias a medida que el programa crece.',
+    serviceNow: 'Sirviendo a Fremont y Warm Springs ahora, con más ubicaciones planeadas mientras crecemos.',
+    whyTag: 'Por qué existe esto',
+    whyTitle: 'A la mayoría de los estudiantes nunca se les enseña a pensar en concursos',
+    whyP1:
+      'InfinityMath4All existe porque la mayoría de los estudiantes nunca ve lo que realmente se siente la matemática de concurso.',
+    whyP2:
+      'Somos estudiantes de preparatoria que recientemente competimos en estos concursos. Enseñamos los patrones, atajos y estilos de pensamiento que desearíamos haber aprendido antes.',
+    whyP3: 'Con base en el área de Fremont y Warm Springs, y expandiéndonos a medida que más estudiantes se unen.',
+    ctaTitle: '¿Listo para pensar de otra manera?',
+    ctaBody: 'Únete a estudiantes que aprenden matemáticas de concurso de la forma correcta, de personas que acaban de competir.',
+    getStarted: 'Comenzar',
+    locationSummary: 'Fremont + Warm Springs',
+  },
+} as const;
 
 const competitions = [
   {
@@ -65,7 +123,23 @@ const whyUs = [
   'Direct prep for Noetic, MOEMS, and similar contests',
 ];
 
+const serviceAreas = [
+  {
+    name: 'Fremont',
+    detail: 'Core community base for in-person outreach and enrollment.',
+    position: 'left-[24%] top-[58%]',
+  },
+  {
+    name: 'Warm Springs',
+    detail: 'Serving families here now while expanding our reach.',
+    position: 'left-[63%] top-[38%]',
+  },
+];
+
 export default function Home() {
+  const { language } = useLanguage();
+  const copy = homeCopy[language];
+
   return (
       <div>
         {/* HERO */}
@@ -81,29 +155,38 @@ export default function Home() {
               {/* LEFT */}
               <div>
                 <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-8 text-white/80 text-sm">
-                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                  Built by students who recently competed in these contests
+                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true" />
+                  {copy.heroBadge}
                 </div>
 
                 <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                  Training Students for
+                  {copy.heroTitleLine1}
                   <span className="block text-gradient-gold">
-                  Contest Math Thinking
-                </span>
+                    {copy.heroTitleLine2}
+                  </span>
                 </h1>
 
                 <p className="text-lg text-white/70 mb-10 max-w-lg">
-                  We teach elementary students how to recognize patterns, solve unfamiliar problems,
-                  and think like contest mathematicians—not just follow steps.
+                  {copy.heroLead}
+                </p>
+
+                <p className="text-sm text-white/65 mb-8 max-w-lg">
+                  {copy.heroLocation}
                 </p>
 
                 <div className="flex gap-4 flex-col sm:flex-row">
                   <Link to="/competitions" className="btn-accent px-8 py-4">
-                    Explore Competitions <ArrowRight />
+                    <span>{copy.exploreCompetitions}</span> <ArrowRight aria-hidden="true" />
                   </Link>
-                  <Link to="/mission" className="btn-ghost-light px-8 py-4">
-                    Why This Exists <ChevronRight />
-                  </Link>
+                  <a
+                      href={GOOGLE_FORM_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                        aria-label="Sign up for the math program in a new tab"
+                      className="btn-ghost-light px-8 py-4"
+                  >
+                    <span>{copy.signUp}</span> <ChevronRight aria-hidden="true" />
+                  </a>
                 </div>
               </div>
 
@@ -127,7 +210,7 @@ export default function Home() {
               { v: '2', l: 'Competitions covered' },
               { v: '1–5', l: 'Grades taught' },
               { v: 'Live', l: 'Small group learning' },
-              { v: 'Locations Served', l: 'Fremont' },
+              { v: copy.impactBasedIn, l: copy.locationSummary },
             ].map((s) => (
                 <div key={s.l}>
                   <div className="text-3xl font-bold">{s.v}</div>
@@ -137,32 +220,92 @@ export default function Home() {
           </div>
         </section>
 
+        {/* SERVICE AREA */}
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="section-tag">
+                <MapPin aria-hidden="true" /> Service Area
+              </span>
+
+              <h2 className="section-title">{copy.serviceTitle}</h2>
+
+              <p className="section-subtitle mb-8">
+                {copy.serviceBody}
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                {serviceAreas.map((area) => (
+                  <div key={area.name} className="card p-5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="w-4 h-4 text-blue-600" aria-hidden="true" />
+                      <h3 className="font-bold text-slate-900">{area.name}</h3>
+                    </div>
+                    <p className="text-sm text-slate-600">{area.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div
+              className="card p-4 sm:p-6 bg-white"
+              role="img"
+              aria-label={language === 'en' ? 'Mini Google map showing Fremont and Warm Springs' : 'Mini mapa de Google mostrando Fremont y Warm Springs'}
+            >
+              <div className="grid gap-4 md:grid-cols-2">
+                {serviceAreas.map((area, index) => (
+                  <div key={area.name} className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+                    <iframe
+                      title={`${area.name} mini Google map`}
+                      src={`https://www.google.com/maps?q=${encodeURIComponent(area.name === 'Fremont' ? 'Fremont, CA' : 'Warm Springs, Fremont, CA')}&output=embed`}
+                      className="h-56 w-full border-0"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                    />
+                    <div className="border-t border-slate-100 p-4">
+                      <div className="flex items-center gap-2 mb-1">
+                        <MapPin className="w-4 h-4 text-blue-600" aria-hidden="true" />
+                        <h3 className="font-bold text-slate-900">{area.name}</h3>
+                      </div>
+                      <p className="text-sm text-slate-600">{area.detail}</p>
+                    </div>
+                  </div>
+                ))}
+                <p className="md:col-span-2 text-sm text-slate-500">
+                  {copy.serviceNow}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ABOUT */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
             <div>
             <span className="section-tag">
-              <Lightbulb /> Why This Exists
+              <Lightbulb aria-hidden="true" /> Why This Exists
             </span>
 
               <h2 className="section-title">
-                Most Students Are Never Taught Contest Thinking
+                {copy.whyTitle}
               </h2>
 
               <p className="text-slate-600 mb-6">
-                InfinityMath4All exists because most students are never shown what contest math
-                actually feels like.
+                {copy.whyP1}
               </p>
 
               <p className="text-slate-600 mb-6">
-                We’re high school students who recently competed in these contests ourselves.
-                We teach the patterns, shortcuts, and thinking styles we wish we learned earlier.
+                {copy.whyP2}
+              </p>
+
+              <p className="text-slate-600 mb-6">
+                {copy.whyP3}
               </p>
 
               <ul className="space-y-3">
                 {whyUs.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <CheckCircle2 className="text-emerald-500" />
+                      <CheckCircle2 className="text-emerald-500" aria-hidden="true" />
                       {item}
                     </li>
                 ))}
@@ -186,7 +329,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6">
             {howItWorks.map(({ icon: Icon, title, text }, i) => (
                 <div key={title} className="card p-6">
-                  <Icon className="w-10 h-10 mb-4 text-blue-600" />
+                  <Icon className="w-10 h-10 mb-4 text-blue-600" aria-hidden="true" />
                   <div className="text-xs font-bold text-blue-600 mb-2">
                     STEP {i + 1}
                   </div>
@@ -221,15 +364,27 @@ export default function Home() {
             <div>
               <Award className="mx-auto lg:mx-0 mb-4" size={40} />
               <h2 className="text-3xl font-bold mb-4">
-                Ready to Start Thinking Differently?
+                {copy.ctaTitle}
               </h2>
               <p className="text-white/70 mb-8">
-                Join students learning contest math the way it should be taught—from people who just did it.
+                {copy.ctaBody}
               </p>
 
-              <Link to="/competitions" className="btn-accent px-8 py-4">
-                Get Started <ArrowRight />
-              </Link>
+              <div className="flex gap-4 flex-col sm:flex-row justify-center lg:justify-start">
+                <Link to="/competitions" className="btn-accent px-8 py-4">
+                  <span>{copy.getStarted}</span> <ArrowRight aria-hidden="true" />
+                </Link>
+
+                <a
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Sign up for the math program in a new tab"
+                    className="btn-ghost-light px-8 py-4"
+                >
+                  <span>Sign Up</span> <ChevronRight aria-hidden="true" />
+                </a>
+              </div>
             </div>
 
             {/* RESTORED 1.png */}

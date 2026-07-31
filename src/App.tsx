@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PrivacyPage from "./pages/Policy.tsx";
+import { LanguageProvider } from './context/LanguageContext';
 
 // Lazy-loaded pages
 const Home = lazy(() => import('./pages/Home'));
@@ -36,41 +37,43 @@ function PageLoader() {
 
 function App() {
     return (
-        <BrowserRouter>
-            <ScrollToTop />
+        <LanguageProvider>
+            <BrowserRouter>
+                <ScrollToTop />
 
-            <a
-                href="#main"
-                className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-                Skip to main content
-            </a>
+                <a
+                    href="#main"
+                    className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    Skip to main content
+                </a>
 
-            <div className="min-h-screen flex flex-col">
-                <Header />
-                <main id="main" className="flex-1" tabIndex={-1}>
-                    <Suspense fallback={<PageLoader />}>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/about" element={<About />} />
-                            <Route path="/mission" element={<Mission />} />
-                            <Route path="/competitions" element={<Competitions />} />
-                            <Route path="/partner" element={<PartnerWithUs />} />
+                <div className="min-h-screen flex flex-col">
+                    <Header />
+                    <main id="main" className="flex-1" tabIndex={-1}>
+                        <Suspense fallback={<PageLoader />}>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/about" element={<About />} />
+                                <Route path="/mission" element={<Mission />} />
+                                <Route path="/competitions" element={<Competitions />} />
+                                <Route path="/partner" element={<PartnerWithUs />} />
 
-                            {/* Notice the exact casing here: Signup */}
-                            <Route path="/signup" element={<Signup />} />
+                                {/* Notice the exact casing here: Signup */}
+                                <Route path="/signup" element={<Signup />} />
 
-                            {/* Privacy Policy & COPPA Compliance Page Route */}
-                            <Route path="/privacy" element={<PrivacyPage />} />
+                                {/* Privacy Policy & COPPA Compliance Page Route */}
+                                <Route path="/privacy" element={<PrivacyPage />} />
 
-                            <Route path="/programs" element={<Navigate to="/competitions" replace />} />
-                            <Route path="*" element={<NotFound />} />
-                        </Routes>
-                    </Suspense>
-                </main>
-                <Footer />
-            </div>
-        </BrowserRouter>
+                                <Route path="/programs" element={<Navigate to="/competitions" replace />} />
+                                <Route path="*" element={<NotFound />} />
+                            </Routes>
+                        </Suspense>
+                    </main>
+                    <Footer />
+                </div>
+            </BrowserRouter>
+        </LanguageProvider>
     );
 }
 

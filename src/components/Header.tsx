@@ -2,19 +2,36 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import { GOOGLE_FORM_URL } from '../constants/signup';
+import { useLanguage } from '../context/LanguageContext';
 
-const navLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About Us', path: '/about' },
-  { label: 'Mission', path: '/mission' },
-  { label: 'Competitions', path: '/competitions' },
-  { label: 'Volunteer', path: '/partner' }, // Change to /volunteer if you rename the route
-];
+const headerCopy = {
+  en: {
+    home: 'Home',
+    about: 'About Us',
+    mission: 'Mission',
+    competitions: 'Competitions',
+    volunteer: 'Volunteer',
+    signUp: 'Sign Up',
+    toggleLabel: 'Switch to Spanish',
+  },
+  es: {
+    home: 'Inicio',
+    about: 'Sobre Nosotros',
+    mission: 'Misión',
+    competitions: 'Competencias',
+    volunteer: 'Voluntariado',
+    signUp: 'Inscribirse',
+    toggleLabel: 'Cambiar a inglés',
+  },
+} as const;
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { language, toggleLanguage } = useLanguage();
+  const copy = headerCopy[language];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -29,8 +46,28 @@ export default function Header() {
     setMenuOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const isHome = location.pathname === '/';
   const onDarkHero = isHome && !scrolled;
+
+  const navLinks = [
+    { label: copy.home, path: '/' },
+    { label: copy.about, path: '/about' },
+    { label: copy.mission, path: '/mission' },
+    { label: copy.competitions, path: '/competitions' },
+    { label: copy.volunteer, path: '/partner' },
+  ];
 
   return (
       <header
@@ -71,44 +108,70 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-2">
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                className={`inline-flex items-center justify-center rounded-lg border px-3 py-2 text-xs font-semibold uppercase tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                  onDarkHero
+                    ? 'border-white/20 text-white hover:bg-white/10'
+                    : 'border-slate-200 text-slate-700 hover:bg-slate-50'
+                }`}
+                aria-label={copy.toggleLabel}
+              >
+              {language === 'en' ? 'EN' : 'ES'}
+              </button>
 
-            <nav
-                className="hidden lg:flex items-center gap-1"
+              {/* Desktop Navigation */}
+
+              <nav
+                className="flex items-center gap-1"
                 aria-label="Primary"
-            >
+              >
               {navLinks.map((link) => {
                 const active = location.pathname === link.path;
 
                 return (
-                    <Link
-                        key={link.path}
-                        to={link.path}
-                        className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                            active
-                                ? onDarkHero
-                                    ? 'text-white'
-                                    : 'text-blue-600'
-                                : onDarkHero
-                                    ? 'text-white/75 hover:text-white'
-                                    : 'text-slate-600 hover:text-blue-600'
-                        }`}
-                    >
-                      {link.label}
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    aria-current={active ? 'page' : undefined}
+                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                      active
+                        ? onDarkHero
+                          ? 'text-white'
+                          : 'text-blue-600'
+                        : onDarkHero
+                          ? 'text-white/75 hover:text-white'
+                          : 'text-slate-600 hover:text-blue-600'
+                    }`}
+                  >
+                  {link.label}
 
-                      <span
-                          className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full transition-all duration-300 ${
-                              active
-                                  ? onDarkHero
-                                      ? 'bg-gradient-to-r from-amber-300 to-amber-500 opacity-100'
-                                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 opacity-100'
-                                  : 'opacity-0'
-                          }`}
-                      />
-                    </Link>
+                  <span
+                    className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full transition-all duration-300 ${
+                      active
+                        ? onDarkHero
+                          ? 'bg-gradient-to-r from-amber-300 to-amber-500 opacity-100'
+                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 opacity-100'
+                        : 'opacity-0'
+                    }`}
+                  />
+                  </Link>
                 );
               })}
-            </nav>
+
+              <a
+                href={GOOGLE_FORM_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Sign up for the math program in a new tab"
+                className="ml-2 inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                {copy.signUp}
+              </a>
+              </nav>
+            </div>
 
             {/* Mobile Menu Button */}
 
@@ -121,11 +184,12 @@ export default function Header() {
                 }`}
                 aria-label="Toggle menu"
                 aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
             >
               {menuOpen ? (
-                  <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden="true" />
               ) : (
-                  <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -134,13 +198,14 @@ export default function Header() {
         {/* Mobile Navigation */}
 
         {menuOpen && (
-            <div className="lg:hidden bg-white border-t border-slate-100 shadow-lg animate-fade-in">
+          <div id="mobile-navigation" className="lg:hidden bg-white border-t border-slate-100 shadow-lg animate-fade-in">
               <div className="px-4 py-4 space-y-1">
                 {navLinks.map((link) => (
                     <Link
                         key={link.path}
                         to={link.path}
-                        className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                aria-current={location.pathname === link.path ? 'page' : undefined}
+                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                             location.pathname === link.path
                                 ? 'bg-blue-50 text-blue-600'
                                 : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'
@@ -149,6 +214,25 @@ export default function Header() {
                       {link.label}
                     </Link>
                 ))}
+
+                <a
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Sign up for the math program in a new tab"
+                    className="block px-4 py-3 rounded-xl text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  {copy.signUp}
+                </a>
+
+                <button
+                    type="button"
+                    onClick={toggleLanguage}
+                    className="block w-full px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                    aria-label={copy.toggleLabel}
+                >
+                  {language === 'en' ? 'ES' : 'EN'}
+                </button>
               </div>
             </div>
         )}

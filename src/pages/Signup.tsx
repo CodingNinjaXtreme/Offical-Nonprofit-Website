@@ -1,21 +1,39 @@
-import { useState } from 'react';
-import { X, CheckCircle, GraduationCap, MapPin, ClipboardList, Laptop, User } from 'lucide-react';
+import { CheckCircle, GraduationCap, MapPin, ClipboardList, Laptop, User } from 'lucide-react';
+import { GOOGLE_FORM_URL } from '../constants/signup';
+import { useLanguage } from '../context/LanguageContext';
+
+const signupCopy = {
+    en: {
+        tag: 'Math Program Registration',
+        title: 'Join Our Math Classes',
+        subtitle:
+            'Ready to elevate your problem-solving skills? We’re based in the Fremont and Warm Springs area and expanding to reach more families.',
+        infoLabel: 'Information Needed:',
+        name: 'Your full name',
+        preference: 'Class preference (Online vs. In-person)',
+        location: 'Your location / where you live',
+        history: 'Math competition history & current grade level',
+        button: 'Open Signup Form',
+        directLink: 'Use the direct Google Form link',
+    },
+    es: {
+        tag: 'Registro del programa de matemáticas',
+        title: 'Únete a nuestras clases de matemáticas',
+        subtitle:
+            '¿Listo para mejorar tus habilidades para resolver problemas? Estamos basados en el área de Fremont y Warm Springs y nos estamos expandiendo para llegar a más familias.',
+        infoLabel: 'Información necesaria:',
+        name: 'Tu nombre completo',
+        preference: 'Preferencia de clase (en línea vs. presencial)',
+        location: 'Tu ubicación / dónde vives',
+        history: 'Historial de concursos de matemáticas y nivel de grado actual',
+        button: 'Abrir formulario de inscripción',
+        directLink: 'Usar el enlace directo del formulario de Google',
+    },
+} as const;
 
 export default function Signup() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [emailSent, setEmailSent] = useState(false);
-
-    const googleFormUrl =
-        "https://docs.google.com/forms/d/e/1FAIpQLSfKNs2_gNAWSsUpHpAPflvNSYbiO3pW4Qiu06HeBzh2hIdWHw/viewform?embedded=true";
-
-    // AUTO EMAIL CONFIRMATION (lightweight + safe)
-    const handleFormOpen = () => {
-        setIsOpen(true);
-
-        // lightweight “confirmation intent” (does NOT send email automatically)
-        setEmailSent(true);
-        setTimeout(() => setEmailSent(false), 4000);
-    };
+        const { language } = useLanguage();
+        const copy = signupCopy[language];
 
     return (
         <div className="min-h-screen bg-dotgrid bg-slate-50 flex flex-col items-center justify-center p-6 antialiased">
@@ -26,105 +44,63 @@ export default function Signup() {
 
                 <div className="flex justify-center">
                     <span className="section-tag">
-                        <GraduationCap className="w-4 h-4" /> Math Program Registration
+                        <GraduationCap className="w-4 h-4" aria-hidden="true" /> {copy.tag}
                     </span>
                 </div>
 
                 <h1 className="section-title mt-2">
-                    Join Our Math Classes
+                    {copy.title}
                 </h1>
 
                 <p className="section-subtitle mx-auto mb-8">
-                    Ready to elevate your problem-solving skills? Fill out our application form to secure your spot.
+                    {copy.subtitle}
                 </p>
-
-                {/* lightweight confirmation message */}
-                {emailSent && (
-                    <div className="mb-6 flex items-center justify-center gap-2 text-sm text-emerald-600 bg-emerald-50 border border-emerald-100 rounded-lg py-2">
-                        <CheckCircle className="w-4 h-4" />
-                        Form opened successfully — check your email after submitting.
-                    </div>
-                )}
 
                 <div className="text-left bg-slate-50 border border-slate-100 rounded-xl p-5 mb-8 space-y-3 max-w-md mx-auto">
                     <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
-                        Information Needed:
+                        {copy.infoLabel}
                     </p>
 
                     <div className="flex items-center gap-3 text-sm text-slate-600">
-                        <User className="w-4 h-4 text-blue-500 shrink-0" />
-                        <span>Your full name</span>
+                        <User className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
+                        <span>{copy.name}</span>
                     </div>
 
                     <div className="flex items-center gap-3 text-sm text-slate-600">
-                        <Laptop className="w-4 h-4 text-blue-500 shrink-0" />
-                        <span>Class preference (Online vs. In-person)</span>
+                        <Laptop className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
+                        <span>{copy.preference}</span>
                     </div>
 
                     <div className="flex items-center gap-3 text-sm text-slate-600">
-                        <MapPin className="w-4 h-4 text-blue-500 shrink-0" />
-                        <span>Your location / where you live</span>
+                        <MapPin className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
+                        <span>{copy.location}</span>
                     </div>
 
                     <div className="flex items-center gap-3 text-sm text-slate-600">
-                        <ClipboardList className="w-4 h-4 text-blue-500 shrink-0" />
-                        <span>Math competition history & current grade level</span>
+                        <ClipboardList className="w-4 h-4 text-blue-500 shrink-0" aria-hidden="true" />
+                        <span>{copy.history}</span>
                     </div>
                 </div>
 
-                <button
-                    onClick={handleFormOpen}
+                <a
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noreferrer"
                     className="btn-primary group animate-shine text-lg px-8 py-4 shadow-lg shadow-blue-500/20"
                 >
-                    <span>Open Application Form</span>
-                    <CheckCircle className="w-5 h-5 transition-transform group-hover:scale-110" />
-                </button>
+                    <span>{copy.button}</span>
+                    <CheckCircle className="w-5 h-5 transition-transform group-hover:scale-110" aria-hidden="true" />
+                </a>
+
+                <a
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-500"
+                >
+                    {copy.directLink}
+                </a>
             </div>
-
-            {/* MOBILE-FIRST MODAL */}
-            {isOpen && (
-                <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
-
-                    <div className="
-                        bg-white w-full sm:max-w-3xl
-                        h-[92dvh] sm:h-[85vh]
-                        flex flex-col overflow-hidden
-                        relative border border-slate-100
-                        sm:rounded-2xl rounded-t-2xl
-                        shadow-2xl
-                    ">
-
-                        {/* header */}
-                        <div className="px-5 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                            <div>
-                                <h3 className="text-lg font-bold text-slate-900 font-serif">
-                                    Sign Up Form
-                                </h3>
-                                <p className="text-xs text-slate-500">
-                                    Please complete all required fields.
-                                </p>
-                            </div>
-
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
-                        </div>
-
-                        {/* iframe */}
-                        <div className="flex-1 w-full overflow-hidden bg-slate-50">
-                            <iframe
-                                src={googleFormUrl}
-                                className="w-full h-full border-0"
-                                title="Google Form Sign Up"
-                            />
-                        </div>
-
-                    </div>
-                </div>
-            )}
         </div>
     );
 }
