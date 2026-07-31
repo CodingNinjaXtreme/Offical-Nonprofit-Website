@@ -2,21 +2,24 @@ import { CheckCircle, GraduationCap, MapPin, ClipboardList, Laptop, User } from 
 import { GOOGLE_FORM_URL } from '../constants/signup';
 import { useLanguage } from '../context/LanguageContext';
 
+const baseSignupCopy = {
+    tag: 'Math Program Registration',
+    title: 'Join Our Math Classes',
+    subtitle:
+        'Ready to elevate your problem-solving skills? We’re based in the Fremont and Warm Springs area and expanding to reach more families.',
+    infoLabel: 'Information Needed:',
+    name: 'Your full name',
+    preference: 'Class preference (Online vs. In-person)',
+    location: 'Your location / where you live',
+    history: 'Math competition history & current grade level',
+    button: 'Open Signup Form',
+    directLink: 'Use the direct Google Form link',
+};
+
 const signupCopy = {
-    en: {
-        tag: 'Math Program Registration',
-        title: 'Join Our Math Classes',
-        subtitle:
-            'Ready to elevate your problem-solving skills? We’re based in the Fremont and Warm Springs area and expanding to reach more families.',
-        infoLabel: 'Information Needed:',
-        name: 'Your full name',
-        preference: 'Class preference (Online vs. In-person)',
-        location: 'Your location / where you live',
-        history: 'Math competition history & current grade level',
-        button: 'Open Signup Form',
-        directLink: 'Use the direct Google Form link',
-    },
+    en: baseSignupCopy,
     es: {
+        ...baseSignupCopy,
         tag: 'Registro del programa de matemáticas',
         title: 'Únete a nuestras clases de matemáticas',
         subtitle:
@@ -29,11 +32,67 @@ const signupCopy = {
         button: 'Abrir formulario de inscripción',
         directLink: 'Usar el enlace directo del formulario de Google',
     },
+    hi: {
+        ...baseSignupCopy,
+        tag: 'गणित कार्यक्रम पंजीकरण',
+        title: 'हमारी गणित कक्षाओं में शामिल हों',
+        subtitle:
+            'क्या आप अपनी समस्या-समाधान क्षमताओं को ऊँचा उठाना चाहते हैं? हम Fremont और Warm Springs क्षेत्र में आधारित हैं और अधिक परिवारों तक पहुँचने के लिए विस्तार कर रहे हैं।',
+        infoLabel: 'आवश्यक जानकारी:',
+        name: 'आपका पूरा नाम',
+        preference: 'कक्षा पसंद (ऑनलाइन बनाम ऑफलाइन)',
+        location: 'आपकी जगह / आप कहाँ रहते हैं',
+        history: 'गणित प्रतियोगिता इतिहास और वर्तमान ग्रेड स्तर',
+        button: 'साइनअप फॉर्म खोलें',
+        directLink: 'सीधे Google फॉर्म लिंक का उपयोग करें',
+    },
+    fr: {
+        ...baseSignupCopy,
+        tag: 'Inscription au programme de mathématiques',
+        title: 'Rejoignez nos cours de mathématiques',
+        subtitle:
+            'Prêt à améliorer vos compétences en résolution de problèmes ? Nous sommes basés dans la région de Fremont et Warm Springs et nous nous développons pour atteindre plus de familles.',
+        infoLabel: 'Informations nécessaires :',
+        name: 'Votre nom complet',
+        preference: 'Préférence de classe (en ligne ou en personne)',
+        location: 'Votre emplacement / où vous vivez',
+        history: 'Historique des concours de mathématiques et niveau actuel',
+        button: 'Ouvrir le formulaire d’inscription',
+        directLink: 'Utiliser le lien direct du formulaire Google',
+    },
+    ja: {
+        ...baseSignupCopy,
+        tag: '数学プログラム登録',
+        title: '数学クラスに参加しよう',
+        subtitle:
+            '問題解決力を高める準備はできましたか？私たちは Fremont と Warm Springs 地域を拠点にし、より多くの家庭に届くよう拡大しています。',
+        infoLabel: '必要な情報：',
+        name: 'お名前',
+        preference: 'クラスの希望（オンラインまたは対面）',
+        location: 'お住まいの地域',
+        history: '数学コンテストの経験と現在の学年',
+        button: '登録フォームを開く',
+        directLink: 'Googleフォームの直接リンクを使う',
+    },
+    zh: {
+        ...baseSignupCopy,
+        tag: '数学项目报名',
+        title: '加入我们的数学课程',
+        subtitle:
+            '准备好提升你的解题能力了吗？我们基地位于 Fremont 和 Warm Springs 地区，并正在扩大服务更多家庭。',
+        infoLabel: '需要的信息：',
+        name: '您的全名',
+        preference: '课程偏好（在线或线下）',
+        location: '您所在的位置/居住地',
+        history: '数学竞赛经历和当前年级',
+        button: '打开报名表',
+        directLink: '使用 Google 表单直链',
+    },
 } as const;
 
 export default function Signup() {
         const { language } = useLanguage();
-        const copy = signupCopy[language];
+        const copy = { ...signupCopy.en, ...signupCopy[language] };
 
     return (
         <div className="min-h-screen bg-dotgrid bg-slate-50 flex flex-col items-center justify-center p-6 antialiased">

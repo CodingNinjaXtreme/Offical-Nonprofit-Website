@@ -16,34 +16,38 @@ import {
 import { GOOGLE_FORM_URL } from '../constants/signup';
 import { useLanguage } from '../context/LanguageContext';
 
+const baseHomeCopy = {
+  heroBadge: 'Built by students who recently competed in these contests',
+  heroTitleLine1: 'Training Students for',
+  heroTitleLine2: 'Contest Math Thinking',
+  heroLead:
+    'We teach elementary students how to recognize patterns, solve unfamiliar problems, and think like contest mathematicians—not just follow steps.',
+  heroLocation: 'Based in the Fremont and Warm Springs area and expanding to reach more families.',
+  exploreCompetitions: 'Explore Competitions',
+  signUp: 'Sign Up',
+  impactBasedIn: 'Based in',
+  serviceTitle: 'Based in Fremont and Warm Springs',
+  serviceBody:
+    'We started in the Fremont and Warm Springs area and are expanding to serve more families as the program grows.',
+  serviceNow: 'Serving Fremont and Warm Springs now, with more locations planned as we expand.',
+  whyTag: 'Why This Exists',
+  whyTitle: 'Most Students Are Never Taught Contest Thinking',
+  whyP1:
+    'InfinityMath4All exists because most students are never shown what contest math actually feels like.',
+  whyP2:
+    'We’re high school students who recently competed in these contests ourselves. We teach the patterns, shortcuts, and thinking styles we wish we learned earlier.',
+  whyP3: 'Based in the Fremont and Warm Springs area, and expanding as more students join.',
+  ctaTitle: 'Ready to Start Thinking Differently?',
+  ctaBody: 'Join students learning contest math the way it should be taught—from people who just did it.',
+  getStarted: 'Get Started',
+  locationSummary: 'Fremont + Warm Springs',
+  mapAriaLabel: 'Mini Google map showing Fremont and Warm Springs',
+};
+
 const homeCopy = {
-  en: {
-    heroBadge: 'Built by students who recently competed in these contests',
-    heroTitleLine1: 'Training Students for',
-    heroTitleLine2: 'Contest Math Thinking',
-    heroLead:
-      'We teach elementary students how to recognize patterns, solve unfamiliar problems, and think like contest mathematicians—not just follow steps.',
-    heroLocation: 'Based in the Fremont and Warm Springs area and expanding to reach more families.',
-    exploreCompetitions: 'Explore Competitions',
-    signUp: 'Sign Up',
-    impactBasedIn: 'Based in',
-    serviceTitle: 'Based in Fremont and Warm Springs',
-    serviceBody:
-      'We started in the Fremont and Warm Springs area and are expanding to serve more families as the program grows.',
-    serviceNow: 'Serving Fremont and Warm Springs now, with more locations planned as we expand.',
-    whyTag: 'Why This Exists',
-    whyTitle: 'Most Students Are Never Taught Contest Thinking',
-    whyP1:
-      'InfinityMath4All exists because most students are never shown what contest math actually feels like.',
-    whyP2:
-      'We’re high school students who recently competed in these contests ourselves. We teach the patterns, shortcuts, and thinking styles we wish we learned earlier.',
-    whyP3: 'Based in the Fremont and Warm Springs area, and expanding as more students join.',
-    ctaTitle: 'Ready to Start Thinking Differently?',
-    ctaBody: 'Join students learning contest math the way it should be taught—from people who just did it.',
-    getStarted: 'Get Started',
-    locationSummary: 'Fremont + Warm Springs',
-  },
+  en: baseHomeCopy,
   es: {
+    ...baseHomeCopy,
     heroBadge: 'Hecho por estudiantes que compitieron recientemente en estos concursos',
     heroTitleLine1: 'Formando a los estudiantes en',
     heroTitleLine2: 'pensamiento matemático de concurso',
@@ -68,6 +72,115 @@ const homeCopy = {
     ctaBody: 'Únete a estudiantes que aprenden matemáticas de concurso de la forma correcta, de personas que acaban de competir.',
     getStarted: 'Comenzar',
     locationSummary: 'Fremont + Warm Springs',
+    mapAriaLabel: 'Mini mapa de Google mostrando Fremont y Warm Springs',
+  },
+  hi: {
+    ...baseHomeCopy,
+    heroBadge: 'विगत दिनों में इन प्रतियोगिताओं में भाग लेने वाले छात्रों द्वारा निर्मित',
+    heroTitleLine1: 'छात्रों को प्रशिक्षित कर रहे हैं',
+    heroTitleLine2: 'प्रतियोगिता गणित सोच के लिए',
+    heroLead:
+      'हम प्राथमिक छात्रों को पैटर्न पहचानना, अपरिचित समस्याओं को हल करना और प्रतियोगिता गणितज्ञों की तरह सोचना सिखाते हैं—केवल चरणों का अनुसरण नहीं।',
+    heroLocation: 'फremont और Warm Springs क्षेत्र में आधारित और अधिक परिवारों तक पहुंचने के लिए विस्तार कर रहे हैं।',
+    exploreCompetitions: 'प्रतिस्पर्धाएँ देखें',
+    signUp: 'साइन अप करें',
+    impactBasedIn: 'आधारित',
+    serviceTitle: 'Fremont और Warm Springs में आधारित',
+    serviceBody:
+      'हम Fremont और Warm Springs क्षेत्र में शुरू हुए और जैसे-जैसे कार्यक्रम बढ़ता है, हम अधिक परिवारों की सेवा करने के लिए विस्तार कर रहे हैं।',
+    serviceNow: 'अब Fremont और Warm Springs की सेवा कर रहे हैं, और विस्तार के साथ और स्थानों की योजना बनाई जा रही है।',
+    whyTag: 'यह क्यों मौजूद है',
+    whyTitle: 'अधिकांश छात्रों को प्रतियोगिता सोच सिखाई नहीं जाती',
+    whyP1: 'InfinityMath4All इसलिए मौजूद है क्योंकि अधिकांश छात्रों को नहीं दिखाया जाता कि प्रतियोगिता गणित वास्तव में कैसा महसूस होता है।',
+    whyP2:
+      'हम हाई स्कूल के छात्र हैं जिन्होंने हाल ही में इन प्रतियोगिताओं में भाग लिया। हम उन पैटर्न, शॉर्टकट और सोच-शैलियों को सिखाते हैं जिन्हें हम पहले सीखना चाहते थे।',
+    whyP3: 'Fremont और Warm Springs क्षेत्र में आधारित और जैसे-जैसे अधिक छात्र जुड़ते हैं, विस्तार कर रहे हैं।',
+    ctaTitle: 'क्या आप अलग तरह से सोचने के लिए तैयार हैं?',
+    ctaBody: 'उन छात्रों से जुड़ें जो प्रतियोगिता गणित सीख रहे हैं, ठीक वैसे जैसा इसे पढ़ाना चाहिए—जो लोग इसे अभी-अभी किया है।',
+    getStarted: 'शुरू करें',
+    locationSummary: 'Fremont + Warm Springs',
+    mapAriaLabel: 'Fremont और Warm Springs दिखाने वाला छोटा Google मानचित्र',
+  },
+  fr: {
+    ...baseHomeCopy,
+    heroBadge: 'Créé par des étudiants qui ont récemment participé à ces concours',
+    heroTitleLine1: 'Former les élèves pour',
+    heroTitleLine2: 'la pensée mathématique de concours',
+    heroLead:
+      'Nous enseignons aux élèves du primaire à reconnaître les motifs, résoudre des problèmes inconnus et penser comme des mathématiciens de concours, pas seulement suivre des étapes.',
+    heroLocation: 'Basé dans la région de Fremont et Warm Springs et en expansion pour atteindre plus de familles.',
+    exploreCompetitions: 'Découvrir les compétitions',
+    signUp: 'S’inscrire',
+    impactBasedIn: 'Basé à',
+    serviceTitle: 'Basé à Fremont et Warm Springs',
+    serviceBody:
+      'Nous avons commencé dans la région de Fremont et Warm Springs et nous nous développons pour servir davantage de familles à mesure que le programme grandit.',
+    serviceNow: 'Nous servons désormais Fremont et Warm Springs, avec de nouveaux sites prévus à mesure que nous nous développons.',
+    whyTag: 'Pourquoi cela existe',
+    whyTitle: 'La plupart des élèves ne sont jamais formés à la pensée de concours',
+    whyP1: 'InfinityMath4All existe parce que la plupart des élèves ne voient jamais à quoi ressemble réellement les mathématiques de concours.',
+    whyP2:
+      'Nous sommes des étudiants du secondaire qui avons récemment participé à ces concours nous-mêmes. Nous enseignons les motifs, raccourcis et styles de pensée que nous aurions aimé apprendre plus tôt.',
+    whyP3: 'Basé dans la région de Fremont et Warm Springs, et en expansion à mesure que plus d’étudiants se joignent.',
+    ctaTitle: 'Prêt à penser différemment ?',
+    ctaBody: 'Rejoignez des étudiants qui apprennent les mathématiques de concours comme elles devraient être enseignées—par des personnes qui viennent de le faire.',
+    getStarted: 'Commencer',
+    locationSummary: 'Fremont + Warm Springs',
+    mapAriaLabel: 'Mini carte Google montrant Fremont et Warm Springs',
+  },
+  ja: {
+    ...baseHomeCopy,
+    heroBadge: '最近これらのコンテストに参加した学生たちによって作られました',
+    heroTitleLine1: '生徒を育てる',
+    heroTitleLine2: 'コンテスト数学思考へ',
+    heroLead:
+      '私たちは小学生に、パターンを見つけ、見慣れない問題を解き、手順をただ覚えるのではなく、コンテスト数学者のように考える方法を教えます。',
+    heroLocation: 'Fremont と Warm Springs地域を拠点にし、より多くの家庭に届くよう拡大しています。',
+    exploreCompetitions: 'コンテストを見る',
+    signUp: '登録する',
+    impactBasedIn: '拠点',
+    serviceTitle: 'Fremont と Warm Springs を拠点に',
+    serviceBody:
+      '私たちは Fremont と Warm Springs 地域から始まり、プログラムが成長するにつれてより多くの家庭にサービスできるよう拡大しています。',
+    serviceNow: '現在 Fremont と Warm Springs を支援しており、拡大に伴いさらに多くの地域を予定しています。',
+    whyTag: 'なぜこの活動があるのか',
+    whyTitle: 'ほとんどの生徒はコンテスト思考を学びません',
+    whyP1: 'InfinityMath4All は、ほとんどの生徒がコンテスト数学が実際にどのようなものかを学ばないために存在します。',
+    whyP2:
+      '私たちは最近このコンテストに参加した高校生です。早く学びたかったパターン、ショートカット、思考法を教えています。',
+    whyP3: 'Fremont と Warm Springs 地域を拠点に、より多くの生徒が参加するにつれて拡大しています。',
+    ctaTitle: '違う考え方を始める準備はできていますか？',
+    ctaBody: 'コンテスト数学を、正しく教えるべき方法で学ぶ生徒たちに参加してください。',
+    getStarted: '始める',
+    locationSummary: 'Fremont + Warm Springs',
+    mapAriaLabel: 'Fremont と Warm Springs を示す小さな Google マップ',
+  },
+  zh: {
+    ...baseHomeCopy,
+    heroBadge: '由最近参加过这些比赛的学生创建',
+    heroTitleLine1: '培养学生的',
+    heroTitleLine2: '竞赛数学思维',
+    heroLead:
+      '我们教小学生如何识别模式、解决陌生问题，并像竞赛数学家一样思考，而不仅仅是照着步骤做。',
+    heroLocation: '基地位于 Fremont 和 Warm Springs 地区，并正在扩大服务更多家庭。',
+    exploreCompetitions: '探索竞赛',
+    signUp: '报名',
+    impactBasedIn: '基地位于',
+    serviceTitle: '基地位于 Fremont 和 Warm Springs',
+    serviceBody:
+      '我们始于 Fremont 和 Warm Springs 地区，并随着项目的发展继续扩展，为更多家庭提供服务。',
+    serviceNow: '现在正在服务 Fremont 和 Warm Springs，并计划随着扩展增加更多地点。',
+    whyTag: '为什么会有这个项目',
+    whyTitle: '大多数学生从未被教授竞赛思维',
+    whyP1: 'InfinityMath4All 的存在，是因为大多数学生从未真正接触过竞赛数学是什么样子。',
+    whyP2:
+      '我们是最近自己参加过这些竞赛的高中生。我们教授的是我们早就希望学会的模式、捷径和思考方式。',
+    whyP3: '基地位于 Fremont 和 Warm Springs 地区，并随着更多学生加入而不断扩展。',
+    ctaTitle: '准备好以不同的方式思考了吗？',
+    ctaBody: '加入正在学习竞赛数学的学生队伍——由刚刚经历过这些内容的人来教。',
+    getStarted: '开始',
+    locationSummary: 'Fremont + Warm Springs',
+    mapAriaLabel: '显示 Fremont 和 Warm Springs 的 Google 小地图',
   },
 } as const;
 
@@ -138,7 +251,7 @@ const serviceAreas = [
 
 export default function Home() {
   const { language } = useLanguage();
-  const copy = homeCopy[language];
+  const copy = { ...homeCopy.en, ...homeCopy[language] };
 
   return (
       <div>
@@ -250,7 +363,7 @@ export default function Home() {
             <div
               className="card p-4 sm:p-6 bg-white"
               role="img"
-              aria-label={language === 'en' ? 'Mini Google map showing Fremont and Warm Springs' : 'Mini mapa de Google mostrando Fremont y Warm Springs'}
+              aria-label={copy.mapAriaLabel}
             >
               <div className="grid gap-4 md:grid-cols-2">
                 {serviceAreas.map((area, index) => (
