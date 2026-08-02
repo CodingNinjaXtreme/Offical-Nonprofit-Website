@@ -11,6 +11,7 @@ const headerCopy = {
     about: 'About Us',
     mission: 'Mission',
     competitions: 'Competitions',
+    impact: 'Impact',
     volunteer: 'Volunteer',
     signUp: 'Sign Up',
     languageButton: 'Choose Language',
@@ -21,6 +22,7 @@ const headerCopy = {
     about: 'Sobre Nosotros',
     mission: 'Misión',
     competitions: 'Competencias',
+    impact: 'Impacto',
     volunteer: 'Voluntariado',
     signUp: 'Inscribirse',
     languageButton: 'Elegir idioma',
@@ -31,6 +33,7 @@ const headerCopy = {
     about: 'हमारे बारे में',
     mission: 'मिशन',
     competitions: 'प्रतिस्पर्धाएँ',
+    impact: 'प्रभाव',
     volunteer: 'स्वयंसेवक',
     signUp: 'साइन अप करें',
     languageButton: 'भाषा चुनें',
@@ -41,6 +44,7 @@ const headerCopy = {
     about: 'À propos',
     mission: 'Mission',
     competitions: 'Compétitions',
+    impact: 'Impact',
     volunteer: 'Bénévolat',
     signUp: 'S’inscrire',
     languageButton: 'Choisir la langue',
@@ -51,6 +55,7 @@ const headerCopy = {
     about: '私たちについて',
     mission: '使命',
     competitions: 'コンテスト',
+    impact: '影響',
     volunteer: 'ボランティア',
     signUp: '登録する',
     languageButton: '言語を選択',
@@ -61,6 +66,7 @@ const headerCopy = {
     about: '关于我们',
     mission: '使命',
     competitions: '竞赛',
+    impact: '影响力',
     volunteer: '志愿者',
     signUp: '报名',
     languageButton: '选择语言',
@@ -127,6 +133,7 @@ export default function Header() {
     { label: copy.about, path: '/about' },
     { label: copy.mission, path: '/mission' },
     { label: copy.competitions, path: '/competitions' },
+    { label: copy.impact, path: '/impact' },
     { label: copy.volunteer, path: '/partner' },
   ];
 
@@ -135,21 +142,22 @@ export default function Header() {
       <button
         type="button"
         onClick={() => setLanguageMenuOpen((open) => !open)}
-        className={`inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+        className={`inline-flex items-center justify-center gap-2 border px-3 py-2 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
           onDarkHero
             ? 'border-white/20 text-white hover:bg-white/10'
             : 'border-slate-200 text-slate-700 hover:bg-slate-50'
         } ${isMobile ? 'w-full justify-between px-4 py-3 text-left' : ''}`}
+        style={{ borderRadius: '1.35rem 1.8rem 1.15rem 1.7rem / 1.2rem 1.55rem 1.7rem 1.35rem' }}
         aria-haspopup="menu"
         aria-expanded={languageMenuOpen}
         aria-label={copy.languageButton}
       >
         <span>{copy.languageButton}</span>
-        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${languageMenuOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${languageMenuOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {languageMenuOpen && (
-        <div className={`absolute z-50 mt-2 rounded-xl border border-slate-200 bg-white p-2 shadow-xl ${isMobile ? 'left-0 right-0' : 'right-0 w-56'}`}>
+        <div className={`absolute z-50 mt-2 border border-slate-200 bg-white p-2 shadow-xl ${isMobile ? 'left-0 right-0' : 'right-0 w-56'}`} style={{ borderRadius: '1.45rem 1.8rem 1.15rem 1.6rem / 1.25rem 1.55rem 1.7rem 1.35rem' }}>
           {availableLanguages.map((option) => (
             <button
               key={option.code}
@@ -158,9 +166,10 @@ export default function Header() {
                 setLanguage(option.code);
                 setLanguageMenuOpen(false);
               }}
-              className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:bg-slate-50 ${
+              className={`flex w-full items-center justify-between px-3 py-2 text-sm transition-all duration-300 hover:bg-slate-50 ${
                 language === option.code ? 'bg-blue-50 text-blue-700' : 'text-slate-700'
               }`}
+              style={{ borderRadius: '1rem 1.35rem 1rem 1.2rem / 1rem 1.2rem 1.35rem 1rem' }}
             >
               <span>{option.label}</span>
               <span className="text-xs text-slate-500">{option.nativeLabel}</span>
@@ -176,7 +185,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         onDarkHero
           ? 'bg-transparent'
-          : 'bg-white/85 backdrop-blur-md shadow-sm border-b border-slate-100'
+          : 'bg-white/78 backdrop-blur-md shadow-[0_18px_50px_-35px_rgba(15,23,42,0.5)] border-b border-white/60'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -216,7 +225,7 @@ export default function Header() {
                     key={link.path}
                     to={link.path}
                     aria-current={active ? 'page' : undefined}
-                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                    className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                       active
                         ? onDarkHero
                           ? 'text-white'
@@ -225,6 +234,7 @@ export default function Header() {
                           ? 'text-white/75 hover:text-white'
                           : 'text-slate-600 hover:text-blue-600'
                     }`}
+                    style={{ borderRadius: '1.2rem 1.6rem 1rem 1.45rem / 1.05rem 1.3rem 1.45rem 1.1rem' }}
                   >
                     {link.label}
 
@@ -246,7 +256,8 @@ export default function Header() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Sign up for the math program in a new tab"
-                className="ml-2 inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="ml-2 inline-flex items-center justify-center bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                style={{ borderRadius: '1.35rem 1.85rem 1rem 1.6rem / 1.15rem 1.45rem 1.6rem 1.2rem' }}
               >
                 {copy.signUp}
               </a>
@@ -255,9 +266,10 @@ export default function Header() {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${
+            className={`lg:hidden p-2 transition-all duration-300 ${
               onDarkHero ? 'text-white hover:bg-white/10' : 'text-slate-700 hover:bg-slate-100'
             }`}
+            style={{ borderRadius: '1.2rem 1.5rem 1rem 1.4rem / 1rem 1.25rem 1.4rem 1.05rem' }}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
@@ -268,18 +280,19 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div id="mobile-navigation" className="lg:hidden bg-white border-t border-slate-100 shadow-lg animate-fade-in">
+        <div id="mobile-navigation" className="lg:hidden bg-white shadow-lg animate-fade-in" style={{ borderRadius: '0 0 1.75rem 1.75rem / 0 0 1.35rem 1.35rem' }}>
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 aria-current={location.pathname === link.path ? 'page' : undefined}
-                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                className={`block px-4 py-3 text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                   location.pathname === link.path
                     ? 'bg-blue-50 text-blue-600'
                     : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'
                 }`}
+                style={{ borderRadius: '1.2rem 1.6rem 1rem 1.45rem / 1rem 1.25rem 1.4rem 1.05rem' }}
               >
                 {link.label}
               </Link>
@@ -290,7 +303,8 @@ export default function Header() {
               target="_blank"
               rel="noreferrer"
               aria-label="Sign up for the math program in a new tab"
-              className="block px-4 py-3 rounded-xl text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="block px-4 py-3 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              style={{ borderRadius: '1.25rem 1.8rem 1rem 1.55rem / 1.1rem 1.35rem 1.45rem 1.15rem' }}
             >
               {copy.signUp}
             </a>

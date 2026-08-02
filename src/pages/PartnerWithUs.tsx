@@ -81,11 +81,11 @@ Best regards,
   };
 
   const handleSendEmail = () => {
-    const mailto = `mailto:admin@InfinityMath4All.org?subject=${encodeURIComponent(
-        emailSubject
-    )}&body=${encodeURIComponent(emailBody)}`;
+    const gmailCompose = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+        'admin@InfinityMath4All.org'
+    )}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
-    window.location.href = mailto;
+    window.open(gmailCompose, '_blank', 'noopener,noreferrer');
     setEmailModalOpen(false);
   };
 
@@ -94,7 +94,7 @@ Best regards,
 
         {/* Hero */}
 
-        <section className="relative bg-slate-900 py-24 overflow-hidden">
+        <section className="relative bg-slate-900 py-24 overflow-hidden section-shell">
 
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl" />
@@ -147,7 +147,7 @@ Best regards,
 
         {/* Impact Strip */}
 
-        <section className="py-12 bg-white border-b border-slate-100">
+        <section className="py-12 bg-white section-shell">
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -197,7 +197,7 @@ Best regards,
         </section>
         {/* Volunteer Section */}
 
-        <section id="volunteer" className="py-20 bg-slate-50">
+        <section id="volunteer" className="py-20 bg-slate-50 section-shell">
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -219,7 +219,7 @@ Best regards,
               </p>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+            <div className="card shadow-xl bg-white overflow-hidden">
 
               {/* Top Banner */}
 
@@ -369,7 +369,7 @@ Best regards,
         </section>
         {/* FAQ Header */}
 
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white section-shell">
 
           <div className="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
 
@@ -393,8 +393,8 @@ Best regards,
         {/* FAQ */}
 
         <section
-            id="faq"
-            className="pb-20 bg-slate-50"
+          id="faq"
+          className="pb-20 bg-slate-50 section-shell"
         >
 
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -403,9 +403,9 @@ Best regards,
 
               {faqs.map(({ q, a }, i) => (
 
-                  <div
+                    <div
                       key={i}
-                      className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
+                      className="card bg-white shadow-sm overflow-hidden"
                   >
 
                     <button
@@ -450,7 +450,7 @@ Best regards,
         </section>
         {/* Final CTA */}
 
-        <section className="py-20 bg-gradient-to-r from-emerald-600 via-emerald-500 to-blue-600">
+        <section className="py-20 bg-gradient-to-r from-emerald-600 via-emerald-500 to-blue-600 section-shell">
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
 
@@ -481,7 +481,7 @@ Best regards,
         {emailModalOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
 
-              <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xl">
+              <div className="relative card shadow-2xl w-full max-w-xl bg-white">
 
                 <div className="flex items-center justify-between border-b border-slate-200 px-6 py-5">
 
@@ -491,7 +491,7 @@ Best regards,
                     </h3>
 
                     <p className="text-sm text-slate-500 mt-1">
-                      This will open your default email application.
+                      This will open Gmail in a new tab.
                     </p>
                   </div>
 
@@ -539,7 +539,7 @@ Best regards,
                       onClick={handleSendEmail}
                       className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-4 rounded-xl transition"
                   >
-                    Open Email App
+                    Open Gmail
                   </button>
 
                 </div>

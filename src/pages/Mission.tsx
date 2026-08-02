@@ -201,7 +201,7 @@ export default function Mission() {
               <h2 className="section-title">A young campaign, growing on purpose.</h2>
             </div>
 
-            <ol className="relative border-l-2 border-slate-200 ml-3 space-y-10">
+            <ol className="relative ml-3 space-y-10 border-l border-dashed border-slate-300/80 pl-1">
               {milestones.map((m) => (
                   <li key={m.title} className="ml-8">
                     <div className="absolute -left-[11px] w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 ring-4 ring-white" />

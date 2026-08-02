@@ -144,19 +144,21 @@ export default function Competitions() {
         </section>
 
         {/* Quick Nav */}
-        <section className="sticky top-16 lg:top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <section className="sticky top-16 lg:top-20 z-40 bg-white/88 backdrop-blur-md shadow-[0_14px_40px_-26px_rgba(15,23,42,0.4)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center gap-6 py-5">
               <a
                   href="#compare"
-                  className="px-10 py-4 text-lg font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
+                  className="px-10 py-4 text-lg font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                  style={{ borderRadius: '1.4rem 1.85rem 1.15rem 1.65rem / 1.2rem 1.45rem 1.6rem 1.25rem' }}
               >
                 Compare Programs
               </a>
 
               <a
                   href="#faq"
-                  className="px-10 py-4 text-lg font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
+                  className="px-10 py-4 text-lg font-semibold text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                  style={{ borderRadius: '1.4rem 1.85rem 1.15rem 1.65rem / 1.2rem 1.45rem 1.6rem 1.25rem' }}
               >
                 FAQ
               </a>
@@ -165,7 +167,7 @@ export default function Competitions() {
         </section>
 
         {/* At a glance */}
-        <section id="compare" className="py-20 bg-white">
+        <section id="compare" className="py-20 bg-white section-shell">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <h2 className="section-title text-center">2 competitions, one path forward</h2>
@@ -174,7 +176,7 @@ export default function Competitions() {
               If you’re starting from zero, this is where to begin.
             </p>
 
-            <div className="overflow-x-auto rounded-2xl ring-1 ring-slate-100 shadow-sm">
+            <div className="overflow-x-auto ring-1 ring-slate-100 shadow-sm" style={{ borderRadius: '1.8rem 1.25rem 1.9rem 1.35rem / 1.4rem 1.8rem 1.2rem 1.65rem' }}>
               <table className="min-w-full text-left">
                 <thead className="bg-slate-50 text-slate-700 text-xs uppercase tracking-wider">
                 <tr>
@@ -216,7 +218,7 @@ export default function Competitions() {
         </section>
 
         {/* Mentor CTA FIX (only micro tone tweak) */}
-        <section className="py-20 bg-slate-50">
+        <section className="py-20 bg-slate-50 section-shell">
           <div className="max-w-5xl mx-auto px-4">
 
             <div className="card p-10 lg:p-14 bg-gradient-to-br from-blue-50 via-white to-cyan-50 border-blue-100 grid lg:grid-cols-12 gap-8 items-center">
@@ -242,13 +244,13 @@ export default function Competitions() {
         </section>
 
         {/* FAQ unchanged */}
-        <section id="faq" className="py-20 bg-white">
+        <section id="faq" className="py-20 bg-white section-shell">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="section-title text-center mb-12">Common questions</h2>
 
             <div className="space-y-3">
               {faqs.map(({ q, a }, i) => (
-                  <div key={i} className="border rounded-2xl overflow-hidden">
+                  <div key={i} className="border border-slate-200 overflow-hidden shadow-sm bg-white" style={{ borderRadius: '1.4rem 1.85rem 1.15rem 1.65rem / 1.2rem 1.45rem 1.6rem 1.25rem' }}>
                     <button
                         onClick={() => setOpenFaq(openFaq === i ? null : i)}
                         className="w-full flex justify-between px-6 py-5 text-left"
@@ -268,7 +270,7 @@ export default function Competitions() {
         </section>
 
         {/* CTA unchanged */}
-        <section className="py-20 bg-gradient-to-r from-blue-700 to-cyan-600 text-center">
+        <section className="py-20 bg-gradient-to-r from-blue-700 to-cyan-600 text-center section-shell">
           <h2 className="text-4xl font-bold text-white mb-4">Ready to compete?</h2>
           <p className="text-white/80 mb-8">Tell us your grade and goals.</p>
           <Link to="/partner" className="btn-accent px-8 py-4">

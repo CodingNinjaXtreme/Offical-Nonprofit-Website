@@ -11,6 +11,7 @@ const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Mission = lazy(() => import('./pages/Mission'));
 const Competitions = lazy(() => import('./pages/Competitions'));
+const Impact = lazy(() => import('./pages/Impact'));
 const PartnerWithUs = lazy(() => import('./pages/PartnerWithUs'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -26,10 +27,12 @@ function ScrollToTop() {
 // Reusable loading fallback
 function PageLoader() {
     return (
-        <div className="flex items-center justify-center min-h-[60vh]">
-            <div className="text-center">
-                <div className="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" aria-label="Loading"></div>
-                <p className="mt-3 text-gray-600 text-sm">Loading…</p>
+        <div className="flex items-center justify-center min-h-[60vh] px-4">
+            <div className="text-center card-glass bg-white/70 px-8 py-10 shadow-lg">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-cyan-500 to-amber-400 shadow-lg shadow-blue-500/20 animate-float">
+                    <div className="h-7 w-7 rounded-full border-4 border-white/90 border-t-transparent animate-spin" aria-label="Loading"></div>
+                </div>
+                <p className="text-slate-600 text-sm font-medium">Loading…</p>
             </div>
         </div>
     );
@@ -43,20 +46,21 @@ function App() {
 
                 <a
                     href="#main"
-                    className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="skip-link focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                     Skip to main content
                 </a>
 
-                <div className="min-h-screen flex flex-col">
+                <div className="min-h-screen flex flex-col relative">
                     <Header />
-                    <main id="main" className="flex-1" tabIndex={-1}>
+                    <main id="main" className="flex-1 relative" tabIndex={-1}>
                         <Suspense fallback={<PageLoader />}>
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/about" element={<About />} />
                                 <Route path="/mission" element={<Mission />} />
                                 <Route path="/competitions" element={<Competitions />} />
+                                <Route path="/impact" element={<Impact />} />
                                 <Route path="/partner" element={<PartnerWithUs />} />
 
                                 {/* Notice the exact casing here: Signup */}

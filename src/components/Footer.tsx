@@ -33,6 +33,11 @@ export default function Footer() {
                   'radial-gradient(ellipse at 0% 0%, rgba(56, 189, 248, 0.10), transparent 40%), radial-gradient(ellipse at 100% 100%, rgba(99, 102, 241, 0.10), transparent 50%)',
             }}
         />
+        <div aria-hidden className="relative text-slate-950 -mt-px">
+          <svg viewBox="0 0 1440 56" className="block h-14 w-full fill-current" preserveAspectRatio="none">
+            <path d="M0 16C88 28 162 36 248 34C335 32 391 16 482 10C568 4 649 14 731 22C813 30 902 34 1006 27C1110 20 1200 3 1440 12V56H0V16Z" />
+          </svg>
+        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             <div className="lg:col-span-2">
@@ -90,7 +95,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="border-t border-slate-800 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} InfinityMath4All. All rights reserved.
             </p>
@@ -101,7 +106,7 @@ export default function Footer() {
               </p>
 
               <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1 text-[11px] text-slate-400">
-                <span className="flex items-center gap-1 text-emerald-400 font-medium bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                <span className="flex items-center gap-1 text-emerald-400 font-medium bg-emerald-500/10 px-2 py-0.5 border border-emerald-500/20" style={{ borderRadius: '999px' }}>
                   <ShieldCheck className="w-3.5 h-3.5 flex-shrink-0" />
                   COPPA Compliant
                 </span>

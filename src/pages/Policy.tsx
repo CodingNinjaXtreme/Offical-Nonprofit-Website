@@ -25,7 +25,7 @@ export default function PrivacyPage() {
                 </Link>
 
                 {/* Header */}
-                <div className="border-b border-slate-800 pb-8 mb-12">
+                <div className="pb-8 mb-12">
                     <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-400 mb-3 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
                         <Shield className="w-3.5 h-3.5" /> Student Safety First
                     </div>
@@ -35,6 +35,11 @@ export default function PrivacyPage() {
                     <p className="text-sm text-slate-500">
                         Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                     </p>
+                    <div aria-hidden className="mt-8 text-slate-800">
+                        <svg viewBox="0 0 1440 34" className="block h-7 w-full fill-current" preserveAspectRatio="none">
+                            <path d="M0 20C120 10 232 0 360 6C488 12 593 30 716 28C838 26 952 8 1063 7C1177 6 1273 20 1440 13V34H0V20Z" />
+                        </svg>
+                    </div>
                 </div>
 
                 {/* Core Pillars Grid */}

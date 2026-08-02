@@ -316,25 +316,40 @@ export default function Home() {
           </div>
         </section>
 
+        <div aria-hidden className="relative text-white -mt-px">
+          <svg viewBox="0 0 1440 60" className="block h-14 w-full fill-current" preserveAspectRatio="none">
+            <path d="M0 0C104 22 200 42 312 40C426 38 505 15 606 8C710 0 821 14 916 23C1015 32 1100 38 1207 30C1309 23 1380 9 1440 0V60H0V0Z" />
+          </svg>
+        </div>
+
         {/* IMPACT */}
-        <section className="py-12 bg-white border-b">
-          <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <section className="py-12 bg-white relative section-shell">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="soft-rule mb-8" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               { v: '2', l: 'Competitions covered' },
               { v: '1–5', l: 'Grades taught' },
               { v: 'Live', l: 'Small group learning' },
               { v: copy.impactBasedIn, l: copy.locationSummary },
             ].map((s) => (
-                <div key={s.l}>
+                <div key={s.l} className="stat-tile bg-white/80 backdrop-blur-sm">
                   <div className="text-3xl font-bold">{s.v}</div>
                   <div className="text-sm text-slate-500">{s.l}</div>
                 </div>
             ))}
+            </div>
           </div>
         </section>
 
+        <div aria-hidden className="relative text-slate-50 -mt-px">
+          <svg viewBox="0 0 1440 56" className="block h-12 w-full fill-current" preserveAspectRatio="none">
+            <path d="M0 18C118 33 217 41 319 37C428 33 511 13 611 7C710 1 813 13 915 23C1020 33 1115 37 1213 29C1308 22 1375 9 1440 3V56H0V18Z" />
+          </svg>
+        </div>
+
         {/* SERVICE AREA */}
-        <section className="py-20 bg-slate-50">
+        <section className="py-20 bg-slate-50 section-shell">
           <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="section-tag">
@@ -348,8 +363,8 @@ export default function Home() {
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4">
-                {serviceAreas.map((area) => (
-                  <div key={area.name} className="card p-5">
+                {serviceAreas.map((area, index) => (
+                  <div key={area.name} className="card p-5" style={{ transform: index === 0 ? 'rotate(-0.3deg)' : 'rotate(0.25deg)' }}>
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-4 h-4 text-blue-600" aria-hidden="true" />
                       <h3 className="font-bold text-slate-900">{area.name}</h3>
@@ -367,7 +382,7 @@ export default function Home() {
             >
               <div className="grid gap-4 md:grid-cols-2">
                 {serviceAreas.map((area, index) => (
-                  <div key={area.name} className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+                  <div key={area.name} className="overflow-hidden border border-slate-100 bg-white shadow-sm" style={{ borderRadius: index === 0 ? '1.7rem 1.2rem 1.9rem 1.35rem / 1.4rem 1.8rem 1.15rem 1.7rem' : '1.4rem 1.85rem 1.15rem 1.65rem / 1.2rem 1.45rem 1.6rem 1.25rem' }}>
                     <iframe
                       title={`${area.name} mini Google map`}
                       src={`https://www.google.com/maps?q=${encodeURIComponent(area.name === 'Fremont' ? 'Fremont, CA' : 'Warm Springs, Fremont, CA')}&output=embed`}
@@ -392,7 +407,7 @@ export default function Home() {
         </section>
 
         {/* ABOUT */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white section-shell">
           <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
             <div>
             <span className="section-tag">
@@ -417,7 +432,7 @@ export default function Home() {
 
               <ul className="space-y-3">
                 {whyUs.map((item) => (
-                    <li key={item} className="flex gap-2">
+                    <li key={item} className="flex gap-2 items-start">
                       <CheckCircle2 className="text-emerald-500" aria-hidden="true" />
                       {item}
                     </li>
@@ -427,21 +442,21 @@ export default function Home() {
 
             <img
                 src="https://cdn.prod.website-files.com/6744bdb342b0a7660e7b7c7d/6834cbb655e09ee0008f6474_67df5face1f96bebc07f8f2b_3b23b533-c408-4380-bce6-0820b89131e9_math-on-board.webp"
-                className="rounded-2xl shadow-lg"
+                className="rounded-2xl shadow-lg rotate-[-0.75deg]"
                 alt="student"
             />
           </div>
         </section>
 
         {/* HOW IT WORKS */}
-        <section className="py-20 bg-slate-50">
+        <section className="py-20 bg-slate-50 section-shell">
           <div className="max-w-7xl mx-auto px-4 text-center mb-12">
             <h2 className="section-title">How It Works</h2>
           </div>
 
           <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6">
             {howItWorks.map(({ icon: Icon, title, text }, i) => (
-                <div key={title} className="card p-6">
+                <div key={title} className="card p-6" style={{ transform: i % 2 === 0 ? 'rotate(-0.3deg)' : 'translateY(8px) rotate(0.25deg)' }}>
                   <Icon className="w-10 h-10 mb-4 text-blue-600" aria-hidden="true" />
                   <div className="text-xs font-bold text-blue-600 mb-2">
                     STEP {i + 1}
@@ -454,14 +469,14 @@ export default function Home() {
         </section>
 
         {/* COMPETITIONS */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white section-shell">
           <div className="max-w-7xl mx-auto px-4 text-center mb-12">
             <h2 className="section-title">Competitions We Prepare For</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto px-4">
             {competitions.map((c) => (
-                <Link key={c.name} to="/competitions" className="card p-6">
+                <Link key={c.name} to="/competitions" className="card p-6" style={{ transform: c.name === 'Noetic Math' ? 'rotate(-0.35deg)' : c.name === 'Math Olympiad (MOEMS)' ? 'translateY(8px)' : 'rotate(0.2deg)' }}>
                   <div className={`h-2 ${c.color} mb-4`} />
                   <div className="text-sm text-slate-500 mb-2">{c.level}</div>
                   <h3 className="font-bold mb-2">{c.name}</h3>
@@ -472,7 +487,7 @@ export default function Home() {
         </section>
 
         {/* CTA (1.png RESTORED) */}
-        <section className="py-20 bg-blue-700 text-white">
+        <section className="py-20 bg-blue-700 text-white section-shell">
           <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 items-center gap-10 text-center lg:text-left">
             <div>
               <Award className="mx-auto lg:mx-0 mb-4" size={40} />

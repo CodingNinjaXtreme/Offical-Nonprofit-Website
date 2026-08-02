@@ -24,7 +24,7 @@ export default function About() {
       <div className="pt-20">
 
         {/* HERO */}
-        <section className="relative py-32 bg-hero-warm overflow-hidden">
+        <section className="relative py-32 bg-hero-warm overflow-hidden section-shell">
           <div className="absolute inset-0 pointer-events-none opacity-70">
             <div className="absolute top-[-120px] right-[-80px] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-[-120px] left-[-80px] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-3xl" />
@@ -53,7 +53,7 @@ export default function About() {
         </section>
 
         {/* WHY SECTION */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white section-shell">
           <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-start">
 
             <div className="lg:col-span-5">
@@ -74,9 +74,10 @@ export default function About() {
 
             <div className="lg:col-span-7 grid md:grid-cols-3 gap-6">
               {focusAreas.map(({ icon: Icon, title, text }) => (
-                  <div
+                    <div
                       key={title}
-                      className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                      className="group card bg-white p-6"
+                      style={{ transform: title === 'Grade-Level Foundations' ? 'rotate(-0.35deg)' : title === 'Competition Readiness' ? 'translateY(10px)' : 'rotate(0.25deg)' }}
                   >
                     <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-sm">
                       <Icon className="w-5 h-5 text-white" />
@@ -97,9 +98,9 @@ export default function About() {
         </section>
 
         {/* ACHIEVEMENTS */}
-        <section className="py-24 bg-slate-50">
+        <section className="py-24 bg-slate-50 section-shell">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="rounded-3xl border border-slate-100 bg-white p-10 shadow-sm">
+            <div className="card p-10 bg-white">
 
               <h2 className="text-2xl font-semibold text-slate-900 mb-4">
                 Our Experience
@@ -116,7 +117,7 @@ export default function About() {
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-gradient-to-r from-blue-700 to-cyan-600 relative overflow-hidden">
+        <section className="py-24 bg-gradient-to-r from-blue-700 to-cyan-600 relative overflow-hidden section-shell">
 
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-[-100px] right-[-100px] w-[400px] h-[400px] bg-white rounded-full blur-3xl" />

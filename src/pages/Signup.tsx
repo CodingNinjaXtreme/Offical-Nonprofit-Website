@@ -13,7 +13,6 @@ const baseSignupCopy = {
     location: 'Your location / where you live',
     history: 'Math competition history & current grade level',
     button: 'Open Signup Form',
-    directLink: 'Use the direct Google Form link',
 };
 
 const signupCopy = {
@@ -30,7 +29,6 @@ const signupCopy = {
         location: 'Tu ubicación / dónde vives',
         history: 'Historial de concursos de matemáticas y nivel de grado actual',
         button: 'Abrir formulario de inscripción',
-        directLink: 'Usar el enlace directo del formulario de Google',
     },
     hi: {
         ...baseSignupCopy,
@@ -44,7 +42,6 @@ const signupCopy = {
         location: 'आपकी जगह / आप कहाँ रहते हैं',
         history: 'गणित प्रतियोगिता इतिहास और वर्तमान ग्रेड स्तर',
         button: 'साइनअप फॉर्म खोलें',
-        directLink: 'सीधे Google फॉर्म लिंक का उपयोग करें',
     },
     fr: {
         ...baseSignupCopy,
@@ -58,7 +55,6 @@ const signupCopy = {
         location: 'Votre emplacement / où vous vivez',
         history: 'Historique des concours de mathématiques et niveau actuel',
         button: 'Ouvrir le formulaire d’inscription',
-        directLink: 'Utiliser le lien direct du formulaire Google',
     },
     ja: {
         ...baseSignupCopy,
@@ -72,7 +68,6 @@ const signupCopy = {
         location: 'お住まいの地域',
         history: '数学コンテストの経験と現在の学年',
         button: '登録フォームを開く',
-        directLink: 'Googleフォームの直接リンクを使う',
     },
     zh: {
         ...baseSignupCopy,
@@ -86,7 +81,6 @@ const signupCopy = {
         location: '您所在的位置/居住地',
         history: '数学竞赛经历和当前年级',
         button: '打开报名表',
-        directLink: '使用 Google 表单直链',
     },
 } as const;
 
@@ -115,7 +109,7 @@ export default function Signup() {
                     {copy.subtitle}
                 </p>
 
-                <div className="text-left bg-slate-50 border border-slate-100 rounded-xl p-5 mb-8 space-y-3 max-w-md mx-auto">
+                <div className="text-left bg-slate-50 border border-slate-100 p-5 mb-8 space-y-3 max-w-md mx-auto" style={{ borderRadius: '1.5rem 1.9rem 1.2rem 1.75rem / 1.25rem 1.55rem 1.7rem 1.35rem' }}>
                     <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
                         {copy.infoLabel}
                     </p>
@@ -141,24 +135,17 @@ export default function Signup() {
                     </div>
                 </div>
 
-                <a
-                    href={GOOGLE_FORM_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-primary group animate-shine text-lg px-8 py-4 shadow-lg shadow-blue-500/20"
-                >
-                    <span>{copy.button}</span>
-                    <CheckCircle className="w-5 h-5 transition-transform group-hover:scale-110" aria-hidden="true" />
-                </a>
-
-                <a
-                    href={GOOGLE_FORM_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-500"
-                >
-                    {copy.directLink}
-                </a>
+                <div className="flex justify-center">
+                    <a
+                        href={GOOGLE_FORM_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-primary group animate-shine w-full max-w-sm justify-center text-lg px-10 py-5 shadow-lg shadow-blue-500/20"
+                    >
+                        <span>{copy.button}</span>
+                        <CheckCircle className="w-5 h-5 transition-transform group-hover:scale-110" aria-hidden="true" />
+                    </a>
+                </div>
             </div>
         </div>
     );
