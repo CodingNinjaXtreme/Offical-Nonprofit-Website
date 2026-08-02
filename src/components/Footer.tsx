@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Heart, ShieldCheck } from 'lucide-react';
+import { Mail, ShieldCheck } from 'lucide-react';
 import Logo from './Logo';
 
 const footerLinks = {
@@ -24,102 +24,90 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-      <footer className="relative bg-slate-950 text-slate-300 overflow-hidden">
-        <div
-            aria-hidden
-            className="absolute inset-0 pointer-events-none opacity-60"
-            style={{
-              backgroundImage:
-                  'radial-gradient(ellipse at 0% 0%, rgba(56, 189, 248, 0.10), transparent 40%), radial-gradient(ellipse at 100% 100%, rgba(99, 102, 241, 0.10), transparent 50%)',
-            }}
-        />
-        <div aria-hidden className="relative text-slate-950 -mt-px">
-          <svg viewBox="0 0 1440 56" className="block h-14 w-full fill-current" preserveAspectRatio="none">
-            <path d="M0 16C88 28 162 36 248 34C335 32 391 16 482 10C568 4 649 14 731 22C813 30 902 34 1006 27C1110 20 1200 3 1440 12V56H0V16Z" />
-          </svg>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-            <div className="lg:col-span-2">
-              <Link to="/" className="flex items-center gap-2.5 group mb-5">
-                <Logo size={36} />
-                <div>
-                  <div className="font-bold text-white text-base">
-                    InfinityMath<span className="text-gradient">4All</span>
-                  </div>
-                  <div className="text-[11px] uppercase tracking-wider text-blue-400">Math Education Program</div>
-                </div>
-              </Link>
-              <p className="text-sm leading-relaxed text-slate-400 mb-6 max-w-xs">
-                Empowering elementary students through world-class math
-                competition preparation and a love of learning.
-              </p>
-              <div className="space-y-2.5 text-sm">
-                <div className="flex items-center gap-2.5 text-slate-400">
-                  <Mail className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                  <a
-                      href="mailto:admin@InfinityMath4All.org"
-                      className="hover:text-white transition-colors"
-                  >
-                    admin@InfinityMath4All.org
-                  </a>
-                </div>
-              </div>
-            </div>
+    <footer className="bg-ink text-paper/70">
+      <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+        {/* Masthead statement */}
+        <div className="grid gap-10 border-b border-paper/12 py-16 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Link to="/" className="mb-6 inline-flex items-center gap-3">
+              <Logo size={36} variant="mono" />
+              <span className="flex flex-col leading-none">
+                <span className="font-serif text-lg font-semibold text-paper">
+                  InfinityMath4All
+                </span>
+                <span className="mt-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-paper/45">
+                  Math Education Program
+                </span>
+              </span>
+            </Link>
 
-            {Object.entries(footerLinks).map(([category, links]) => (
-                <div key={category}>
-                  <h4 className="text-white font-semibold text-sm mb-4">{category}</h4>
-                  <ul className="space-y-2.5">
-                    {links.map((link) => (
-                        <li key={link.label}>
-                          {link.path.startsWith('mailto:') || link.path.includes('#') ? (
-                              <a
-                                  href={link.path}
-                                  className="text-sm text-slate-400 hover:text-white transition-colors duration-200"
-                              >
-                                {link.label}
-                              </a>
-                          ) : (
-                              <Link
-                                  to={link.path}
-                                  className="text-sm text-slate-400 hover:text-white transition-colors duration-200"
-                              >
-                                {link.label}
-                              </Link>
-                          )}
-                        </li>
-                    ))}
-                  </ul>
-                </div>
-            ))}
-          </div>
-
-          <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-slate-500">
-              &copy; {new Date().getFullYear()} InfinityMath4All. All rights reserved.
+            <p className="max-w-sm font-serif text-xl leading-snug text-paper/85 text-pretty">
+              Free competition math coaching for elementary students, taught by
+              the students who just competed.
             </p>
 
-            <div className="flex flex-col items-center sm:items-end gap-1.5 text-right">
-              <p className="text-xs text-slate-500 flex items-center gap-1">
-                Made with <Heart className="w-3 h-3 text-red-400 fill-red-400 animate-pulse" /> for students everywhere
-              </p>
+            <a
+              href="mailto:admin@InfinityMath4All.org"
+              className="mt-7 inline-flex items-center gap-2.5 text-sm text-paper/65 transition-colors hover:text-paper"
+            >
+              <Mail className="h-4 w-4 shrink-0 text-brass" aria-hidden="true" />
+              admin@InfinityMath4All.org
+            </a>
+          </div>
 
-              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1 text-[11px] text-slate-400">
-                <span className="flex items-center gap-1 text-emerald-400 font-medium bg-emerald-500/10 px-2 py-0.5 border border-emerald-500/20" style={{ borderRadius: '999px' }}>
-                  <ShieldCheck className="w-3.5 h-3.5 flex-shrink-0" />
-                  COPPA Compliant
-                </span>
-                <span className="text-slate-600">|</span>
-                <span className="text-slate-500">No Student PII Collected</span>
-                <span className="text-slate-600">|</span>
-                <Link to="/privacy" className="hover:text-white underline underline-offset-2 transition-colors">
-                  Privacy Policy
-                </Link>
+          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-7">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category}>
+                <h4 className="mb-5 font-sans text-[0.625rem] font-semibold uppercase tracking-[0.16em] text-paper/45">
+                  {category}
+                </h4>
+                <ul className="flex flex-col gap-3">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      {link.path.startsWith('mailto:') || link.path.includes('#') ? (
+                        <a
+                          href={link.path}
+                          className="text-sm leading-snug text-paper/70 transition-colors duration-200 hover:text-paper"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.path}
+                          className="text-sm leading-snug text-paper/70 transition-colors duration-200 hover:text-paper"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      </footer>
+
+        {/* Legal strip */}
+        <div className="flex flex-col gap-5 py-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-paper/45">
+            &copy; {new Date().getFullYear()} InfinityMath4All. All rights reserved.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+            <span className="inline-flex items-center gap-1.5 text-paper/70">
+              <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-brass" aria-hidden="true" />
+              COPPA Compliant
+            </span>
+            <span className="text-paper/50">No Student PII Collected</span>
+            <Link
+              to="/privacy"
+              className="text-paper/70 underline decoration-paper/25 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper/60"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }

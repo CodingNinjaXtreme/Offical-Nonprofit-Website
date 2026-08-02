@@ -4,41 +4,46 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-serif)'],
       },
       colors: {
-        primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+        ink: {
+          DEFAULT: 'rgb(var(--ink) / <alpha-value>)',
+          soft: 'rgb(var(--ink-soft) / <alpha-value>)',
+          muted: 'rgb(var(--ink-muted) / <alpha-value>)',
         },
+        paper: 'rgb(var(--paper) / <alpha-value>)',
+        surface: 'rgb(var(--surface) / <alpha-value>)',
+        rule: 'rgb(var(--rule) / <alpha-value>)',
+        accent: {
+          DEFAULT: 'rgb(var(--accent) / <alpha-value>)',
+          tint: 'rgb(var(--accent-tint) / <alpha-value>)',
+        },
+        brass: 'rgb(var(--brass) / <alpha-value>)',
+      },
+      borderRadius: {
+        DEFAULT: 'var(--radius)',
+        sm: 'calc(var(--radius) * 0.5)',
+        md: 'calc(var(--radius) * 2)',
+        lg: 'calc(var(--radius) * 3)',
+      },
+      maxWidth: {
+        shell: '78rem',
       },
       animation: {
-        'fade-up': 'fadeUp 0.6s ease-out forwards',
+        'fade-up': 'fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards',
         'fade-in': 'fadeIn 0.5s ease-out forwards',
-        'float': 'float 3s ease-in-out infinite',
-        'marquee': 'marquee 25s linear infinite',
+        marquee: 'marquee 32s linear infinite',
       },
       keyframes: {
         fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '0%': { opacity: '0', transform: 'translateY(18px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-8px)' },
         },
         marquee: {
           '0%': { transform: 'translateX(0%)' },

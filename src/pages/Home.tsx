@@ -2,19 +2,14 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Trophy,
-
-  Lightbulb,
   CheckCircle2,
-  ChevronRight,
-  Award,
-
   Compass,
   GraduationCap,
   MapPin,
-
 } from 'lucide-react';
 import { GOOGLE_FORM_URL } from '../constants/signup';
 import { useLanguage } from '../context/LanguageContext';
+import SectionHeading from '../components/SectionHeading';
 
 const baseHomeCopy = {
   heroBadge: 'Built by students who recently competed in these contests',
@@ -188,26 +183,20 @@ const competitions = [
   {
     name: 'Noetic Math',
     level: 'Grades 1–5',
-    color: 'bg-blue-500',
-    accent: 'bg-blue-50 text-blue-700',
     description:
-        'First exposure to structured contest thinking through creative problem solving.',
+      'First exposure to structured contest thinking through creative problem solving.',
   },
   {
     name: 'Math Olympiad (MOEMS)',
     level: 'Grades 1–5',
-    color: 'bg-amber-500',
-    accent: 'bg-amber-50 text-amber-700',
     description:
-        'Where strategy starts to matter more than speed—students learn real reasoning.',
+      'Where strategy starts to matter more than speed—students learn real reasoning.',
   },
   {
     name: 'Elementary Math Track',
     level: 'Grades 1–5',
-    color: 'bg-indigo-500',
-    accent: 'bg-indigo-50 text-indigo-700',
     description:
-        'Core number sense, arithmetic fluency, and early problem-solving foundations.',
+      'Core number sense, arithmetic fluency, and early problem-solving foundations.',
   },
 ];
 
@@ -240,12 +229,10 @@ const serviceAreas = [
   {
     name: 'Fremont',
     detail: 'Core community base for local outreach and enrollment.',
-    position: 'left-[24%] top-[58%]',
   },
   {
     name: 'Warm Springs',
     detail: 'Serving families here now while expanding our reach.',
-    position: 'left-[63%] top-[38%]',
   },
 ];
 
@@ -253,279 +240,371 @@ export default function Home() {
   const { language } = useLanguage();
   const copy = { ...homeCopy.en, ...homeCopy[language] };
 
+  const heroStats = [
+    { value: '2', label: 'Competitions covered' },
+    { value: '1–5', label: 'Grades taught' },
+    { value: 'Live', label: 'Small group learning' },
+    { value: copy.impactBasedIn, label: copy.locationSummary },
+  ];
+
   return (
-      <div>
-        {/* HERO */}
-        <section className="relative min-h-screen bg-hero flex items-center overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-20 right-[10%] w-72 h-72 bg-blue-500/15 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl" />
-            <div className="absolute inset-0 bg-grid opacity-50" />
-          </div>
+    <div>
+      {/* ================================================================ HERO */}
+      <section className="relative overflow-hidden bg-hero">
+        <div className="absolute inset-0 bg-grid opacity-40" aria-hidden="true" />
 
-          <div className="relative max-w-7xl mx-auto px-4 py-32 w-full">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* LEFT */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-8 text-white/80 text-sm">
-                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true" />
-                  {copy.heroBadge}
-                </div>
+        <div className="relative mx-auto max-w-shell px-5 pb-14 pt-32 sm:px-6 lg:px-10 lg:pb-16 lg:pt-40">
+          <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+            {/* Editorial column */}
+            <div className="lg:col-span-7">
+              <p className="mb-8 flex items-start gap-3 text-[0.75rem] font-medium leading-snug text-paper/65">
+                <span
+                  className="mt-1.5 h-px w-7 shrink-0 bg-brass"
+                  aria-hidden="true"
+                />
+                {copy.heroBadge}
+              </p>
 
-                <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                  {copy.heroTitleLine1}
-                  <span className="block text-gradient-gold">
-                    {copy.heroTitleLine2}
-                  </span>
-                </h1>
+              <h1 className="display-xl text-balance font-semibold text-paper">
+                {copy.heroTitleLine1}{' '}
+                <span className="italic text-brass">{copy.heroTitleLine2}</span>
+              </h1>
 
-                <p className="text-lg text-white/70 mb-10 max-w-lg">
-                  {copy.heroLead}
-                </p>
+              <p className="mt-8 max-w-xl text-pretty text-[1.125rem] leading-[1.65] text-paper/72">
+                {copy.heroLead}
+              </p>
 
-                <p className="text-sm text-white/65 mb-8 max-w-lg">
-                  {copy.heroLocation}
-                </p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Link to="/competitions" className="btn-accent">
+                  {copy.exploreCompetitions}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
 
-                <div className="flex gap-4 flex-col sm:flex-row">
-                  <Link to="/competitions" className="btn-accent px-8 py-4">
-                    <span>{copy.exploreCompetitions}</span> <ArrowRight aria-hidden="true" />
-                  </Link>
-                  <a
-                      href={GOOGLE_FORM_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                        aria-label="Sign up for the math program in a new tab"
-                      className="btn-ghost-light px-8 py-4"
-                  >
-                    <span>{copy.signUp}</span> <ChevronRight aria-hidden="true" />
-                  </a>
-                </div>
+                <a
+                  href={GOOGLE_FORM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Sign up for the math program in a new tab"
+                  className="btn-ghost-light"
+                >
+                  {copy.signUp}
+                </a>
               </div>
 
-              {/* RIGHT IMAGE (2.png restored + scaled back up) */}
-              <div className="hidden lg:block">
+              <p className="mt-8 flex items-start gap-2 text-sm text-paper/55">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brass" aria-hidden="true" />
+                {copy.heroLocation}
+              </p>
+            </div>
+
+            {/* Framed portrait */}
+            <figure className="hidden lg:col-span-5 lg:block">
+              <div className="border border-paper/15 p-2.5">
                 <img
-                    src="/2.png"
-                    alt="Math"
-                    className="rounded-3xl shadow-2xl w-full object-cover h-[580px] ring-1 ring-white/10 scale-[1.02]"
-                    loading="eager"
+                  src="/images/hero-worksheet.png"
+                  alt="A student working through a handwritten number pattern in a squared notebook by lamplight"
+                  className="h-[30rem] w-full rounded-sm object-cover"
+                  loading="eager"
                 />
               </div>
-            </div>
+              <figcaption className="mt-3 text-[0.6875rem] uppercase tracking-[0.14em] text-paper/40">
+                Pattern work, not worksheets
+              </figcaption>
+            </figure>
           </div>
-        </section>
-
-        <div aria-hidden className="relative text-white -mt-px">
-          <svg viewBox="0 0 1440 60" className="block h-14 w-full fill-current" preserveAspectRatio="none">
-            <path d="M0 0C104 22 200 42 312 40C426 38 505 15 606 8C710 0 821 14 916 23C1015 32 1100 38 1207 30C1309 23 1380 9 1440 0V60H0V0Z" />
-          </svg>
         </div>
 
-        {/* IMPACT */}
-        <section className="py-12 bg-white relative section-shell">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="soft-rule mb-8" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { v: '2', l: 'Competitions covered' },
-              { v: '1–5', l: 'Grades taught' },
-              { v: 'Live', l: 'Small group learning' },
-              { v: copy.impactBasedIn, l: copy.locationSummary },
-            ].map((s) => (
-                <div key={s.l} className="stat-tile bg-white/80 backdrop-blur-sm">
-                  <div className="text-3xl font-bold">{s.v}</div>
-                  <div className="text-sm text-slate-500">{s.l}</div>
-                </div>
+        {/* Credential strip */}
+        <div className="relative border-t border-paper/12">
+          <dl className="mx-auto grid max-w-shell grid-cols-2 px-5 sm:px-6 lg:grid-cols-4 lg:px-10">
+            {heroStats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`py-7 lg:py-8 ${
+                  i > 0 ? 'lg:border-l lg:border-paper/12 lg:pl-8' : ''
+                } ${i % 2 === 1 ? 'border-l border-paper/12 pl-6 lg:pl-8' : ''}`}
+              >
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="block font-serif text-[1.75rem] font-semibold leading-none text-paper lg:text-[2.125rem]">
+                    {stat.value}
+                  </span>
+                  <span className="mt-2.5 block text-[0.75rem] leading-snug text-paper/50">
+                    {stat.label}
+                  </span>
+                </dd>
+              </div>
             ))}
-            </div>
-          </div>
-        </section>
-
-        <div aria-hidden className="relative text-slate-50 -mt-px">
-          <svg viewBox="0 0 1440 56" className="block h-12 w-full fill-current" preserveAspectRatio="none">
-            <path d="M0 18C118 33 217 41 319 37C428 33 511 13 611 7C710 1 813 13 915 23C1020 33 1115 37 1213 29C1308 22 1375 9 1440 3V56H0V18Z" />
-          </svg>
+          </dl>
         </div>
+      </section>
 
-        {/* SERVICE AREA */}
-        <section className="py-20 bg-slate-50 section-shell">
-          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="section-tag">
-                <MapPin aria-hidden="true" /> Service Area
-              </span>
+      {/* ======================================================= WHY THIS EXISTS */}
+      <section className="bg-paper py-20 lg:py-28">
+        <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-6">
+              <SectionHeading
+                index="01"
+                eyebrow={copy.whyTag}
+                title={copy.whyTitle}
+              />
 
-              <h2 className="section-title">{copy.serviceTitle}</h2>
-
-              <p className="section-subtitle mb-8">
-                {copy.serviceBody}
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                {serviceAreas.map((area, index) => (
-                  <div key={area.name} className="card p-5" style={{ transform: index === 0 ? 'rotate(-0.3deg)' : 'rotate(0.25deg)' }}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <MapPin className="w-4 h-4 text-blue-600" aria-hidden="true" />
-                      <h3 className="font-bold text-slate-900">{area.name}</h3>
-                    </div>
-                    <p className="text-sm text-slate-600">{area.detail}</p>
-                  </div>
-                ))}
+              <div className="prose-editorial mt-8 max-w-xl">
+                <p>{copy.whyP1}</p>
+                <p>{copy.whyP2}</p>
+                <p>{copy.whyP3}</p>
               </div>
-            </div>
 
-            <div
-              className="card p-4 sm:p-6 bg-white"
-              role="img"
-              aria-label={copy.mapAriaLabel}
-            >
-              <div className="grid gap-4 md:grid-cols-2">
-                {serviceAreas.map((area, index) => (
-                  <div key={area.name} className="overflow-hidden border border-slate-100 bg-white shadow-sm" style={{ borderRadius: index === 0 ? '1.7rem 1.2rem 1.9rem 1.35rem / 1.4rem 1.8rem 1.15rem 1.7rem' : '1.4rem 1.85rem 1.15rem 1.65rem / 1.2rem 1.45rem 1.6rem 1.25rem' }}>
-                    <iframe
-                      title={`${area.name} mini Google map`}
-                      src={`https://www.google.com/maps?q=${encodeURIComponent(area.name === 'Fremont' ? 'Fremont, CA' : 'Warm Springs, Fremont, CA')}&output=embed`}
-                      className="h-56 w-full border-0"
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                    />
-                    <div className="border-t border-slate-100 p-4">
-                      <div className="flex items-center gap-2 mb-1">
-                        <MapPin className="w-4 h-4 text-blue-600" aria-hidden="true" />
-                        <h3 className="font-bold text-slate-900">{area.name}</h3>
-                      </div>
-                      <p className="text-sm text-slate-600">{area.detail}</p>
-                    </div>
-                  </div>
-                ))}
-                <p className="md:col-span-2 text-sm text-slate-500">
-                  {copy.serviceNow}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ABOUT */}
-        <section className="py-20 bg-white section-shell">
-          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
-            <div>
-            <span className="section-tag">
-              <Lightbulb aria-hidden="true" /> Why This Exists
-            </span>
-
-              <h2 className="section-title">
-                {copy.whyTitle}
-              </h2>
-
-              <p className="text-slate-600 mb-6">
-                {copy.whyP1}
-              </p>
-
-              <p className="text-slate-600 mb-6">
-                {copy.whyP2}
-              </p>
-
-              <p className="text-slate-600 mb-6">
-                {copy.whyP3}
-              </p>
-
-              <ul className="space-y-3">
+              <ul className="mt-10 flex flex-col">
                 {whyUs.map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <CheckCircle2 className="text-emerald-500" aria-hidden="true" />
-                      {item}
-                    </li>
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 border-t border-rule py-4 text-[0.9375rem] leading-snug text-ink-soft last:border-b"
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
 
-            <img
-                src="https://cdn.prod.website-files.com/6744bdb342b0a7660e7b7c7d/6834cbb655e09ee0008f6474_67df5face1f96bebc07f8f2b_3b23b533-c408-4380-bce6-0820b89131e9_math-on-board.webp"
-                className="rounded-2xl shadow-lg rotate-[-0.75deg]"
-                alt="student"
-            />
-          </div>
-        </section>
-
-        {/* HOW IT WORKS */}
-        <section className="py-20 bg-slate-50 section-shell">
-          <div className="max-w-7xl mx-auto px-4 text-center mb-12">
-            <h2 className="section-title">How It Works</h2>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6">
-            {howItWorks.map(({ icon: Icon, title, text }, i) => (
-                <div key={title} className="card p-6" style={{ transform: i % 2 === 0 ? 'rotate(-0.3deg)' : 'translateY(8px) rotate(0.25deg)' }}>
-                  <Icon className="w-10 h-10 mb-4 text-blue-600" aria-hidden="true" />
-                  <div className="text-xs font-bold text-blue-600 mb-2">
-                    STEP {i + 1}
-                  </div>
-                  <h3 className="font-bold mb-2">{title}</h3>
-                  <p className="text-sm text-slate-600">{text}</p>
-                </div>
-            ))}
-          </div>
-        </section>
-
-        {/* COMPETITIONS */}
-        <section className="py-20 bg-white section-shell">
-          <div className="max-w-7xl mx-auto px-4 text-center mb-12">
-            <h2 className="section-title">Competitions We Prepare For</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto px-4">
-            {competitions.map((c) => (
-                <Link key={c.name} to="/competitions" className="card p-6" style={{ transform: c.name === 'Noetic Math' ? 'rotate(-0.35deg)' : c.name === 'Math Olympiad (MOEMS)' ? 'translateY(8px)' : 'rotate(0.2deg)' }}>
-                  <div className={`h-2 ${c.color} mb-4`} />
-                  <div className="text-sm text-slate-500 mb-2">{c.level}</div>
-                  <h3 className="font-bold mb-2">{c.name}</h3>
-                  <p className="text-sm text-slate-600">{c.description}</p>
-                </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA (1.png RESTORED) */}
-        <section className="py-20 bg-blue-700 text-white section-shell">
-          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 items-center gap-10 text-center lg:text-left">
-            <div>
-              <Award className="mx-auto lg:mx-0 mb-4" size={40} />
-              <h2 className="text-3xl font-bold mb-4">
-                {copy.ctaTitle}
-              </h2>
-              <p className="text-white/70 mb-8">
-                {copy.ctaBody}
-              </p>
-
-              <div className="flex gap-4 flex-col sm:flex-row justify-center lg:justify-start">
-                <Link to="/competitions" className="btn-accent px-8 py-4">
-                  <span>{copy.getStarted}</span> <ArrowRight aria-hidden="true" />
-                </Link>
-
-                <a
-                    href={GOOGLE_FORM_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Sign up for the math program in a new tab"
-                    className="btn-ghost-light px-8 py-4"
-                >
-                  <span>Sign Up</span> <ChevronRight aria-hidden="true" />
-                </a>
+            <figure className="lg:col-span-6">
+              <div className="overflow-hidden rounded border border-rule bg-surface p-2.5">
+                <img
+                  src="/images/chalkboard-session.png"
+                  alt="A high school mentor explaining a number pattern at a chalkboard to two elementary students"
+                  className="w-full rounded-sm object-cover"
+                  loading="lazy"
+                />
               </div>
+              <figcaption className="mt-3 text-[0.75rem] leading-snug text-ink-muted">
+                Mentors work through the reasoning out loud, so students learn the
+                pattern rather than the answer.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================= HOW IT WORKS */}
+      <section className="bg-section-alt py-20 lg:py-28">
+        <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+          <SectionHeading
+            index="02"
+            eyebrow="The Process"
+            title="How It Works"
+            subtitle="Three steps from first placement to walking into a competition room already knowing what to expect."
+          />
+
+          <div className="mt-14 grid gap-px border-t border-ink/10 bg-ink/10 md:grid-cols-3">
+            {howItWorks.map(({ icon: Icon, title, text }, i) => (
+              <article key={title} className="bg-paper p-7 lg:p-9">
+                <div className="mb-7 flex items-center justify-between">
+                  <span className="font-serif text-[2.25rem] font-semibold leading-none text-ink/15">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <Icon className="h-5 w-5 text-accent" aria-hidden="true" />
+                </div>
+
+                <h3 className="text-lg font-semibold leading-snug text-ink">{title}</h3>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-muted">
+                  {text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================= COMPETITIONS */}
+      <section className="bg-paper py-20 lg:py-28">
+        <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+          <SectionHeading
+            index="03"
+            eyebrow="Curriculum"
+            title="Competitions We Prepare For"
+            subtitle="Every track is taught by mentors who sat the same exam within the last few years."
+          />
+
+          <div className="mt-14 border-t border-ink/10">
+            {competitions.map((competition) => (
+              <Link
+                key={competition.name}
+                to="/competitions"
+                className="group flex flex-col gap-4 border-b border-rule py-7 transition-colors duration-200 hover:bg-ink/[0.02] md:flex-row md:items-baseline md:gap-10"
+              >
+                <span className="w-28 shrink-0 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+                  {competition.level}
+                </span>
+
+                <div className="flex-1">
+                  <h3 className="font-serif text-xl font-semibold text-ink">
+                    {competition.name}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-[0.9375rem] leading-relaxed text-ink-muted">
+                    {competition.description}
+                  </p>
+                </div>
+
+                <ArrowRight
+                  className="h-4 w-4 shrink-0 text-accent transition-transform duration-200 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================= SERVICE AREA */}
+      <section className="bg-section-alt py-20 lg:py-28">
+        <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <SectionHeading
+                index="04"
+                eyebrow="Service Area"
+                title={copy.serviceTitle}
+                subtitle={copy.serviceBody}
+              />
+
+              <dl className="mt-10 border-t border-ink/10">
+                {serviceAreas.map((area) => (
+                  <div key={area.name} className="border-b border-rule py-5">
+                    <dt className="flex items-center gap-2 font-semibold text-ink">
+                      <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
+                      {area.name}
+                    </dt>
+                    <dd className="mt-1.5 pl-6 text-[0.9375rem] leading-relaxed text-ink-muted">
+                      {area.detail}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <p className="mt-6 text-sm leading-relaxed text-ink-muted">
+                {copy.serviceNow}
+              </p>
             </div>
 
-            {/* RESTORED 1.png */}
-            <div className="hidden lg:flex justify-center">
-              <img
-                  src="/1.png"
-                  alt="InfinityMath4All flyer"
-                  className="w-full max-w-md rounded-2xl shadow-2xl object-cover"
-                  loading="eager"
-              />
+            <div
+              className="grid gap-6 sm:grid-cols-2 lg:col-span-7"
+              role="group"
+              aria-label={copy.mapAriaLabel}
+            >
+              {serviceAreas.map((area, index) => (
+                <figure
+                  key={area.name}
+                  className="card-flat overflow-hidden"
+                >
+                  <iframe
+                    title={`${area.name} mini Google map`}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(
+                      area.name === 'Fremont' ? 'Fremont, CA' : 'Warm Springs, Fremont, CA',
+                    )}&output=embed`}
+                    className="h-64 w-full border-0 grayscale-[0.35]"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                  />
+                  <figcaption className="flex items-center gap-2 border-t border-rule px-4 py-3.5 text-sm font-semibold text-ink">
+                    <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                    {area.name}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* ==================================================== PROGRAM MATERIALS */}
+      <section className="bg-paper py-20 lg:py-28">
+        <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+          <SectionHeading
+            index="05"
+            eyebrow="Program Materials"
+            title="Our Brochure"
+            subtitle="The full program overview families receive — what we teach, how sessions run, and how to enrol."
+          />
+
+          <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <figure className="lg:col-span-8">
+              <div className="rounded border border-rule bg-surface p-3 sm:p-5">
+                <img
+                  src="/1.png"
+                  alt="InfinityMath4All tri-fold brochure describing the program, approach, and enrollment details"
+                  className="w-full rounded-sm"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption className="mt-3 text-[0.75rem] text-ink-muted">
+                InfinityMath4All tri-fold brochure — Noetic, MOEMS, and elementary
+                math tracks.
+              </figcaption>
+            </figure>
+
+            <div className="lg:col-span-4">
+              <figure className="rounded border border-rule bg-surface p-6">
+                <img
+                  src="/2.png"
+                  alt="InfinityMath4All logo"
+                  className="mx-auto w-full max-w-[15rem]"
+                  loading="lazy"
+                />
+              </figure>
+
+              <blockquote className="mt-8 border-l-2 border-accent pl-5">
+                <p className="font-serif text-xl leading-snug text-ink text-pretty">
+                  &ldquo;Math is not about numbers, equations, or algorithms.
+                  It&apos;s about understanding.&rdquo;
+                </p>
+                <footer className="mt-3 text-[0.75rem] uppercase tracking-[0.14em] text-ink-muted">
+                  From our program brochure
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== CTA */}
+      <section className="bg-hero-warm py-20 lg:py-28">
+        <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+          <div className="max-w-3xl">
+            <SectionHeading
+              index="06"
+              eyebrow="Enrollment"
+              title={copy.ctaTitle}
+              subtitle={copy.ctaBody}
+              tone="dark"
+            />
+
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={GOOGLE_FORM_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Sign up for the math program in a new tab"
+                className="btn-base bg-paper text-ink hover:bg-paper/85"
+              >
+                {copy.signUp}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+
+              <Link to="/competitions" className="btn-ghost-light">
+                {copy.getStarted}
+              </Link>
+            </div>
+
+            <p className="mt-8 text-[0.8125rem] text-paper/45">
+              Free for every elementary student. No student PII collected.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

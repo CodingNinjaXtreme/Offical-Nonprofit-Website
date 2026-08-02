@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { Check, ChevronDown, Globe, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import { GOOGLE_FORM_URL } from '../constants/signup';
 import { useLanguage } from '../context/LanguageContext';
@@ -126,7 +126,7 @@ export default function Header() {
   }, [languageMenuOpen]);
 
   const isHome = location.pathname === '/';
-  const onDarkHero = isHome && !scrolled;
+  const onDarkHero = isHome && !scrolled && !menuOpen;
 
   const navLinks = [
     { label: copy.home, path: '/' },
@@ -138,43 +138,73 @@ export default function Header() {
   ];
 
   const renderLanguageMenu = (isMobile = false) => (
-    <div className="relative" ref={languageMenuRef}>
+    <div className={`relative ${isMobile ? 'w-full' : ''}`} ref={languageMenuRef}>
       <button
         type="button"
         onClick={() => setLanguageMenuOpen((open) => !open)}
-        className={`inline-flex items-center justify-center gap-2 border px-3 py-2 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+        className={`inline-flex items-center gap-2 rounded border px-3 py-2 text-[0.8125rem] font-medium transition-colors duration-200 ${
           onDarkHero
-            ? 'border-white/20 text-white hover:bg-white/10'
-            : 'border-slate-200 text-slate-700 hover:bg-slate-50'
-        } ${isMobile ? 'w-full justify-between px-4 py-3 text-left' : ''}`}
-        style={{ borderRadius: '1.35rem 1.8rem 1.15rem 1.7rem / 1.2rem 1.55rem 1.7rem 1.35rem' }}
+            ? 'border-paper/25 text-paper/90 hover:border-paper/60 hover:text-paper'
+            : 'border-rule text-ink-soft hover:border-ink/40 hover:text-ink'
+        } ${isMobile ? 'w-full justify-between px-4 py-3' : ''}`}
         aria-haspopup="menu"
         aria-expanded={languageMenuOpen}
         aria-label={copy.languageButton}
       >
-        <span>{copy.languageButton}</span>
-        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${languageMenuOpen ? 'rotate-180' : ''}`} />
+        <span className="inline-flex items-center gap-2">
+          <Globe className="h-4 w-4 opacity-70" aria-hidden="true" />
+          {copy.languageLabel}
+        </span>
+        <ChevronDown
+          className={`h-3.5 w-3.5 opacity-60 transition-transform duration-200 ${
+            languageMenuOpen ? 'rotate-180' : ''
+          }`}
+          aria-hidden="true"
+        />
       </button>
 
       {languageMenuOpen && (
-        <div className={`absolute z-50 mt-2 border border-slate-200 bg-white p-2 shadow-xl ${isMobile ? 'left-0 right-0' : 'right-0 w-56'}`} style={{ borderRadius: '1.45rem 1.8rem 1.15rem 1.6rem / 1.25rem 1.55rem 1.7rem 1.35rem' }}>
-          {availableLanguages.map((option) => (
-            <button
-              key={option.code}
-              type="button"
-              onClick={() => {
-                setLanguage(option.code);
-                setLanguageMenuOpen(false);
-              }}
-              className={`flex w-full items-center justify-between px-3 py-2 text-sm transition-all duration-300 hover:bg-slate-50 ${
-                language === option.code ? 'bg-blue-50 text-blue-700' : 'text-slate-700'
-              }`}
-              style={{ borderRadius: '1rem 1.35rem 1rem 1.2rem / 1rem 1.2rem 1.35rem 1rem' }}
-            >
-              <span>{option.label}</span>
-              <span className="text-xs text-slate-500">{option.nativeLabel}</span>
-            </button>
-          ))}
+        <div
+          role="menu"
+          className={`absolute z-50 mt-2 overflow-hidden rounded border border-rule bg-surface ring-soft ${
+            isMobile ? 'left-0 right-0' : 'right-0 w-60'
+          }`}
+        >
+          <p className="border-b border-rule px-4 pb-2 pt-3 text-[0.625rem] font-semibold uppercase tracking-[0.16em] text-ink-muted">
+            {copy.languageButton}
+          </p>
+
+          {availableLanguages.map((option) => {
+            const selected = language === option.code;
+
+            return (
+              <button
+                key={option.code}
+                type="button"
+                role="menuitemradio"
+                aria-checked={selected}
+                onClick={() => {
+                  setLanguage(option.code);
+                  setLanguageMenuOpen(false);
+                }}
+                className={`flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm transition-colors duration-150 ${
+                  selected ? 'bg-accent-tint text-ink' : 'text-ink-soft hover:bg-ink/[0.04]'
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  {selected ? (
+                    <Check className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                  ) : (
+                    <span className="h-3.5 w-3.5" aria-hidden="true" />
+                  )}
+                  {option.nativeLabel}
+                </span>
+                <span className="text-[0.6875rem] uppercase tracking-wider text-ink-muted">
+                  {option.label}
+                </span>
+              </button>
+            );
+          })}
         </div>
       )}
     </div>
@@ -182,41 +212,41 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 top-0 z-50 transition-colors duration-300 ${
         onDarkHero
-          ? 'bg-transparent'
-          : 'bg-white/78 backdrop-blur-md shadow-[0_18px_50px_-35px_rgba(15,23,42,0.5)] border-b border-white/60'
+          ? 'border-b border-paper/10 bg-transparent'
+          : 'border-b border-rule bg-paper/92 backdrop-blur-md'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2.5 group" aria-label="InfinityMath4All home">
-            <Logo size={36} />
+      <div className="mx-auto max-w-shell px-5 sm:px-6 lg:px-10">
+        <div className="flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
+          <Link
+            to="/"
+            className="group flex items-center gap-3"
+            aria-label="InfinityMath4All home"
+          >
+            <Logo size={34} variant={onDarkHero ? 'mono' : 'gradient'} />
 
-            <div className="flex flex-col leading-tight">
+            <span className="flex flex-col leading-none">
               <span
-                className={`font-bold text-base tracking-tight transition-colors duration-300 ${
-                  onDarkHero ? 'text-white' : 'text-slate-900'
+                className={`font-serif text-[1.0625rem] font-semibold tracking-tight transition-colors duration-300 ${
+                  onDarkHero ? 'text-paper' : 'text-ink'
                 }`}
               >
-                InfinityMath
-                <span className="text-gradient">4All</span>
+                InfinityMath4All
               </span>
-
               <span
-                className={`text-[11px] font-medium uppercase tracking-wider transition-colors duration-300 ${
-                  onDarkHero ? 'text-blue-200' : 'text-blue-500'
+                className={`mt-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 ${
+                  onDarkHero ? 'text-paper/55' : 'text-ink-muted'
                 }`}
               >
                 Math Education Program
               </span>
-            </div>
+            </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-2">
-            {renderLanguageMenu(false)}
-
-            <nav className="flex items-center gap-1" aria-label="Primary">
+          <div className="hidden items-center gap-8 lg:flex">
+            <nav className="flex items-center gap-7" aria-label="Primary">
               {navLinks.map((link) => {
                 const active = location.pathname === link.path;
 
@@ -225,92 +255,100 @@ export default function Header() {
                     key={link.path}
                     to={link.path}
                     aria-current={active ? 'page' : undefined}
-                    className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
-                      active
-                        ? onDarkHero
-                          ? 'text-white'
-                          : 'text-blue-600'
-                        : onDarkHero
-                          ? 'text-white/75 hover:text-white'
-                          : 'text-slate-600 hover:text-blue-600'
+                    className={`nav-link ${active ? 'active' : ''} ${
+                      onDarkHero
+                        ? 'text-paper/70 hover:!text-paper [&.active]:!text-paper'
+                        : ''
                     }`}
-                    style={{ borderRadius: '1.2rem 1.6rem 1rem 1.45rem / 1.05rem 1.3rem 1.45rem 1.1rem' }}
                   >
                     {link.label}
-
-                    <span
-                      className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full transition-all duration-300 ${
-                        active
-                          ? onDarkHero
-                            ? 'bg-gradient-to-r from-amber-300 to-amber-500 opacity-100'
-                            : 'bg-gradient-to-r from-blue-500 to-cyan-500 opacity-100'
-                          : 'opacity-0'
-                      }`}
-                    />
                   </Link>
                 );
               })}
+            </nav>
+
+            <div className="flex items-center gap-3">
+              {renderLanguageMenu(false)}
 
               <a
                 href={GOOGLE_FORM_URL}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Sign up for the math program in a new tab"
-                className="ml-2 inline-flex items-center justify-center bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                style={{ borderRadius: '1.35rem 1.85rem 1rem 1.6rem / 1.15rem 1.45rem 1.6rem 1.2rem' }}
+                className={`rounded px-4 py-2 text-[0.8125rem] font-semibold transition-colors duration-200 ${
+                  onDarkHero
+                    ? 'bg-paper text-ink hover:bg-paper/85'
+                    : 'bg-accent text-paper hover:bg-accent/88'
+                }`}
               >
                 {copy.signUp}
               </a>
-            </nav>
+            </div>
           </div>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden p-2 transition-all duration-300 ${
-              onDarkHero ? 'text-white hover:bg-white/10' : 'text-slate-700 hover:bg-slate-100'
+            className={`-mr-2 rounded p-2 transition-colors duration-200 lg:hidden ${
+              onDarkHero ? 'text-paper hover:bg-paper/10' : 'text-ink hover:bg-ink/[0.06]'
             }`}
-            style={{ borderRadius: '1.2rem 1.5rem 1rem 1.4rem / 1rem 1.25rem 1.4rem 1.05rem' }}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
           >
-            {menuOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
+            {menuOpen ? (
+              <X className="h-5 w-5" aria-hidden="true" />
+            ) : (
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            )}
           </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div id="mobile-navigation" className="lg:hidden bg-white shadow-lg animate-fade-in" style={{ borderRadius: '0 0 1.75rem 1.75rem / 0 0 1.35rem 1.35rem' }}>
-          <div className="px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                aria-current={location.pathname === link.path ? 'page' : undefined}
-                className={`block px-4 py-3 text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
-                  location.pathname === link.path
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'
-                }`}
-                style={{ borderRadius: '1.2rem 1.6rem 1rem 1.45rem / 1rem 1.25rem 1.4rem 1.05rem' }}
+        <div
+          id="mobile-navigation"
+          className="animate-fade-in border-t border-rule bg-paper lg:hidden"
+        >
+          <nav className="mx-auto max-w-shell px-5 sm:px-6" aria-label="Mobile">
+            {navLinks.map((link, index) => {
+              const active = location.pathname === link.path;
+
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  aria-current={active ? 'page' : undefined}
+                  className={`flex items-center justify-between border-b border-rule py-4 text-[0.9375rem] transition-colors duration-150 ${
+                    active ? 'font-semibold text-ink' : 'text-ink-soft hover:text-ink'
+                  }`}
+                >
+                  <span className="flex items-baseline gap-3">
+                    <span className="index-num w-5 opacity-70">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {link.label}
+                  </span>
+                  {active && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                  )}
+                </Link>
+              );
+            })}
+
+            <div className="flex flex-col gap-3 py-5">
+              <a
+                href={GOOGLE_FORM_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Sign up for the math program in a new tab"
+                className="btn-accent w-full"
               >
-                {link.label}
-              </Link>
-            ))}
+                {copy.signUp}
+              </a>
 
-            <a
-              href={GOOGLE_FORM_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Sign up for the math program in a new tab"
-              className="block px-4 py-3 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-              style={{ borderRadius: '1.25rem 1.8rem 1rem 1.55rem / 1.1rem 1.35rem 1.45rem 1.15rem' }}
-            >
-              {copy.signUp}
-            </a>
-
-            <div className="pt-1">{renderLanguageMenu(true)}</div>
-          </div>
+              {renderLanguageMenu(true)}
+            </div>
+          </nav>
         </div>
       )}
     </header>

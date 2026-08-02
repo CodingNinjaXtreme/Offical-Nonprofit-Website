@@ -27,12 +27,15 @@ function ScrollToTop() {
 // Reusable loading fallback
 function PageLoader() {
     return (
-        <div className="flex items-center justify-center min-h-[60vh] px-4">
-            <div className="text-center card-glass bg-white/70 px-8 py-10 shadow-lg">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-cyan-500 to-amber-400 shadow-lg shadow-blue-500/20 animate-float">
-                    <div className="h-7 w-7 rounded-full border-4 border-white/90 border-t-transparent animate-spin" aria-label="Loading"></div>
-                </div>
-                <p className="text-slate-600 text-sm font-medium">Loading…</p>
+        <div className="flex min-h-[60vh] items-center justify-center px-4">
+            <div className="flex flex-col items-center gap-4">
+                <div
+                    className="h-6 w-6 animate-spin rounded-full border-2 border-ink/20 border-t-accent"
+                    aria-hidden="true"
+                ></div>
+                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-muted">
+                    Loading
+                </p>
             </div>
         </div>
     );
@@ -46,7 +49,7 @@ function App() {
 
                 <a
                     href="#main"
-                    className="skip-link focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="skip-link"
                 >
                     Skip to main content
                 </a>

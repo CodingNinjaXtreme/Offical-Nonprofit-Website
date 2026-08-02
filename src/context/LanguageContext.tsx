@@ -42,6 +42,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Keep the document language in sync so browsers apply the correct
+  // font fallbacks and line-breaking rules for CJK and Devanagari scripts.
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   const setLanguage = (nextLanguage: LanguageCode) => {
     setLanguageState(nextLanguage);
     window.localStorage.setItem(STORAGE_KEY, nextLanguage);
