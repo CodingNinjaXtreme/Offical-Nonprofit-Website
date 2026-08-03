@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { GOOGLE_FORM_URL } from '../constants/signup';
 import { useLanguage } from '../context/LanguageContext';
+import HomeHero from '../components/home/HomeHero';
 
 const baseHomeCopy = {
   heroBadge: 'Built by students who recently competed in these contests',
@@ -255,66 +256,7 @@ export default function Home() {
 
   return (
       <div>
-        {/* HERO */}
-        <section className="relative min-h-screen bg-hero flex items-center overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-20 right-[10%] w-72 h-72 bg-blue-500/15 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl" />
-            <div className="absolute inset-0 bg-grid opacity-50" />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto px-4 py-32 w-full">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* LEFT */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-8 text-white/80 text-sm">
-                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true" />
-                  {copy.heroBadge}
-                </div>
-
-                <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                  {copy.heroTitleLine1}
-                  <span className="block text-gradient-gold">
-                    {copy.heroTitleLine2}
-                  </span>
-                </h1>
-
-                <p className="text-lg text-white/70 mb-10 max-w-lg">
-                  {copy.heroLead}
-                </p>
-
-                <p className="text-sm text-white/65 mb-8 max-w-lg">
-                  {copy.heroLocation}
-                </p>
-
-                <div className="flex gap-4 flex-col sm:flex-row">
-                  <Link to="/competitions" className="btn-accent px-8 py-4">
-                    <span>{copy.exploreCompetitions}</span> <ArrowRight aria-hidden="true" />
-                  </Link>
-                  <a
-                      href={GOOGLE_FORM_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                        aria-label="Sign up for the math program in a new tab"
-                      className="btn-ghost-light px-8 py-4"
-                  >
-                    <span>{copy.signUp}</span> <ChevronRight aria-hidden="true" />
-                  </a>
-                </div>
-              </div>
-
-              {/* RIGHT IMAGE (2.png restored + scaled back up) */}
-              <div className="hidden lg:block">
-                <img
-                    src="/2.png"
-                    alt="Math"
-                    className="rounded-3xl shadow-2xl w-full object-cover h-[580px] ring-1 ring-white/10 scale-[1.02]"
-                    loading="eager"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <HomeHero copy={copy} signupUrl={GOOGLE_FORM_URL} />
 
         <div aria-hidden className="relative text-white -mt-px">
           <svg viewBox="0 0 1440 60" className="block h-14 w-full fill-current" preserveAspectRatio="none">

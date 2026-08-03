@@ -1,24 +1,27 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, Users, UserRound } from 'lucide-react';
+import ScrollCounter from '../components/impact/ScrollCounter';
+import EngagementPanel from '../components/impact/EngagementPanel';
+import type { ImpactStat } from '../components/impact/ScrollCounter';
 
-const impactStats = [
+const impactStats: ImpactStat[] = [
   {
     label: 'Cofounders',
-    value: '5',
+    value: 5,
     detail: 'Student-led leadership shaping the program from the start.',
     icon: UserRound,
     accent: 'from-blue-500 to-cyan-500',
   },
   {
     label: 'Volunteers',
-    value: '4',
+    value: 4,
     detail: 'Mentors and helpers supporting classes, outreach, and operations.',
     icon: Users,
     accent: 'from-emerald-500 to-teal-500',
   },
   {
     label: 'Signups',
-    value: '10',
+    value: 10,
     detail: 'Families and students who have shown interest in joining so far.',
     icon: Sparkles,
     accent: 'from-amber-500 to-orange-500',
@@ -78,35 +81,9 @@ export default function Impact() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6">
-            {impactStats.map((stat, index) => {
-              const Icon = stat.icon;
-
-              return (
-                <div
-                  key={stat.label}
-                  className="card p-7 bg-white/90 backdrop-blur-sm"
-                  style={{
-                    transform: index === 1 ? 'translateY(14px)' : index === 2 ? 'translateY(-6px)' : undefined,
-                  }}
-                >
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.accent} flex items-center justify-center shadow-lg shadow-slate-200 mb-5`}>
-                    <Icon className="w-7 h-7 text-white" aria-hidden="true" />
-                  </div>
-
-                  <div className="text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
-                    {stat.value}
-                  </div>
-
-                  <h2 className="text-lg font-semibold text-slate-900 mb-3">
-                    {stat.label}
-                  </h2>
-
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {stat.detail}
-                  </p>
-                </div>
-              );
-            })}
+            {impactStats.map((stat, index) => (
+              <ScrollCounter key={stat.label} stat={stat} index={index} />
+            ))}
           </div>
         </div>
       </section>
@@ -135,25 +112,7 @@ export default function Impact() {
                 </ul>
               </div>
 
-              <div className="bg-white/80 border border-slate-100 p-6" style={{ borderRadius: '1.6rem 1.1rem 1.8rem 1.3rem / 1.35rem 1.7rem 1.15rem 1.5rem' }}>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">
-                  Public Snapshot
-                </p>
-                <div className="space-y-4 text-sm text-slate-600">
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Cofounders</span>
-                    <span className="font-semibold text-slate-900">5</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Volunteers</span>
-                    <span className="font-semibold text-slate-900">2</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Signups so far</span>
-                    <span className="font-semibold text-slate-900">10</span>
-                  </div>
-                </div>
-              </div>
+              <EngagementPanel stats={impactStats} />
             </div>
           </div>
         </div>
