@@ -11,7 +11,7 @@ const impactStats = [
   },
   {
     label: 'Volunteers',
-    value: '2',
+    value: '4',
     detail: 'Mentors and helpers supporting classes, outreach, and operations.',
     icon: Users,
     accent: 'from-emerald-500 to-teal-500',
