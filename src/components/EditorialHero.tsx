@@ -1,5 +1,5 @@
-import { useRef, type ReactNode } from 'react';
-
+import { type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import {
   motion,
   useReducedMotion,
@@ -10,13 +10,19 @@ import {
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
+type CtaLink = { label: string; to: string };
+type CtaAnchor = { label: string; href: string };
+
 type EditorialHeroProps = {
-  eyebrow?: string;
-  headline: string;
-  /** Use a pipe `|` to mark the accent-colored portion of the headline. */
-  subheadline?: string;
-  primaryCta?: { label: string; href: string };
-  secondaryCta?: { label: string; href: string };
+  eyebrow: string;
+  /** First line of the headline (plain). */
+  headlineLine1: string;
+  /** Second line of the headline (rendered with the gold accent). */
+  headlineLine2: string;
+  subheadline: string;
+  location?: string;
+  primaryCta: CtaLink;
+  secondaryCta: CtaAnchor;
   children?: ReactNode;
 };
 
@@ -68,39 +74,59 @@ function StaggerWord({ children }: { children: ReactNode }) {
   );
 }
 
+function StaggerLine({ words, accent = false }: { words: string[]; accent?: boolean }) {
+  return (
+    <span className="block overflow-hidden pb-[0.12em]">
+      {words.map((word, i) => (
+        <StaggerWord key={i}>
+          {accent ? (
+            <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">
+              {word}
+            </span>
+          ) : (
+            word
+          )}
+        </StaggerWord>
+      ))}
+    </span>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Interactive CTA                                                    */
 /* ------------------------------------------------------------------ */
 
+const MotionLink = motion.create(Link);
+
 type GlowButtonProps = {
-  href: string;
   label: string;
   variant: 'primary' | 'ghost';
-};
+} & (
+  | { to: string; href?: never }
+  | { href: string; to?: never }
+);
 
-function GlowButton({ href, label, variant }: GlowButtonProps) {
+function GlowButton({ label, variant, ...rest }: GlowButtonProps) {
   const primary = variant === 'primary';
+  const isInternal = 'to' in rest && rest.to !== undefined;
 
-  return (
-    <motion.a
-      href={href}
-      whileHover="hover"
-      whileTap="tap"
-      className={`relative inline-flex items-center justify-center overflow-hidden px-9 py-4 text-base font-semibold tracking-tight outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
-        primary ? 'text-slate-950' : 'text-white'
-      }`}
-      style={{
-        borderRadius: '1.45rem 1.95rem 1.1rem 1.7rem / 1.2rem 1.55rem 1.7rem 1.3rem',
-      }}
-    >
-      {/* Base layer */}
+  const sharedProps = {
+    whileHover: 'hover',
+    whileTap: 'tap',
+    className: `relative inline-flex items-center justify-center overflow-hidden px-9 py-4 text-base font-semibold tracking-tight outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
+      primary ? 'text-slate-950' : 'text-white'
+    }`,
+    style: {
+      borderRadius: '1.45rem 1.95rem 1.1rem 1.7rem / 1.2rem 1.55rem 1.7rem 1.3rem',
+    },
+  };
+
+  const inner = (
+    <>
       <motion.span
         aria-hidden
         className="absolute inset-0"
-        variants={{
-          hover: { scale: 1.04 },
-          tap: { scale: 0.97 },
-        }}
+        variants={{ hover: { scale: 1.04 }, tap: { scale: 0.97 } }}
         transition={SPRING}
         style={{
           background: primary
@@ -110,8 +136,6 @@ function GlowButton({ href, label, variant }: GlowButtonProps) {
           backdropFilter: primary ? 'none' : 'blur(12px)',
         }}
       />
-
-      {/* Expanding inner glow */}
       <motion.span
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -120,14 +144,10 @@ function GlowButton({ href, label, variant }: GlowButtonProps) {
             ? 'radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 70%)'
             : 'radial-gradient(circle, rgba(251,191,36,0.35) 0%, rgba(251,191,36,0) 70%)',
         }}
-        variants={{
-          hover: { scale: 4.2, opacity: 1 },
-          tap: { scale: 2.4, opacity: 0.8 },
-        }}
+        variants={{ hover: { scale: 4.2, opacity: 1 }, tap: { scale: 2.4, opacity: 0.8 } }}
         initial={{ scale: 1, opacity: 0 }}
         transition={SPRING}
       />
-
       <span className="relative z-10 flex items-center gap-2">
         {label}
         <svg
@@ -143,6 +163,26 @@ function GlowButton({ href, label, variant }: GlowButtonProps) {
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>
       </span>
+    </>
+  );
+
+  if (isInternal) {
+    return (
+      <MotionLink to={rest.to!} {...sharedProps}>
+        {inner}
+      </MotionLink>
+    );
+  }
+
+  return (
+    <motion.a
+      href={rest.href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`${label} (opens in a new tab)`}
+      {...sharedProps}
+    >
+      {inner}
     </motion.a>
   );
 }
@@ -152,32 +192,30 @@ function GlowButton({ href, label, variant }: GlowButtonProps) {
 /* ------------------------------------------------------------------ */
 
 export default function EditorialHero({
-  eyebrow = 'Editorial',
-  headline = 'Where ideas|become timeless',
-  subheadline = 'A crafted studio for brands that refuse the ordinary — building considered, human experiences from first sketch to final pixel.',
-  primaryCta = { label: 'Begin the Project', href: '#start' },
-  secondaryCta = { label: 'View the Work', href: '#work' },
+  eyebrow,
+  headlineLine1,
+  headlineLine2,
+  subheadline,
+  location,
+  primaryCta,
+  secondaryCta,
   children,
 }: EditorialHeroProps) {
-  const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
 
-  const lines = headline.split('\n').map((line) => {
-    const [base, accent] = line.split('|');
-    return { base: base ?? line, accent: accent ?? null };
-  });
+  const line1Words = headlineLine1.split(/\s+/).filter(Boolean);
+  const line2Words = headlineLine2.split(/\s+/).filter(Boolean);
 
   return (
     <section
-      ref={ref}
-      className="relative flex min-h-screen w-full items-center overflow-hidden bg-slate-950"
+      className="relative flex min-h-screen w-full items-center overflow-hidden bg-hero"
       aria-label="Editorial hero"
     >
       {/* Ambient background */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-[6%] h-[520px] w-[520px] rounded-full bg-amber-500/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[8%] h-[460px] w-[460px] rounded-full bg-cyan-500/12 blur-[130px]" />
-        <div className="absolute inset-0 bg-grid opacity-[0.18]" />
+        <div className="absolute inset-0 bg-grid opacity-50" />
         <div
           className="absolute inset-0 opacity-60"
           style={{
@@ -209,20 +247,8 @@ export default function EditorialHero({
             variants={containerVariants}
             className="max-w-4xl font-serif text-[2.75rem] leading-[1.04] tracking-[-0.02em] text-white sm:text-6xl lg:text-[4.75rem]"
           >
-            {lines.map(({ base, accent }, lineIdx) => (
-              <span key={lineIdx} className="block">
-                {base.trim().split(/\s+/).map((word, i) => (
-                  <StaggerWord key={`${lineIdx}-${i}`}>{word}</StaggerWord>
-                ))}
-                {accent && (
-                  <StaggerWord key={`${lineIdx}-accent`}>
-                    <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">
-                      {accent.trim()}
-                    </span>
-                  </StaggerWord>
-                )}
-              </span>
-            ))}
+            <StaggerLine words={line1Words} />
+            <StaggerLine words={line2Words} accent />
           </motion.h1>
 
           {/* Subheadline */}
@@ -233,13 +259,23 @@ export default function EditorialHero({
             {subheadline}
           </motion.p>
 
+          {/* Location */}
+          {location && (
+            <motion.p
+              variants={lineVariants}
+              className="mt-4 max-w-lg text-sm leading-relaxed text-white/50"
+            >
+              {location}
+            </motion.p>
+          )}
+
           {/* CTAs */}
           <motion.div
             variants={lineVariants}
             className="mt-11 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
-            <GlowButton href={primaryCta.href} label={primaryCta.label} variant="primary" />
-            <GlowButton href={secondaryCta.href} label={secondaryCta.label} variant="ghost" />
+            <GlowButton label={primaryCta.label} to={primaryCta.to} variant="primary" />
+            <GlowButton label={secondaryCta.label} href={secondaryCta.href} variant="ghost" />
           </motion.div>
 
           {/* Optional slot */}

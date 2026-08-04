@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { GOOGLE_FORM_URL } from '../constants/signup';
 import { useLanguage } from '../context/LanguageContext';
-import HomeHero from '../components/home/HomeHero';
+import EditorialHero from '../components/EditorialHero';
 
 const baseHomeCopy = {
   heroBadge: 'Built by students who recently competed in these contests',
@@ -256,7 +256,15 @@ export default function Home() {
 
   return (
       <div>
-        <HomeHero copy={copy} signupUrl={GOOGLE_FORM_URL} />
+        <EditorialHero
+          eyebrow={copy.heroBadge}
+          headlineLine1={copy.heroTitleLine1}
+          headlineLine2={copy.heroTitleLine2}
+          subheadline={copy.heroLead}
+          location={copy.heroLocation}
+          primaryCta={{ label: copy.exploreCompetitions, to: '/competitions' }}
+          secondaryCta={{ label: copy.signUp, href: GOOGLE_FORM_URL }}
+        />
 
         <div aria-hidden className="relative text-white -mt-px">
           <svg viewBox="0 0 1440 60" className="block h-14 w-full fill-current" preserveAspectRatio="none">
