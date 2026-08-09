@@ -302,15 +302,14 @@ export default function About() {
             </Reveal>
             <Reveal delay={0.08}>
               <h2 className="text-3xl font-semibold text-slate-900 leading-tight">
-                Our plan is to host weekly zoom classes for elementary kids from
-                Warmsprings and Weibel.
+                We are hosting weekly virtual classes for elementary students from
+                Warmsprings and Weibel to teach them the foundations of competitive math and problem solving.
               </h2>
             </Reveal>
             <Reveal delay={0.16}>
               <p className="mt-5 text-slate-600 leading-relaxed">
-                The zoom classes will be complemented by lessons as well as old
-                test problems from these contests. We are also making an LaTeX
-                online PDF math-book for students to reinforce lesson taught
+                The virtual classes will be complemented by lessons as well as old
+                test problems from these contests. We are also making custom-coded online PDFs for homework and classwork for students to reinforce concepts taught
                 during the lessons.
               </p>
             </Reveal>
@@ -375,7 +374,7 @@ export default function About() {
                   Our mentors have won awards and prizes for winning competitions
                   such as Noetic and MOEMS. Our team has significant experience in
                   competitive math, with many of them starting as early as
-                  elementary school. Using our skills we developed, we hope to
+                  4th grade. Using our skills we developed, we hope to
                   teach younger students how to think logically about mathematics
                   and to build confidence.
                 </p>
