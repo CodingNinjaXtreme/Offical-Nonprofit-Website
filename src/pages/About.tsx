@@ -218,8 +218,8 @@ const focusAreas = [
 ];
 
 const stats = [
-  { icon: Trophy, to: 15, suffix: "+", label: "Competition Awards" },
-  { icon: BookOpen, to: 3, suffix: "", label: "Contests Coached" },
+  { icon: Trophy, to: 10, suffix: "+", label: "Student Signups" },
+  { icon: BookOpen, to: 2, suffix: "", label: "Contests Coached" },
   { icon: School, to: 2, suffix: "", label: "Schools Served" },
 ];
 
