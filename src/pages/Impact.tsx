@@ -6,7 +6,7 @@ import type { ImpactStat } from '../components/impact/ScrollCounter';
 
 const impactStats: ImpactStat[] = [
   {
-    label: 'Cofounders',
+    label: 'Leaders',
     value: 6,
     detail: 'Student-led leadership shaping the program from the start.',
     icon: UserRound,
@@ -14,7 +14,7 @@ const impactStats: ImpactStat[] = [
   },
   {
     label: 'Volunteers',
-    value: 4,
+    value: 5,
     detail: 'Mentors and helpers supporting classes, outreach, and operations.',
     icon: Users,
     accent: 'from-emerald-500 to-teal-500',
